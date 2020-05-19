@@ -1,0 +1,7 @@
+{
+    fabric_projects {
+        _doc
+        title
+        description
+    }
+}
