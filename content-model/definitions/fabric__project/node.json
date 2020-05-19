@@ -1,0 +1,44 @@
+{
+	"_qname": "fabric:project",
+	"_type": "d:type",
+	"title": "Inspiriation Project",
+	"type": "object",
+	"_parent": "n:node",
+	"properties": {
+		"title": {
+			"title": "Title",
+			"type": "string"
+		},
+		"description": {
+			"title": "Description",
+			"type": "string"
+		},
+		"id": {
+			"title": "Project Identifier",
+			"type": "string"
+		},
+		"contributor": {
+			"title": "Contributor Attribution",
+			"type": "object",
+			"properties": {
+				"name": {
+					"name": "Contributor Name",
+					"type": "string"
+				},
+				"email": {
+					"title": "Email Address",
+					"type": "string"
+				},
+				"url": {
+					"title": "URL",
+					"type": "string"
+				},
+				"social": {
+					"title": "Social Media ID Information",
+					"type": "string"
+				}
+			}
+		}
+	},
+	"$schema": "http://json-schema.org/draft-04/schema#"
+}

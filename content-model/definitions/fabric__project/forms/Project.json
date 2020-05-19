@@ -1,0 +1,44 @@
+{
+	"_type": "n:form",
+	"title": "Project",
+	"fields": {
+		"title": {
+			"label": "Project Name",
+			"type": "text"
+		},
+		"description": {
+			"label": "Project Description",
+			"type": "textarea"
+		},
+		"_doc": {
+			"label": "Project ID",
+			"type": "text",
+			"readonly": true,
+			"helper": "SKU"
+		},
+		"contributor": {
+			"title": "Contributor Attribution",
+			"type": "object",
+			"properties": {
+				"name": {
+					"label": "Contributor Name",
+					"type": "text"
+				},
+				"email": {
+					"label": "Email Address",
+					"type": "text"
+				},
+				"url": {
+					"label": "URL",
+					"type": "text"
+				},
+				"social": {
+					"label": "Social Media ID Information",
+					"type": "text",
+					"helper": "Social media identifier such as instagram or twitter handle of this contributor."
+				}
+			}
+		}
+	},
+	"engineId": "alpaca1"
+}
