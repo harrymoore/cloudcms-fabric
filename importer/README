@@ -1,0 +1,7 @@
+
+# Import the content model:
+sh deploy-content-model.sh
+
+
+# Import the json from Ghost blog export:
+sh deploy-data.sh
