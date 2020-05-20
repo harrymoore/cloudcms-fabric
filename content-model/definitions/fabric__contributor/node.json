@@ -1,0 +1,26 @@
+{
+	"_qname": "fabric:contributor",
+	"_type": "d:type",
+	"title": "Contributor",
+	"type": "object",
+	"_parent": "n:node",
+	"properties": {
+		"title": {
+			"name": "Contributor Name",
+			"type": "string"
+		},
+		"email": {
+			"title": "Email Address",
+			"type": "string"
+		},
+		"url": {
+			"title": "URL",
+			"type": "string"
+		},
+		"social": {
+			"title": "Social Media ID Information",
+			"type": "string"
+		}
+	},
+	"$schema": "http://json-schema.org/draft-04/schema#"
+}

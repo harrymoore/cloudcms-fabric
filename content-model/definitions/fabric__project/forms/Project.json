@@ -10,35 +10,46 @@
 			"label": "Project Description",
 			"type": "textarea"
 		},
-		"_doc": {
+		"id": {
 			"label": "Project ID",
 			"type": "text",
-			"readonly": true,
-			"helper": "SKU"
+			"readonly": true
+		},
+		"category": {
+			"title": "Category",
+			"type": "node-picker"
+		},
+		"keywords": {
+			"type": "checkbox",
+			"label": "Keywords",
+			"multiple": true,
+			"optionLabels": [
+				"knit fabrics",
+				"woven fabrics",
+				"stretch fabrics",
+				"linen",
+				"lace",
+				"Minky",
+				"holiday",
+				"quilting cotton",
+				"Kona cotton",
+				"baby",
+				"Sunbrella",
+				"linen",
+				"cotton duck",
+				"vinyl"
+			]
+		},		
+		"additionalKeywords": {
+			"type": "text",
+			"label": "Additional Keywords",
+			"helper": "Comma separated list of keywords"
 		},
 		"contributor": {
-			"title": "Contributor Attribution",
-			"type": "object",
-			"properties": {
-				"name": {
-					"label": "Contributor Name",
-					"type": "text"
-				},
-				"email": {
-					"label": "Email Address",
-					"type": "text"
-				},
-				"url": {
-					"label": "URL",
-					"type": "text"
-				},
-				"social": {
-					"label": "Social Media ID Information",
-					"type": "text",
-					"helper": "Social media identifier such as instagram or twitter handle of this contributor."
-				}
-			}
+			"type": "node-picker",
+			"title": "Contributor Attribution"
 		}
+
 	},
 	"engineId": "alpaca1"
 }

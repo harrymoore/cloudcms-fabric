@@ -1,7 +1,7 @@
 {
 	"_qname": "fabric:project",
 	"_type": "d:type",
-	"title": "Inspiriation Project",
+	"title": "Inspiration Project",
 	"type": "object",
 	"_parent": "n:node",
 	"properties": {
@@ -17,26 +17,50 @@
 			"title": "Project Identifier",
 			"type": "string"
 		},
+		"category": {
+			"title": "Category",
+			"type": "array",
+			"_relator": {
+				"nodeType": "fabric:category"
+			}
+		},
+		"keywords": {
+			"type": "array",
+			"title": "keywords",
+			"required": false,
+			"items": {
+				"type": "string",
+				"enum": [
+					"knit fabrics",
+					"woven fabrics",
+					"stretch fabrics",
+					"linen",
+					"lace",
+					"Minky",
+					"holiday",
+					"quilting cotton",
+					"Kona cotton",
+					"baby",
+					"Sunbrella",
+					"linen",
+					"cotton duck",
+					"vinyl"
+				]
+			}
+		},
+		"additionalKeywords": {
+			"type": "string",
+			"title": "Additional Keywords"
+		},
 		"contributor": {
-			"title": "Contributor Attribution",
-			"type": "object",
-			"properties": {
-				"name": {
-					"name": "Contributor Name",
-					"type": "string"
-				},
-				"email": {
-					"title": "Email Address",
-					"type": "string"
-				},
-				"url": {
-					"title": "URL",
-					"type": "string"
-				},
-				"social": {
-					"title": "Social Media ID Information",
-					"type": "string"
-				}
+			"type": "array",
+			"title": "contributor",
+			"items": {
+				"type": "object"
+			},
+			"_relator": {
+				"associationType": "a:linked",
+				"nodeType": "fabric:contributor"
 			}
 		}
 	},
