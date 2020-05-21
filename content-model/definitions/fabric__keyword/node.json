@@ -1,0 +1,31 @@
+{
+	"title": "Keyword",
+	"description": "",
+	"_qname": "fabric:keyword",
+	"_type": "d:type",
+	"type": "object",
+	"_parent": "n:node",
+	"sort": 2,
+	"properties": {
+		"title": {
+			"type": "string",
+			"title": "Keyword",
+			"required": true,
+			"default": ""
+		},
+		"projectType": {
+			"type": "array",
+			"title": "projectType",
+			"items": {
+				"type": "string",
+				"enum": [
+					"sewing101",
+					"project",
+					"fabric101",
+					"inspiration"
+				]
+			}
+		}
+	},
+	"mandatoryFeatures": {}
+}

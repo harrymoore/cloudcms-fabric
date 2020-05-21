@@ -4,6 +4,7 @@
 	"title": "Category",
 	"type": "object",
 	"_parent": "n:node",
+	"sort": 4,
 	"properties": {
 		"title": {
 			"title": "Title",

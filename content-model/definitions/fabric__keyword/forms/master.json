@@ -1,0 +1,24 @@
+{
+	"title": "Keyword",
+	"engineId": "alpaca1",
+	"fields": {
+		"title": {
+			"type": "text",
+			"label": "Keyword",
+			"required": true,
+			"default": ""
+		},
+		"projectType": {
+			"type": "checkbox",
+			"multiple": true,
+			"label": "Project Type",
+			"required": false,
+			"items": {
+				"type": "text",
+				"label": "projectType"
+			}
+		}
+	},
+	"_type": "n:form",
+	"description": ""
+}
