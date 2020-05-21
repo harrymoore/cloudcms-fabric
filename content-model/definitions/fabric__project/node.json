@@ -4,10 +4,12 @@
 	"title": "Inspiration Project",
 	"type": "object",
 	"_parent": "n:node",
+	"sort": 1,
 	"properties": {
 		"title": {
 			"title": "Title",
-			"type": "string"
+			"type": "string",
+			"required": true
 		},
 		"description": {
 			"title": "Description",
@@ -16,59 +18,6 @@
 		"id": {
 			"title": "Project Identifier",
 			"type": "string"
-		},
-		"category": {
-			"title": "Category",
-			"type": "array",
-			"_relator": {
-				"nodeType": "fabric:category"
-			}
-		},
-		"subCategory": {
-			"title": "Category",
-			"type": "array",
-			"_relator": {
-				"nodeType": "fabric:category"
-			}
-		},
-		"keywords": {
-			"type": "array",
-			"title": "keywords",
-			"required": false,
-			"items": {
-				"type": "string",
-				"enum": [
-					"knit fabrics",
-					"woven fabrics",
-					"stretch fabrics",
-					"linen",
-					"lace",
-					"Minky",
-					"holiday",
-					"quilting cotton",
-					"Kona cotton",
-					"baby",
-					"Sunbrella",
-					"linen",
-					"cotton duck",
-					"vinyl"
-				]
-			}
-		},
-		"additionalKeywords": {
-			"type": "string",
-			"title": "Additional Keywords"
-		},
-		"contributor": {
-			"type": "array",
-			"title": "contributor",
-			"items": {
-				"type": "object"
-			},
-			"_relator": {
-				"associationType": "a:linked",
-				"nodeType": "fabric:contributor"
-			}
 		},
 		"season": {
 			"type": "array",
@@ -112,7 +61,7 @@
 			"type": "string",
 			"title": "",
 			"required": false,
-			"default": "",
+			"default": "desktop",
 			"enum": [
 				"desktop",
 				"mobile"
@@ -132,11 +81,74 @@
 			"type": "string",
 			"title": "Project Type",
 			"required": true,
+			"default": "sewing101",
 			"enum": [
 				"sewing101",
+				"project",
 				"fabric101",
 				"inspiration"
 			]
+		},
+		"category": {
+			"title": "Category",
+			"type": "array",
+			"_relator": {
+				"nodeType": "fabric:category"
+			}
+		},
+		"subCategory": {
+			"title": "Category",
+			"type": "array",
+			"_relator": {
+				"nodeType": "fabric:category"
+			}
+		},
+		"keywords1": {
+			"type": "array",
+			"title": "Keywords",
+			"required": false,
+			"_relator": {
+				"nodeType": "fabric:keyword"
+			}
+		},
+		"keywords2": {
+			"type": "array",
+			"title": "Keywords",
+			"required": false,
+			"_relator": {
+				"nodeType": "fabric:keyword"
+			}
+		},
+		"keywords3": {
+			"type": "array",
+			"title": "Keywords",
+			"required": false,
+			"_relator": {
+				"nodeType": "fabric:keyword"
+			}
+		},
+		"keywords4": {
+			"type": "array",
+			"title": "Keywords",
+			"required": false,
+			"_relator": {
+				"nodeType": "fabric:keyword"
+			}
+		},
+		"additionalKeywords": {
+			"type": "string",
+			"title": "Additional Keywords"
+		},
+		"contributor": {
+			"type": "array",
+			"title": "contributor",
+			"items": {
+				"type": "object"
+			},
+			"_relator": {
+				"associationType": "a:linked",
+				"nodeType": "fabric:contributor"
+			}
 		},
 		"mainImage": {
 			"type": "object",
@@ -198,9 +210,15 @@
 		},
 		"step1ToolsAndMaterials": {
 			"type": "object",
-			"title": "Step1: Tools And Materials",
+			"title": "Step 1: Tools And Materials",
 			"required": false,
 			"properties": {
+				"title": {
+					"type": "string",
+					"title": "Step Title",
+					"required": false,
+					"default": "Step 1: Tools And Materials"
+				},
 				"copy": {
 					"type": "string",
 					"title": "copy",
@@ -245,9 +263,15 @@
 		},
 		"step2MeasuringCutting": {
 			"type": "object",
-			"title": "step2: Measuring & Cutting",
+			"title": "Step 2: Measuring & Cutting",
 			"required": false,
 			"properties": {
+				"title": {
+					"type": "string",
+					"title": "Step Title",
+					"required": false,
+					"default": "Step 2: Measuring & Cutting"
+				},
 				"copy": {
 					"type": "string",
 					"title": "copy",
@@ -346,6 +370,20 @@
 				}
 			}
 		}
+	},
+	"dependencies": {
+		"keywords1": [
+			"projectType"
+		],
+		"keywords2": [
+			"projectType"
+		],
+		"keywords3": [
+			"projectType"
+		],
+		"keywords4": [
+			"projectType"
+		]
 	},
 	"$schema": "http://json-schema.org/draft-04/schema#"
 }

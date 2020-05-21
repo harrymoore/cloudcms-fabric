@@ -18,53 +18,7 @@
 			"type": "text",
 			"label": "Project Identifier",
 			"readonly": true,
-			"default": ""
-		},
-		"category": {
-			"type": "node-picker",
-			"label": "Category",
-			"required": false,
-			"picker": {
-				"typeQName": "n:node",
-				"associationType": "a:linked",
-				"includeChildTypes": false
-			}
-		},
-		"subCategory": {
-			"type": "node-picker",
-			"label": "Sub Category",
-			"required": false,
-			"picker": {
-				"typeQName": "n:node",
-				"associationType": "a:linked",
-				"includeChildTypes": false
-			}
-		},
-		"keywords": {
-			"type": "checkbox",
-			"label": "Keywords",
-			"multiple": true,
-			"required": false,
-			"items": {
-				"type": "text",
-				"label": "keywords"
-			}
-		},
-		"additionalKeywords": {
-			"type": "text",
-			"label": "Additional Keywords",
-			"required": true,
-			"default": ""
-		},
-		"contributor": {
-			"type": "node-picker",
-			"label": "Contributor",
-			"required": false,
-			"picker": {
-				"typeQName": "n:node",
-				"associationType": "a:linked",
-				"includeChildTypes": false
-			}
+			"default": "This will be created automatically"
 		},
 		"season": {
 			"type": "checkbox",
@@ -103,7 +57,6 @@
 			"type": "select",
 			"label": "Desktop/Mobile",
 			"required": true,
-			"default": "",
 			"optionLabels": [
 				"Desktop",
 				"Mobile"
@@ -113,7 +66,7 @@
 			"type": "select",
 			"label": "Featured",
 			"required": true,
-			"default": "",
+			"default": "No",
 			"optionLabels": [
 				"Yes",
 				"No"
@@ -123,11 +76,129 @@
 			"type": "select",
 			"label": "Project Type",
 			"required": true,
-			"default": "",
+			"default": "Sewing 101",
 			"optionLabels": [
-				"sewing101",
-				"inspiration"
+				"Sewing 101",
+				"Project",
+				"Fabric 101",
+				"Inspiration"
 			]
+		},
+		"category": {
+			"type": "node-picker",
+			"label": "Category",
+			"required": false,
+			"picker": {
+				"typeQName": "n:node",
+				"associationType": "a:linked",
+				"includeChildTypes": false
+			}
+		},
+		"subCategory": {
+			"type": "node-picker",
+			"label": "Sub Category",
+			"required": false,
+			"picker": {
+				"typeQName": "n:node",
+				"associationType": "a:linked",
+				"includeChildTypes": false
+			}
+		},
+		"keywords1": {
+			"type": "node-picker",
+			"picker": {
+				"query": {
+					"_type": "fabric:keyword",
+					"projectType": "fabric101"
+				}
+			},
+			"label": "Keywords",
+			"multiple": true,
+			"required": false,
+			"items": {
+				"type": "text"
+			},
+            "dependencies": {
+                "projectType": [
+                    "fabric101"
+                ]
+            }
+		},
+		"keywords2": {
+			"type": "node-picker",
+			"picker": {
+				"query": {
+					"_type": "fabric:keyword",
+					"projectType": "sewing101"
+				}
+			},
+			"label": "Keywords",
+			"multiple": true,
+			"required": false,
+			"items": {
+				"type": "text"
+			},
+            "dependencies": {
+                "projectType": [
+                    "sewing101"
+                ]
+            }
+		},
+		"keywords3": {
+			"type": "node-picker",
+			"picker": {
+				"query": {
+					"_type": "fabric:keyword",
+					"projectType": "project"
+				}
+			},
+			"label": "Keywords",
+			"multiple": true,
+			"required": false,
+			"items": {
+				"type": "text"
+			},
+            "dependencies": {
+                "projectType": [
+                    "project"
+                ]
+            }
+		},
+		"keywords4": {
+			"type": "node-picker",
+			"picker": {
+				"query": {
+					"_type": "fabric:keyword",
+					"projectType": "inspiration"
+				}
+			},
+			"label": "Keywords",
+			"multiple": true,
+			"required": false,
+			"items": {
+				"type": "text"
+			},
+            "dependencies": {
+                "projectType": [
+                    "inspiration"
+                ]
+            }
+		},
+		"additionalKeywords": {
+			"type": "text",
+			"label": "Additional Keywords",
+			"required": true,
+			"default": ""
+		},
+		"contributor": {
+			"type": "node-picker",
+			"label": "Contributor",
+			"required": false,
+			"picker": {
+				"typeQName": "n:node",
+				"associationType": "a:linked",
+				"includeChildTypes": false
+			}
 		},
 		"mainImage": {
 			"type": "object",
@@ -187,9 +258,15 @@
 		},
 		"step1ToolsAndMaterials": {
 			"type": "object",
-			"label": "Step1: Tools & Materials",
+			"label": "Step 1: Tools & Materials",
 			"required": false,
 			"fields": {
+				"title": {
+					"type": "text",
+					"title": "Step Title",
+					"required": false,
+					"default": "Step 1: Tools & Materials"
+				},
 				"copy": {
 					"type": "ckeditor",
 					"label": "Copy",
@@ -237,6 +314,12 @@
 			"label": "Step 2: Measuring & Cutting",
 			"required": false,
 			"fields": {
+				"title": {
+					"type": "text",
+					"title": "Step Title",
+					"required": false,
+					"default": "Step 2: Measuring & Cutting"
+				},
 				"copy": {
 					"type": "ckeditor",
 					"label": "Copy",
@@ -337,6 +420,17 @@
 				}
 			}
 		}
+	},
+	"dependencies": {
+		"audience": [
+			"projectType"
+		],
+		"runtime": [
+			"projectType"
+		],
+		"trailer": [
+			"projectType"
+		]
 	},
 	"engineId": "alpaca1"
 }
