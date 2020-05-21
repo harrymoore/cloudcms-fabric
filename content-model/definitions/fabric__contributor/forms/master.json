@@ -1,0 +1,32 @@
+{
+	"_type": "n:form",
+	"title": "master",
+	"fields": {
+		"title": {
+			"type": "text",
+			"label": "Contributor Name",
+			"required": true,
+			"default": ""
+		},
+		"email": {
+			"type": "text",
+			"label": "Email Address",
+			"required": true,
+			"default": ""
+		},
+		"url": {
+			"type": "text",
+			"label": "Url",
+			"required": true,
+			"default": ""
+		},
+		"social": {
+			"type": "text",
+			"label": "Social Media Id Information",
+			"required": true,
+			"default": "",
+			"helper": "Social media identifier such as instagram or twitter handle of this contributor."
+		}
+	},
+	"engineId": "alpaca1"
+}

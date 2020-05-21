@@ -1,0 +1,29 @@
+{
+	"_type": "n:form",
+	"title": "master",
+	"fields": {
+		"title": {
+			"type": "text",
+			"label": "Title",
+			"required": true,
+			"default": ""
+		},
+		"description": {
+			"type": "text",
+			"label": "Description",
+			"required": true,
+			"default": ""
+		},
+		"parentCategory": {
+			"type": "node-picker",
+			"label": "Parent Category",
+			"required": false,
+			"picker": {
+				"typeQName": "n:node",
+				"associationType": "a:linked",
+				"includeChildTypes": false
+			}
+		}
+	},
+	"engineId": "alpaca1"
+}

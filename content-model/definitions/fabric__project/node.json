@@ -24,6 +24,13 @@
 				"nodeType": "fabric:category"
 			}
 		},
+		"subCategory": {
+			"title": "Category",
+			"type": "array",
+			"_relator": {
+				"nodeType": "fabric:category"
+			}
+		},
 		"keywords": {
 			"type": "array",
 			"title": "keywords",
@@ -61,6 +68,282 @@
 			"_relator": {
 				"associationType": "a:linked",
 				"nodeType": "fabric:contributor"
+			}
+		},
+		"season": {
+			"type": "array",
+			"title": "Season",
+			"required": false,
+			"multiple": true,
+			"items": {
+				"type": "string",
+				"enum": [
+					"spring",
+					"summer",
+					"fall",
+					"winter"
+				]
+			}
+		},
+		"difficulty": {
+			"type": "string",
+			"title": "",
+			"required": false,
+			"default": "",
+			"enum": [
+				"easy",
+				"medium",
+				"difficult"
+			]
+		},
+		"discount": {
+			"type": "string",
+			"title": "Discount%",
+			"required": false,
+			"default": "0"
+		},
+		"timeToCompletion": {
+			"type": "string",
+			"title": "Time To Completion",
+			"required": false,
+			"default": ""
+		},
+		"DesktopMobile": {
+			"type": "string",
+			"title": "",
+			"required": false,
+			"default": "",
+			"enum": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"featured": {
+			"type": "string",
+			"title": "",
+			"required": false,
+			"default": "no",
+			"enum": [
+				"yes",
+				"no"
+			]
+		},
+		"projectType": {
+			"type": "string",
+			"title": "Project Type",
+			"required": true,
+			"enum": [
+				"sewing101",
+				"fabric101",
+				"inspiration"
+			]
+		},
+		"mainImage": {
+			"type": "object",
+			"title": "Main Image",
+			"required": false,
+			"properties": {
+				"image": {
+					"type": "object",
+					"title": "Image File",
+					"required": false,
+					"_relator": {
+						"associationType": "a:linked",
+						"nodeType": "n:node"
+					}
+				},
+				"altText": {
+					"type": "string",
+					"title": "Image Alt Text",
+					"required": false,
+					"default": ""
+				}
+			}
+		},
+		"altImage": {
+			"type": "object",
+			"title": "Alt Image",
+			"required": false,
+			"properties": {
+				"image": {
+					"type": "object",
+					"title": "Image File",
+					"required": false,
+					"_relator": {
+						"associationType": "a:linked",
+						"nodeType": "n:node"
+					}
+				},
+				"altText": {
+					"type": "string",
+					"title": "Image Alt Text",
+					"required": false,
+					"default": ""
+				}
+			}
+		},
+		"overview": {
+			"type": "string",
+			"title": "overview",
+			"required": false,
+			"default": ""
+		},
+		"products": {
+			"type": "array",
+			"title": "products",
+			"required": false,
+			"items": {
+				"type": "string"
+			}
+		},
+		"step1ToolsAndMaterials": {
+			"type": "object",
+			"title": "Step1: Tools And Materials",
+			"required": false,
+			"properties": {
+				"copy": {
+					"type": "string",
+					"title": "copy",
+					"required": false,
+					"default": ""
+				},
+				"images": {
+					"type": "array",
+					"title": "images",
+					"items": {
+						"type": "object",
+						"title": "Alt Image",
+						"required": false,
+						"properties": {
+							"image": {
+								"type": "object",
+								"title": "Image File",
+								"required": false,
+								"_relator": {
+									"associationType": "a:linked",
+									"nodeType": "n:node"
+								}
+							},
+							"altText": {
+								"type": "string",
+								"title": "Image Alt Text",
+								"required": false,
+								"default": ""
+							}
+						}
+					}
+				},
+				"links": {
+					"type": "array",
+					"title": "Links",
+					"required": false,
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"step2MeasuringCutting": {
+			"type": "object",
+			"title": "step2: Measuring & Cutting",
+			"required": false,
+			"properties": {
+				"copy": {
+					"type": "string",
+					"title": "copy",
+					"required": false,
+					"default": ""
+				},
+				"images": {
+					"type": "array",
+					"title": "images",
+					"items": {
+						"type": "object",
+						"title": "Alt Image",
+						"required": false,
+						"properties": {
+							"image": {
+								"type": "object",
+								"title": "Image File",
+								"required": false,
+								"_relator": {
+									"associationType": "a:linked",
+									"nodeType": "n:node"
+								}
+							},
+							"altText": {
+								"type": "string",
+								"title": "Image Alt Text",
+								"required": false,
+								"default": ""
+							}
+						}
+					}
+				},
+				"links": {
+					"type": "array",
+					"title": "Links",
+					"required": false,
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"additionalSteps": {
+			"type": "array",
+			"title": "Additional Steps",
+			"items": {
+				"type": "object",
+				"title": "Step",
+				"properties": {
+					"title": {
+						"type": "string",
+						"title": "Step Title",
+						"required": false,
+						"default": ""
+					},
+					"copy": {
+						"type": "string",
+						"title": "copy",
+						"required": false,
+						"default": ""
+					},
+					"images": {
+						"type": "array",
+						"title": "images",
+						"items": {
+							"type": "object",
+							"title": "Alt Image",
+							"required": false,
+							"properties": {
+								"image": {
+									"type": "object",
+									"title": "Image File",
+									"required": false,
+									"_relator": {
+										"associationType": "a:linked",
+										"nodeType": "n:node"
+									}
+								},
+								"altText": {
+									"type": "string",
+									"title": "Image Alt Text",
+									"required": false,
+									"default": ""
+								}
+							}
+						}
+					},
+					"links": {
+						"type": "array",
+						"title": "Links",
+						"required": false,
+						"items": {
+							"type": "string"
+						}
+					}
+				}
 			}
 		}
 	},

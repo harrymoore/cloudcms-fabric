@@ -1,0 +1,342 @@
+{
+	"_type": "n:form",
+	"title": "master",
+	"fields": {
+		"title": {
+			"type": "text",
+			"label": "Title",
+			"required": true,
+			"default": ""
+		},
+		"description": {
+			"type": "ckeditor",
+			"label": "Description",
+			"required": true,
+			"default": ""
+		},
+		"id": {
+			"type": "text",
+			"label": "Project Identifier",
+			"readonly": true,
+			"default": ""
+		},
+		"category": {
+			"type": "node-picker",
+			"label": "Category",
+			"required": false,
+			"picker": {
+				"typeQName": "n:node",
+				"associationType": "a:linked",
+				"includeChildTypes": false
+			}
+		},
+		"subCategory": {
+			"type": "node-picker",
+			"label": "Sub Category",
+			"required": false,
+			"picker": {
+				"typeQName": "n:node",
+				"associationType": "a:linked",
+				"includeChildTypes": false
+			}
+		},
+		"keywords": {
+			"type": "checkbox",
+			"label": "Keywords",
+			"multiple": true,
+			"required": false,
+			"items": {
+				"type": "text",
+				"label": "keywords"
+			}
+		},
+		"additionalKeywords": {
+			"type": "text",
+			"label": "Additional Keywords",
+			"required": true,
+			"default": ""
+		},
+		"contributor": {
+			"type": "node-picker",
+			"label": "Contributor",
+			"required": false,
+			"picker": {
+				"typeQName": "n:node",
+				"associationType": "a:linked",
+				"includeChildTypes": false
+			}
+		},
+		"season": {
+			"type": "checkbox",
+			"label": "Season",
+			"required": false,
+			"multiple": true,
+			"items": {
+				"type": "text",
+				"label": "Season"
+			}
+		},
+		"difficulty": {
+			"type": "select",
+			"label": "",
+			"required": true,
+			"default": "",
+			"optionLabels": [
+				"Easy",
+				"Medium",
+				"Difficult"
+			]
+		},
+		"discount": {
+			"type": "text",
+			"label": "Discount",
+			"required": true,
+			"default": ""
+		},
+		"timeToCompletion": {
+			"type": "text",
+			"label": "Time To Completion",
+			"required": true,
+			"default": ""
+		},
+		"DesktopMobile": {
+			"type": "select",
+			"label": "Desktop/Mobile",
+			"required": true,
+			"default": "",
+			"optionLabels": [
+				"Desktop",
+				"Mobile"
+			]
+		},
+		"featured": {
+			"type": "select",
+			"label": "Featured",
+			"required": true,
+			"default": "",
+			"optionLabels": [
+				"Yes",
+				"No"
+			]
+		},
+		"projectType": {
+			"type": "select",
+			"label": "Project Type",
+			"required": true,
+			"default": "",
+			"optionLabels": [
+				"sewing101",
+				"inspiration"
+			]
+		},
+		"mainImage": {
+			"type": "object",
+			"label": "Main Image",
+			"required": false,
+			"fields": {
+				"image": {
+					"type": "related-content",
+					"label": "Image File",
+					"required": false,
+					"uploadPath": "/images",
+					"maxNumberOfFiles": 1,
+					"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
+				},
+				"altText": {
+					"type": "text",
+					"label": "Image Alt Text",
+					"required": true,
+					"default": ""
+				}
+			}
+		},
+		"altImage": {
+			"type": "object",
+			"label": "Alt Image",
+			"required": false,
+			"fields": {
+				"image": {
+					"type": "related-content",
+					"label": "Image File",
+					"required": false,
+					"uploadPath": "/images",
+					"maxNumberOfFiles": 1,
+					"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
+				},
+				"altText": {
+					"type": "text",
+					"label": "Image Alt Text",
+					"required": true,
+					"default": ""
+				}
+			}
+		},
+		"overview": {
+			"type": "ckeditor",
+			"label": "Overview",
+			"required": true,
+			"default": ""
+		},
+		"products": {
+			"type": "array",
+			"label": "Products",
+			"required": false,
+			"items": {
+				"type": "text"
+			}
+		},
+		"step1ToolsAndMaterials": {
+			"type": "object",
+			"label": "Step1: Tools & Materials",
+			"required": false,
+			"fields": {
+				"copy": {
+					"type": "ckeditor",
+					"label": "Copy",
+					"required": true,
+					"default": ""
+				},
+				"images": {
+					"type": "array",
+					"label": "Images",
+					"required": false,
+					"items": {
+						"type": "object",
+						"label": "images",
+						"fields": {
+							"image": {
+								"type": "related-content",
+								"label": "Image File",
+								"required": false,
+								"uploadPath": "/images",
+								"maxNumberOfFiles": 1,
+								"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
+							},
+							"altText": {
+								"type": "text",
+								"label": "Image Alt Text",
+								"required": true,
+								"default": ""
+							}
+						}
+					}
+				},
+				"links": {
+					"type": "array",
+					"label": "Links",
+					"required": false,
+					"items": {
+						"type": "text",
+						"label": "Links"
+					}
+				}
+			}
+		},
+		"step2MeasuringCutting": {
+			"type": "object",
+			"label": "Step 2: Measuring & Cutting",
+			"required": false,
+			"fields": {
+				"copy": {
+					"type": "ckeditor",
+					"label": "Copy",
+					"required": true,
+					"default": ""
+				},
+				"images": {
+					"type": "array",
+					"label": "Images",
+					"required": false,
+					"items": {
+						"type": "object",
+						"label": "images",
+						"fields": {
+							"image": {
+								"type": "related-content",
+								"label": "Image File",
+								"required": false,
+								"uploadPath": "/images",
+								"maxNumberOfFiles": 1,
+								"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
+							},
+							"altText": {
+								"type": "text",
+								"label": "Image Alt Text",
+								"required": true,
+								"default": ""
+							}
+						}
+					}
+				},
+				"links": {
+					"type": "array",
+					"label": "Links",
+					"required": false,
+					"items": {
+						"type": "text",
+						"label": "Links"
+					}
+				}
+			}
+		},
+		"additionalSteps": {
+			"type": "array",
+			"label": "Additional Steps",
+			"required": false,
+			"minItems": 3,
+			"items": {
+				"type": "object",
+				"label": "Step",
+				"fields": {
+					"title": {
+						"type": "text",
+						"label": "Step Title",
+						"required": true,
+						"default": ""
+					},
+					"copy": {
+						"type": "ckeditor",
+						"label": "Copy",
+						"required": true,
+						"default": ""
+					},
+					"images": {
+						"type": "array",
+						"label": "Images",
+						"required": false,
+						"items": {
+							"type": "object",
+							"label": "images",
+							"fields": {
+								"image": {
+									"type": "related-content",
+									"label": "Image File",
+									"required": false,
+									"uploadPath": "/images",
+									"maxNumberOfFiles": 1,
+									"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
+								},
+								"altText": {
+									"type": "text",
+									"label": "Image Alt Text",
+									"required": true,
+									"default": ""
+								}
+							}
+						}
+					},
+					"links": {
+						"type": "array",
+						"label": "Links",
+						"required": false,
+						"items": {
+							"type": "text",
+							"label": "Links"
+						}
+					}
+				}
+			}
+		}
+	},
+	"engineId": "alpaca1"
+}
