@@ -103,10 +103,20 @@
 				"nodeType": "fabric:category"
 			}
 		},
+		"keywords": {
+			"type": "array",
+			"title": "keywords",
+			"items": {
+				"type": "string"
+			}
+		},
 		"keywords1": {
 			"type": "array",
 			"title": "Keywords",
 			"required": false,
+			"items": {
+				"type": "object"
+			},
 			"_relator": {
 				"nodeType": "fabric:keyword"
 			}
@@ -115,6 +125,9 @@
 			"type": "array",
 			"title": "Keywords",
 			"required": false,
+			"items": {
+				"type": "object"
+			},
 			"_relator": {
 				"nodeType": "fabric:keyword"
 			}
@@ -123,6 +136,9 @@
 			"type": "array",
 			"title": "Keywords",
 			"required": false,
+			"items": {
+				"type": "object"
+			},
 			"_relator": {
 				"nodeType": "fabric:keyword"
 			}
@@ -131,6 +147,9 @@
 			"type": "array",
 			"title": "Keywords",
 			"required": false,
+			"items": {
+				"type": "object"
+			},
 			"_relator": {
 				"nodeType": "fabric:keyword"
 			}

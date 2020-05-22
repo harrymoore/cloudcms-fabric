@@ -28,11 +28,17 @@
 			"items": {
 				"type": "text",
 				"label": "Season"
-			}
-		},
+			},
+			"enum": [
+				"Spring",
+				"Summer",
+				"Fall",
+				"Winter"
+			]
+	},
 		"difficulty": {
 			"type": "select",
-			"label": "",
+			"label": "Difficulty",
 			"required": true,
 			"default": "",
 			"optionLabels": [
@@ -103,6 +109,9 @@
 				"associationType": "a:linked",
 				"includeChildTypes": false
 			}
+		},
+		"keywords": {
+			"type": "hidden"
 		},
 		"keywords1": {
 			"type": "node-picker",
