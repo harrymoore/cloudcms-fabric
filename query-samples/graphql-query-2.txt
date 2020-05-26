@@ -1,8 +1,9 @@
 {
-    fabric_projects {
+    fabric_projects(_doc: "12883e7ab0468eb6cfc6") {
         _doc
         title
         description
         projectType
     }
 }
+

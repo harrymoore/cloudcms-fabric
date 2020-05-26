@@ -1,8 +1,9 @@
 {
-    fabric_projects {
+    fabric_projects (q: "{title: 'xxxxxxxxx'}") {
         _doc
         title
         description
         projectType
     }
 }
+
