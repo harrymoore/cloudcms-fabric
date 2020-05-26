@@ -6,19 +6,22 @@
 			"type": "text",
 			"label": "Title",
 			"required": true,
-			"default": ""
-		},
-		"description": {
-			"type": "ckeditor",
-			"label": "Description",
-			"required": true,
-			"default": ""
+			"default": "",
+			"order": 1
 		},
 		"id": {
 			"type": "text",
 			"label": "Project Identifier",
 			"readonly": true,
-			"default": "This will be created automatically"
+			"default": "This will be created automatically",
+			"order": 2
+		},
+		"description": {
+			"type": "ckeditor",
+			"label": "Description",
+			"required": true,
+			"default": "",
+			"order": 3
 		},
 		"season": {
 			"type": "checkbox",
@@ -29,18 +32,18 @@
 				"type": "text",
 				"label": "Season"
 			},
-			"enum": [
+			"optionLabels": [
 				"Spring",
 				"Summer",
 				"Fall",
 				"Winter"
 			]
-	},
+		},
 		"difficulty": {
 			"type": "select",
-			"label": "Difficulty",
+			"label": "Difficulty level",
 			"required": true,
-			"default": "",
+			"default": "easy",
 			"optionLabels": [
 				"Easy",
 				"Medium",
@@ -49,7 +52,7 @@
 		},
 		"discount": {
 			"type": "text",
-			"label": "Discount",
+			"label": "Discount %",
 			"required": true,
 			"default": ""
 		},
@@ -95,9 +98,12 @@
 			"label": "Category",
 			"required": false,
 			"picker": {
-				"typeQName": "n:node",
-				"associationType": "a:linked",
-				"includeChildTypes": false
+				"query": {
+					"_type": "fabric:ctegory",
+					"parentCategory": {
+						"$exists": false
+					}
+				}
 			}
 		},
 		"subCategory": {
@@ -260,10 +266,16 @@
 		"products": {
 			"type": "array",
 			"label": "Products",
+			"helper": "SKU list",
 			"required": false,
 			"items": {
 				"type": "text"
-			}
+			},
+            "dependencies": {
+                "projectType": [
+                    "project"
+                ]
+            }
 		},
 		"step1ToolsAndMaterials": {
 			"type": "object",
@@ -438,6 +450,9 @@
 			"projectType"
 		],
 		"trailer": [
+			"projectType"
+		],
+		"product": [
 			"projectType"
 		]
 	},

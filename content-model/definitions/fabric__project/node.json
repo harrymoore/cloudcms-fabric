@@ -402,6 +402,9 @@
 		],
 		"keywords4": [
 			"projectType"
+		],
+		"products": [
+			"productType"
 		]
 	},
 	"$schema": "http://json-schema.org/draft-04/schema#"
