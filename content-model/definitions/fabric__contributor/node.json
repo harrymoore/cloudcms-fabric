@@ -4,7 +4,7 @@
 	"title": "Contributor",
 	"type": "object",
 	"_parent": "n:node",
-	"sort": 3,
+	"sort": 4,
 	"properties": {
 		"title": {
 			"name": "Contributor Name",

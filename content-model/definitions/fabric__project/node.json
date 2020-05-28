@@ -106,46 +106,6 @@
 		},
 		"keywords": {
 			"type": "array",
-			"title": "keywords",
-			"items": {
-				"type": "string"
-			}
-		},
-		"keywords1": {
-			"type": "array",
-			"title": "Keywords",
-			"required": false,
-			"items": {
-				"type": "object"
-			},
-			"_relator": {
-				"nodeType": "fabric:keyword"
-			}
-		},
-		"keywords2": {
-			"type": "array",
-			"title": "Keywords",
-			"required": false,
-			"items": {
-				"type": "object"
-			},
-			"_relator": {
-				"nodeType": "fabric:keyword"
-			}
-		},
-		"keywords3": {
-			"type": "array",
-			"title": "Keywords",
-			"required": false,
-			"items": {
-				"type": "object"
-			},
-			"_relator": {
-				"nodeType": "fabric:keyword"
-			}
-		},
-		"keywords4": {
-			"type": "array",
 			"title": "Keywords",
 			"required": false,
 			"items": {
@@ -392,18 +352,6 @@
 		}
 	},
 	"dependencies": {
-		"keywords1": [
-			"projectType"
-		],
-		"keywords2": [
-			"projectType"
-		],
-		"keywords3": [
-			"projectType"
-		],
-		"keywords4": [
-			"projectType"
-		],
 		"products": [
 			"productType"
 		]

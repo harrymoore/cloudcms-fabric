@@ -4,15 +4,21 @@
 	"title": "Category",
 	"type": "object",
 	"_parent": "n:node",
-	"sort": 4,
+	"sort": 2,
 	"properties": {
 		"title": {
 			"title": "Title",
 			"type": "string"
 		},
 		"topLevelCategory": {
+			"type": "string",
 			"title": "Top Level Category",
-			"type": "boolean"
+			"required": true,
+			"default": "no",
+			"enum": [
+				"yes",
+				"no"
+			]
 		},
 		"parentCategory": {
 			"title": "Parent Category",

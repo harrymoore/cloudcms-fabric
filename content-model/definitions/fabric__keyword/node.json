@@ -5,7 +5,7 @@
 	"_type": "d:type",
 	"type": "object",
 	"_parent": "n:node",
-	"sort": 2,
+	"sort": 3,
 	"properties": {
 		"title": {
 			"type": "string",

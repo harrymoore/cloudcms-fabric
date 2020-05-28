@@ -9,11 +9,18 @@
 			"default": ""
 		},
 		"topLevelCategory": {
-			"rightLabel": "Top Level Category",
-			"type": "checkbox"
+			"type": "select",
+			"label": "Top Level Category",
+			"required": true,
+			"sort": false,
+			"hideNone": true,
+			"optionLabels": [
+				"Yes",
+				"No"
+			]
 		},
 		"parentCategory": {
-			"type": "node-picker",
+			"type": "fabric-node-picker",
 			"label": "Parent Category",
 			"required": false,
 			"picker": {
@@ -21,12 +28,15 @@
 					"_type": "fabric:category",
 					"parentCategory": {
 						"$exists": false
+					},
+					"_doc": {
+						"$ne": ""
 					}
 				}
 			},
             "dependencies": {
                 "topLevelCategory": [
-                    false
+                    "no"
                 ]
             }
 		},
@@ -48,7 +58,7 @@
 			},
             "dependencies": {
                 "topLevelCategory": [
-                    true
+                    "yes"
                 ]
             }
 		}

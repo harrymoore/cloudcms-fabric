@@ -134,14 +134,10 @@
 			}
 		},
 		"keywords": {
-			"type": "hidden"
-		},
-		"keywords1": {
-			"type": "node-picker",
+			"type": "fabric-node-picker",
 			"picker": {
 				"query": {
-					"_type": "fabric:keyword",
-					"projectType": "fabric101"
+					"_type": "fabric:keyword"
 				}
 			},
 			"label": "Keywords",
@@ -149,71 +145,6 @@
 			"required": false,
 			"items": {
 				"type": "text"
-			},
-            "dependencies": {
-                "projectType": [
-                    "fabric101"
-                ]
-            }
-		},
-		"keywords2": {
-			"type": "node-picker",
-			"picker": {
-				"query": {
-					"_type": "fabric:keyword",
-					"projectType": "sewing101"
-				}
-			},
-			"label": "Keywords",
-			"multiple": true,
-			"required": false,
-			"items": {
-				"type": "text"
-			},
-            "dependencies": {
-                "projectType": [
-                    "sewing101"
-                ]
-            }
-		},
-		"keywords3": {
-			"type": "node-picker",
-			"picker": {
-				"query": {
-					"_type": "fabric:keyword",
-					"projectType": "project"
-				}
-			},
-			"label": "Keywords",
-			"multiple": true,
-			"required": false,
-			"items": {
-				"type": "text"
-			},
-            "dependencies": {
-                "projectType": [
-                    "project"
-                ]
-            }
-		},
-		"keywords4": {
-			"type": "node-picker",
-			"picker": {
-				"query": {
-					"_type": "fabric:keyword",
-					"projectType": "inspiration"
-				}
-			},
-			"label": "Keywords",
-			"multiple": true,
-			"required": false,
-			"items": {
-				"type": "text"
-			},
-            "dependencies": {
-                "projectType": [
-                    "inspiration"
-                ]
             }
 		},
 		"additionalKeywords": {
