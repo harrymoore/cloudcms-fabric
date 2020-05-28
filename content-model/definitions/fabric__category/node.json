@@ -20,6 +20,19 @@
 			"_relator": {
 				"nodeType": "fabric:category"
 			}
+		},
+		"projectType": {
+			"type": "array",
+			"title": "projectType",
+			"items": {
+				"type": "string",
+				"enum": [
+					"sewing101",
+					"project",
+					"fabric101",
+					"inspiration"
+				]
+			}
 		}
 	},
 	"$schema": "http://json-schema.org/draft-04/schema#"

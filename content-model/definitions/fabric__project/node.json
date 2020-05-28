@@ -38,7 +38,7 @@
 			"type": "string",
 			"title": "",
 			"required": false,
-			"default": "",
+			"default": "easy",
 			"enum": [
 				"easy",
 				"medium",
@@ -91,6 +91,7 @@
 		},
 		"category": {
 			"title": "Category",
+			"required": true,
 			"type": "array",
 			"_relator": {
 				"nodeType": "fabric:category"

@@ -13,7 +13,8 @@
 			"type": "text",
 			"label": "Project Identifier",
 			"readonly": true,
-			"default": "This will be created automatically",
+			"placeholder": "This will be created automatically",
+			"helper": "Unique Project Page ID",
 			"order": 2
 		},
 		"description": {
@@ -21,7 +22,14 @@
 			"label": "Description",
 			"required": true,
 			"default": "",
-			"order": 3
+			"order": 3,
+			"ckeditor": {
+				"toolbar": [
+					["Format", "Font", "FontSize"],
+					["Bold", "Italic", "Underline", "StrikeThrough", "-", "Undo", "Redo", "-", "Cut", "Copy", "Paste", "Find", "Replace"], "/", ["NumberedList", "BulletedList", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"],
+					["Image", "Table", "-", "Link", "Smiley", "TextColor", "BGColor", "Source"]
+				]
+			}			
 		},
 		"season": {
 			"type": "checkbox",
@@ -43,7 +51,8 @@
 			"type": "select",
 			"label": "Difficulty level",
 			"required": true,
-			"default": "easy",
+			"sort": false,
+			"hideNone": true,
 			"optionLabels": [
 				"Easy",
 				"Medium",
@@ -66,6 +75,8 @@
 			"type": "select",
 			"label": "Desktop/Mobile",
 			"required": true,
+			"sort": false,
+			"hideNone": true,
 			"optionLabels": [
 				"Desktop",
 				"Mobile"
@@ -75,7 +86,8 @@
 			"type": "select",
 			"label": "Featured",
 			"required": true,
-			"default": "No",
+			"sort": false,
+			"hideNone": true,
 			"optionLabels": [
 				"Yes",
 				"No"
@@ -85,7 +97,8 @@
 			"type": "select",
 			"label": "Project Type",
 			"required": true,
-			"default": "Sewing 101",
+			"sort": false,
+			"hideNone": true,
 			"optionLabels": [
 				"Sewing 101",
 				"Project",
@@ -94,12 +107,13 @@
 			]
 		},
 		"category": {
-			"type": "node-picker",
+			"type": "fabric-node-picker",
 			"label": "Category",
-			"required": false,
+			"required": true,
 			"picker": {
 				"query": {
-					"_type": "fabric:ctegory",
+					"_type": "fabric:category",
+					"projectType": "",
 					"parentCategory": {
 						"$exists": false
 					}
@@ -107,13 +121,16 @@
 			}
 		},
 		"subCategory": {
-			"type": "node-picker",
+			"type": "fabric-node-picker",
 			"label": "Sub Category",
 			"required": false,
 			"picker": {
-				"typeQName": "n:node",
-				"associationType": "a:linked",
-				"includeChildTypes": false
+				"query": {
+					"_type": "fabric:category",
+					"parentCategory": {
+						"title": ""
+					}
+				}
 			}
 		},
 		"keywords": {

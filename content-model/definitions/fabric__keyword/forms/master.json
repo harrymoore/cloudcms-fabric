@@ -13,9 +13,16 @@
 			"multiple": true,
 			"label": "Project Type",
 			"required": false,
+			"sort": false,
+			"hideNone": true,
+			"optionLabels": [
+				"Sewing 101",
+				"Project",
+				"Fabric 101",
+				"Inspiration"
+			],
 			"items": {
-				"type": "text",
-				"label": "projectType"
+				"type": "text"
 			}
 		}
 	},
