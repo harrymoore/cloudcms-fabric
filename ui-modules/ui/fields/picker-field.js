@@ -13,41 +13,36 @@
     {
         projectType: "",
 
-        // afterRenderControl: function(model, callback)
-        // {
-        //     var self = this;
-
-        //     self.projectType = self.context.document ? self.context.document.projectType || "" : "";
-
-        //     this.base(model, function() {
-        //         self.on("ready", function(e){
-        //             // screen draw is done
-        //             // find the field and register a callback
-        //             var dep = self.top().getControlByPath('projectType');
-        //             if (dep) {
-        //                 self.subscribe(dep, function(value) {
-        //                     self.projectType = value;
-        //                 });
-        //             }
-        //         });
-        //         callback();
-        //     });
-        // },
-
         launchModal: function(field, el, callback)
         {
             var self = this;
 
-            var projectType = self.top().getControlByPath('projectType') ? self.top().getControlByPath('projectType').getValue() : "";
-            if (projectType)
+            if (self.options.picker && self.options.picker.query && self.options.picker.query.projectType)
             {
-                self.options.picker.query.projectType = projectType
-            }
-            else
-            {
-                delete self.options.picker.query.projectType;
+                var projectType = self.top().getControlByPath('projectType') ? self.top().getControlByPath('projectType').getValue() : "";
+                if (projectType)
+                {
+                    self.options.picker.query.projectType = projectType
+                }
+                else
+                {
+                    delete self.options.picker.query.projectType;
+                }
             }
 
+            if (self.options.picker && self.options.picker.query && self.options.picker.query._doc && self.options.picker.query._doc.hasOwnProperty("$ne"))
+            {
+                var thisId = self.context.document && self.context.document._doc ? self.context.document._doc : null;
+                if (thisId)
+                {
+                    self.options.picker.query._doc['$ne'] = thisId
+                }
+                else
+                {
+                    delete self.options.picker.query._doc['$ne'];
+                }
+            }
+            
             self.base(field, el, callback);
         },
 
