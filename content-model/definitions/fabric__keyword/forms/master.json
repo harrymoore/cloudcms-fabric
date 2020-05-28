@@ -8,21 +8,17 @@
 			"required": true,
 			"default": ""
 		},
-		"projectType": {
-			"type": "checkbox",
-			"multiple": true,
-			"label": "Project Type",
-			"required": false,
-			"sort": false,
-			"hideNone": true,
-			"optionLabels": [
-				"Sewing 101",
-				"Project",
-				"Fabric 101",
-				"Inspiration"
-			],
-			"items": {
-				"type": "text"
+		"category": {
+			"type": "fabric-node-picker",
+			"label": "Category",
+			"required": true,
+			"picker": {
+				"query": {
+					"_type": "fabric:category",
+					"parentCategory": {
+						"$exists": false
+					}
+				}
 			}
 		}
 	},

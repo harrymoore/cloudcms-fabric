@@ -128,7 +128,7 @@
 				"query": {
 					"_type": "fabric:category",
 					"parentCategory": {
-						"title": ""
+						"id": ""
 					}
 				}
 			}

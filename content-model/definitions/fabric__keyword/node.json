@@ -13,17 +13,11 @@
 			"required": true,
 			"default": ""
 		},
-		"projectType": {
-			"type": "array",
-			"title": "projectType",
-			"items": {
-				"type": "string",
-				"enum": [
-					"sewing101",
-					"project",
-					"fabric101",
-					"inspiration"
-				]
+		"category": {
+			"title": "Category",
+			"type": "object",
+			"_relator": {
+				"nodeType": "fabric:category"
 			}
 		}
 	},

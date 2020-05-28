@@ -8,21 +8,27 @@
 			"required": true,
 			"default": ""
 		},
-		"description": {
-			"type": "text",
-			"label": "Description",
-			"required": true,
-			"default": ""
+		"topLevelCategory": {
+			"rightLabel": "Top Level Category",
+			"type": "checkbox"
 		},
 		"parentCategory": {
 			"type": "node-picker",
 			"label": "Parent Category",
 			"required": false,
 			"picker": {
-				"typeQName": "n:node",
-				"associationType": "a:linked",
-				"includeChildTypes": false
-			}
+				"query": {
+					"_type": "fabric:category",
+					"parentCategory": {
+						"$exists": false
+					}
+				}
+			},
+            "dependencies": {
+                "topLevelCategory": [
+                    false
+                ]
+            }
 		},
 		"projectType": {
 			"type": "checkbox",
@@ -39,7 +45,12 @@
 			],
 			"items": {
 				"type": "text"
-			}
+			},
+            "dependencies": {
+                "topLevelCategory": [
+                    true
+                ]
+            }
 		}
 	},
 	"engineId": "alpaca1"

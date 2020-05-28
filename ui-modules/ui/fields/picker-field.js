@@ -38,7 +38,7 @@
         {
             var self = this;
 
-            var projectType = self.top().getControlByPath('projectType').getValue() || "";
+            var projectType = self.top().getControlByPath('projectType') ? self.top().getControlByPath('projectType').getValue() : "";
             if (projectType)
             {
                 self.options.picker.query.projectType = projectType

@@ -10,9 +10,9 @@
 			"title": "Title",
 			"type": "string"
 		},
-		"description": {
-			"title": "Description",
-			"type": "string"
+		"topLevelCategory": {
+			"title": "Top Level Category",
+			"type": "boolean"
 		},
 		"parentCategory": {
 			"title": "Parent Category",
@@ -34,6 +34,14 @@
 				]
 			}
 		}
+	},
+	"dependencies": {
+		"parentCategory": [
+			"topLevelCategory"
+		],
+		"projectType": [
+			"topLevelCategory"
+		]
 	},
 	"$schema": "http://json-schema.org/draft-04/schema#"
 }
