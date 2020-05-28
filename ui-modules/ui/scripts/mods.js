@@ -50,4 +50,25 @@ define(function (require, exports, module) {
         }
     }, true);
 
+    // $(document).ajaxSend(function (event, jqxhr, settings) {
+    //     console.log(JSON.stringify(settings, null, 2));
+    // });
+
+    // $("body").on("cloudcms-ready", function () {
+    //     $.ajaxSetup({
+    //         global: false,
+    //         beforeSend: function (xhr, settings) {
+    //             // console.log(JSON.stringify(xhr, null, 2));
+    //             console.log(JSON.stringify(settings, null, 2));
+    //             return true;
+    //         },
+
+    //         complete: function (xhr, status) {
+    //             console.log(JSON.stringify(xhr, null, 2));
+    //             console.log(JSON.stringify(status, null, 2));
+    //             return true;
+    //         }
+    //     });
+    // });
+
 });
