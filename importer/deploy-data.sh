@@ -1,33 +1,31 @@
 #!/bin/sh
 
-npm install
-# uninstall anything existing
-# we do this twice because some things don't resolve the first time
-# cloudcms uninstall
-cloudcms uninstall
+#
+# Import Category/Sub-Category and Keyword default items
+#
 
-count=0
-rm custom/build/missingAttachmentsList.json
-rm custom/build/attachmentsList.json
-#for dir in custom/docs/import/CloudCMS\ database\ 10*/
-for dir in custom/docs/import/CloudCMS\ database*/
-do
-    dir=${dir%*/}
-    echo "*******************************"
-    echo "** ${dir} "
-    echo "*******************************"
-    count=`expr $count + 1`    
-    cd custom
-    node ./import.js -t schn:article -f "../${dir}" -n ./docs/import/attachments/unzipped -m /Articles -k ./build
+NOW=$(date +"%m-%d-%Y-%H-%M-%S")
 
-    cd ..
-    echo "*******************************"
-    echo "** create package schn-import-batch-${count}"
-    cloudcms package schn-import-batch-${count} app 1
-    echo "*******************************"
-    echo "** upload package schn-import-batch-${count}"
-    cloudcms upload schn-import-batch-${count} app 1
-    echo "*******************************"
-    echo "** import package schn-import-batch-${count}"
-    cloudcms import schn-import-batch-${count} app 1
-done
+GROUP=fabric
+ARTIFACT=import
+VERSION=$NOW
+
+# https://fabric.cloudcms.net content repository
+REPOSITORY_ID=8ba09e97a317becd199a
+# "Content Model Updates 1" branch
+BRANCH_ID=d19ead4bc1bd4d4b3007
+
+npm install --no-audit
+
+echo "*******************************"
+echo "** create archive package file for import"
+node ./app.js
+
+echo "*******************************"
+echo "** upload archive package"
+cloudcms archive upload --group $GROUP --artifact $ARTIFACT --version $VERSION
+
+echo "*******************************"
+echo "** import archive package to branch"
+echo cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repositoryId $REPOSITORY_ID --branch $BRANCH_ID
+
