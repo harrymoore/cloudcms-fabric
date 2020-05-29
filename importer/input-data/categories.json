@@ -1,28 +1,45 @@
 [
     {
+        "_type": "fabric:category",
         "title": "Apparel",
         "_alias": "category_Apparel",
         "_key": "category_Apparel",
+        "_existing": {
+            "title": "Apparel"
+        },
         "topLevelCategory": "yes",
         "projectType": [
             "project"
         ]
     },
     {
+        "_type": "fabric:category",
         "title": "Dresses",
+        "_alias": "category_Dresses",
+        "_key": "category_Dresses",
+        "_existing": {
+            "title": "Dresses"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Skirts",
+        "_alias": "category_Skirts",
+        "_key": "category_Skirts",
+        "_existing": {
+            "title": "Skirts"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Shirts/Tops",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -30,6 +47,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Sweaters",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -37,6 +55,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Costumes",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -44,6 +63,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Swimwear",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -51,6 +71,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Pants",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -58,6 +79,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Menswear",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -65,6 +87,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Children's",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -72,6 +95,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Baby",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -79,6 +103,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Bridal/formal",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -86,6 +111,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Fabric Masks",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -93,6 +119,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Accessories & Bags",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -100,6 +127,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Quilt",
         "_alias": "Quilt",
         "_key": "Quilt",
@@ -109,6 +137,7 @@
         ]
     },
     {
+        "_type": "fabric:category",
         "title": "Home Décor",
         "_alias": "category_Home Décor",
         "_key": "category_Home Décor",
@@ -118,6 +147,7 @@
         ]
     },
     {
+        "_type": "fabric:category",
         "title": "Yarn & Needle Arts",
         "_alias": "category_Yarn & Needle Arts",
         "_key": "category_Yarn & Needle Arts",
@@ -127,6 +157,7 @@
         ]
     },
     {
+        "_type": "fabric:category",
         "title": "Crafts",
         "_alias": "category_Crafts",
         "_key": "category_Crafts",
@@ -136,6 +167,7 @@
         ]
     },
     {
+        "_type": "fabric:category",
         "title": "Childrens Crafts",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -143,6 +175,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Painting",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -150,6 +183,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Jewelry",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -157,6 +191,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Die Cutting",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -164,6 +199,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Embossing",
         "topLevelCategory": "no",
         "parentCategory": {
@@ -171,6 +207,7 @@
         }
     },
     {
+        "_type": "fabric:category",
         "title": "Accessories",
         "topLevelCategory": "no",
         "parentCategory": {

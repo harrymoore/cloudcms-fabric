@@ -1,20 +1,19 @@
 // node app.js output-file-path input-json-path group artifact version
 require('dotenv').config();
-const packager = require("cloudcms-packager");
+const PACKAGER = require("cloudcms-packager");
 
-const outputFolder = process.argv[2];
-const inputJSON = process.argv[3];
-const group = process.argv[4];
-const artifact = process.argv[5];
-const version = process.argv[6];
+const inputJSON = process.argv[2];
+const group = process.argv[3];
+const artifact = process.argv[4];
+const version = process.argv[5];
 
 // const now = Date.now();
 // const date = new Date(now);
 // const timestamp = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}-${now}`;
 // console.log(timestamp);
 
-packager.create({
-    outputPath: outputFolder,
+PACKAGER.create({
+    outputPath: "./",
     archiveGroup: group,
     archiveName: artifact,
     archiveVersion: version
@@ -23,8 +22,11 @@ packager.create({
         return console.error(err);
     }
 
-    // package up content type definitions
-    packager.addFromDisk(inputJSON);
+    // packager.addFromDisk(inputJSON);
+    var inputData = require(inputJSON);
+    inputData.forEach(json => {
+        packager.addNode(json)        
+    });
 
     // package up the archive
     packager.package(function(err, info) {
