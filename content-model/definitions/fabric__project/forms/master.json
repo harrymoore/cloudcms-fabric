@@ -137,7 +137,10 @@
 			"type": "fabric-node-picker",
 			"picker": {
 				"query": {
-					"_type": "fabric:keyword"
+					"_type": "fabric:keyword",
+					"category": {
+						"projectType": ""
+					}
 				}
 			},
 			"label": "Keywords",

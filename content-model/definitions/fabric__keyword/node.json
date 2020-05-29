@@ -16,8 +16,15 @@
 		"category": {
 			"title": "Category",
 			"type": "object",
+			"required": true,
 			"_relator": {
-				"nodeType": "fabric:category"
+				"nodeType": "fabric:category",
+				"mappings": [{
+					"from": "target",
+					"fromProperty": "/projectType",
+					"toProperty": "./projectType"
+				}]
+			
 			}
 		}
 	},

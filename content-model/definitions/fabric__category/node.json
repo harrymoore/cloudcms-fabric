@@ -23,6 +23,7 @@
 		"parentCategory": {
 			"title": "Parent Category",
 			"type": "object",
+			"required": false,
 			"_relator": {
 				"nodeType": "fabric:category"
 			}
