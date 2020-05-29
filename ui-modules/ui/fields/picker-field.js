@@ -11,8 +11,6 @@
      * @lends Alpaca.Fields.FabricPickerField.prototype
      */
     {
-        projectType: "",
-
         launchModal: function(field, el, callback)
         {
             var self = this;
