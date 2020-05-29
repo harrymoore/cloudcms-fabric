@@ -9,7 +9,8 @@
         },
         "topLevelCategory": "yes",
         "projectType": [
-            "project"
+            "project",
+            "inspiration"
         ]
     },
     {
@@ -41,6 +42,9 @@
     {
         "_type": "fabric:category",
         "title": "Shirts/Tops",
+        "_existing": {
+            "title": "Shirts/Tops"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -49,6 +53,9 @@
     {
         "_type": "fabric:category",
         "title": "Sweaters",
+        "_existing": {
+            "title": "Sweaters"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -57,6 +64,9 @@
     {
         "_type": "fabric:category",
         "title": "Costumes",
+        "_existing": {
+            "title": "Costumes"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -65,6 +75,9 @@
     {
         "_type": "fabric:category",
         "title": "Swimwear",
+        "_existing": {
+            "title": "Swimwear"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -73,6 +86,9 @@
     {
         "_type": "fabric:category",
         "title": "Pants",
+        "_existing": {
+            "title": "Pants"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -81,6 +97,9 @@
     {
         "_type": "fabric:category",
         "title": "Menswear",
+        "_existing": {
+            "title": "Menswear"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -89,6 +108,9 @@
     {
         "_type": "fabric:category",
         "title": "Children's",
+        "_existing": {
+            "title": "Children's"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -97,6 +119,10 @@
     {
         "_type": "fabric:category",
         "title": "Baby",
+        "_existing": {
+            "title": "Baby",
+            "parentCategory.title": "Apparel"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -105,6 +131,9 @@
     {
         "_type": "fabric:category",
         "title": "Bridal/formal",
+        "_existing": {
+            "title": "Bridal/formal"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -113,6 +142,9 @@
     {
         "_type": "fabric:category",
         "title": "Fabric Masks",
+        "_existing": {
+            "title": "Fabric Masks"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -121,6 +153,9 @@
     {
         "_type": "fabric:category",
         "title": "Accessories & Bags",
+        "_existing": {
+            "title": "Accessories & Bags"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Apparel"
@@ -129,28 +164,181 @@
     {
         "_type": "fabric:category",
         "title": "Quilt",
-        "_alias": "Quilt",
-        "_key": "Quilt",
+        "_alias": "category_Quilt",
+        "_key": "category_Quilt",
+        "_existing": {
+            "title": "Quilt"
+        },
         "topLevelCategory": "yes",
         "projectType": [
             "project"
         ]
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Quilt Blocks",
+        "_existing": {
+            "title": "Quilt Blocks"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Patterns",
+        "_existing": {
+            "title": "Patterns",
+            "parentCategory.title": "Quilt"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Quilted Crafts",
+        "_existing": {
+            "title": "Quilted Crafts"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Modern Quilts",
+        "_existing": {
+            "title": "Modern Quilts"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Quilt Techniques",
+        "_existing": {
+            "title": "Quilt Techniques"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Quilt"
+        }
     },
     {
         "_type": "fabric:category",
         "title": "Home Décor",
         "_alias": "category_Home Décor",
         "_key": "category_Home Décor",
+        "_existing": {
+            "title": "Home Décor"
+        },
         "topLevelCategory": "yes",
         "projectType": [
             "project"
         ]
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Upholstery",
+        "_existing": {
+            "title": "Upholstery"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Curtains/Drapery",
+        "_existing": {
+            "title": "Curtains/Drapery"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Pillows",
+        "_existing": {
+            "title": "Pillows"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Outdoor",
+        "_existing": {
+            "title": "Outdoor"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Table Top",
+        "_existing": {
+            "title": "Table Top"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Storage & Organization",
+        "_existing": {
+            "title": "Storage & Organization"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Blankets & Throws",
+        "_existing": {
+            "title": "Blankets & Throws"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Bedding",
+        "_existing": {
+            "title": "Bedding"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Home Décor"
+        }
     },
     {
         "_type": "fabric:category",
         "title": "Yarn & Needle Arts",
         "_alias": "category_Yarn & Needle Arts",
         "_key": "category_Yarn & Needle Arts",
+        "_existing": {
+            "title": "Yarn & Needle Arts"
+        },
         "topLevelCategory": "yes",
         "projectType": [
             "project"
@@ -158,9 +346,69 @@
     },
     {
         "_type": "fabric:category",
+        "title": "Knitting",
+        "_existing": {
+            "title": "Knitting"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Crochet",
+        "_existing": {
+            "title": "Crochet"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Cross Stitch Embroidery",
+        "_existing": {
+            "title": "Cross Stitch Embroidery"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Baby",
+        "_existing": {
+            "title": "Baby",
+            "parentCategory.title": "Yarn & Needle Arts"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:category",
+        "title": "Patterns",
+        "_existing": {
+            "title": "Patterns",
+            "parentCategory.title": "Yarn & Needle Arts"
+        },
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:category",
         "title": "Crafts",
         "_alias": "category_Crafts",
         "_key": "category_Crafts",
+        "_existing": {
+            "title": "Crafts"
+        },
         "topLevelCategory": "yes",
         "projectType": [
             "project"
@@ -169,6 +417,9 @@
     {
         "_type": "fabric:category",
         "title": "Childrens Crafts",
+        "_existing": {
+            "title": "Childrens Crafts"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Crafts"
@@ -177,6 +428,9 @@
     {
         "_type": "fabric:category",
         "title": "Painting",
+        "_existing": {
+            "title": "Painting"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Crafts"
@@ -185,6 +439,9 @@
     {
         "_type": "fabric:category",
         "title": "Jewelry",
+        "_existing": {
+            "title": "Jewelry"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Crafts"
@@ -193,6 +450,9 @@
     {
         "_type": "fabric:category",
         "title": "Die Cutting",
+        "_existing": {
+            "title": "Die Cutting"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Crafts"
@@ -201,6 +461,9 @@
     {
         "_type": "fabric:category",
         "title": "Embossing",
+        "_existing": {
+            "title": "Embossing"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Crafts"
@@ -209,9 +472,532 @@
     {
         "_type": "fabric:category",
         "title": "Accessories",
+        "_existing": {
+            "title": "Accessories"
+        },
         "topLevelCategory": "no",
         "parentCategory": {
             "__related_node__": "category_Crafts"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "knit fabrics",
+        "_existing": {
+            "title": "knit fabrics"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "woven fabrics",
+        "_existing": {
+            "title": "woven fabrics"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "stretch fabrics",
+        "_existing": {
+            "title": "stretch fabrics"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "linen",
+        "_existing": {
+            "title": "linen"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "shirting",
+        "_existing": {
+            "title": "shirting"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "jersey knit",
+        "_existing": {
+            "title": "jersey knit"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "flannel",
+        "_existing": {
+            "title": "flannel"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "lawn",
+        "_existing": {
+            "title": "lawn"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "animal print",
+        "_existing": {
+            "title": "animal print"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "lace",
+        "_existing": {
+            "title": "lace"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "satin",
+        "_existing": {
+            "title": "satin"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "silk",
+        "_existing": {
+            "title": "silk"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "challis",
+        "_existing": {
+            "title": "challis"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "chiffon",
+        "_existing": {
+            "title": "chiffon"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "faux fur/ Minky",
+        "_existing": {
+            "title": "faux fur/ Minky"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "faux leather",
+        "_existing": {
+            "title": "faux leather"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "fleece",
+        "_existing": {
+            "title": "fleece"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "tulle",
+        "_existing": {
+            "title": "tulle"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "velvet",
+        "_existing": {
+            "title": "velvet"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "wool",
+        "_existing": {
+            "title": "wool"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "twill",
+        "_existing": {
+            "title": "twill"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "gingham",
+        "_existing": {
+            "title": "gingham"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "athletic fabrics",
+        "_existing": {
+            "title": "athletic fabrics"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "denim",
+        "_existing": {
+            "title": "denim"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "sports & team",
+        "_existing": {
+            "title": "sports & team"
+        },
+        "category": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "holiday",
+        "_existing": {
+            "title": "holiday"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "quilting cotton",
+        "_existing": {
+            "title": "quilting cotton"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "Kona cotton",
+        "_existing": {
+            "title": "Kona cotton"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "baby quilts",
+        "_existing": {
+            "title": "baby quilts"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "novelty prints",
+        "_existing": {
+            "title": "novelty prints"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "children's theme",
+        "_existing": {
+            "title": "children's theme"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "themed quilts",
+        "_existing": {
+            "title": "themed quilts"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "sports theme",
+        "_existing": {
+            "title": "sports theme"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "digital printed",
+        "_existing": {
+            "title": "digital printed"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "batiks",
+        "_existing": {
+            "title": "batiks"
+        },
+        "category": {
+            "__related_node__": "category_Quilt"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "Sunbrella",
+        "_existing": {
+            "title": "Sunbrella"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "linen",
+        "_existing": {
+            "title": "linen"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "cotton duck",
+        "_existing": {
+            "title": "cotton duck"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "faux fur",
+        "_existing": {
+            "title": "faux fur"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "vinyl",
+        "_existing": {
+            "title": "vinyl"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "faux leather",
+        "_existing": {
+            "title": "faux leather"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "animal print",
+        "_existing": {
+            "title": "animal print"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "plaid",
+        "_existing": {
+            "title": "plaid"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "sports theme",
+        "_existing": {
+            "title": "sports theme"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "children's theme",
+        "_existing": {
+            "title": "children's theme"
+        },
+        "category": {
+            "__related_node__": "category_Home Décor"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "Bernat",
+        "_existing": {
+            "title": "Bernat"
+        },
+        "category": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "Yarn",
+        "_existing": {
+            "title": "Yarn"
+        },
+        "category": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "finger knitting",
+        "_existing": {
+            "title": "finger knitting"
+        },
+        "category": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "blankets",
+        "_existing": {
+            "title": "blankets"
+        },
+        "category": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "apparel",
+        "_existing": {
+            "title": "apparel"
+        },
+        "category": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "accessories",
+        "_existing": {
+            "title": "accessories"
+        },
+        "category": {
+            "__related_node__": "category_Yarn & Needle Arts"
+        }
+    },
+    {
+        "_type": "fabric:keyword",
+        "title": "baskets & storage",
+        "_existing": {
+            "title": "baskets & storage"
+        },
+        "category": {
+            "__related_node__": "category_Yarn & Needle Arts"
         }
     }   
 ]
