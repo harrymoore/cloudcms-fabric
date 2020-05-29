@@ -19,7 +19,7 @@ npm install --no-audit
 
 echo "*******************************"
 echo "** create archive package file for import"
-node ./app.js
+node ./app.js ./output-data/$GROUP_$ARTIFACT_$VERSION ./input-data/categories.json $GROUP $ARTIFACT $VERSION
 
 echo "*******************************"
 echo "** upload archive package"

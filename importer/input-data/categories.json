@@ -1,0 +1,180 @@
+[
+    {
+        "title": "Apparel",
+        "_alias": "category_Apparel",
+        "_key": "category_Apparel",
+        "topLevelCategory": "yes",
+        "projectType": [
+            "project"
+        ]
+    },
+    {
+        "title": "Dresses",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Skirts",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Shirts/Tops",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Sweaters",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Costumes",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Swimwear",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Pants",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Menswear",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Children's",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Baby",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Bridal/formal",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Fabric Masks",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Accessories & Bags",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Apparel"
+        }
+    },
+    {
+        "title": "Quilt",
+        "_alias": "Quilt",
+        "_key": "Quilt",
+        "topLevelCategory": "yes",
+        "projectType": [
+            "project"
+        ]
+    },
+    {
+        "title": "Home Décor",
+        "_alias": "category_Home Décor",
+        "_key": "category_Home Décor",
+        "topLevelCategory": "yes",
+        "projectType": [
+            "project"
+        ]
+    },
+    {
+        "title": "Yarn & Needle Arts",
+        "_alias": "category_Yarn & Needle Arts",
+        "_key": "category_Yarn & Needle Arts",
+        "topLevelCategory": "yes",
+        "projectType": [
+            "project"
+        ]
+    },
+    {
+        "title": "Crafts",
+        "_alias": "category_Crafts",
+        "_key": "category_Crafts",
+        "topLevelCategory": "yes",
+        "projectType": [
+            "project"
+        ]
+    },
+    {
+        "title": "Childrens Crafts",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Crafts"
+        }
+    },
+    {
+        "title": "Painting",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Crafts"
+        }
+    },
+    {
+        "title": "Jewelry",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Crafts"
+        }
+    },
+    {
+        "title": "Die Cutting",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Crafts"
+        }
+    },
+    {
+        "title": "Embossing",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Crafts"
+        }
+    },
+    {
+        "title": "Accessories",
+        "topLevelCategory": "no",
+        "parentCategory": {
+            "__related_node__": "category_Crafts"
+        }
+    }   
+]
