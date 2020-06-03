@@ -4,7 +4,7 @@
 	"title": "Category",
 	"type": "object",
 	"_parent": "n:node",
-	"sort": 2,
+	"sort": 4,
 	"properties": {
 		"title": {
 			"title": "Title",
@@ -22,8 +22,10 @@
 		},
 		"parentCategory": {
 			"title": "Parent Category",
-			"type": "object",
-			"required": false,
+			"type": "array",
+			"items": {
+				"type": "object"
+			},
 			"_relator": {
 				"nodeType": "fabric:category"
 			}

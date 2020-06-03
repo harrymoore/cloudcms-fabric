@@ -17,6 +17,38 @@
 			"helper": "Unique Project Page ID",
 			"order": 2
 		},
+		"status": {
+			"type": "select",
+			"label": "Project Status",
+			"default": "inactive",
+			"sort": false,
+			"hideNone": true,
+			"optionLabels": [
+				"Inactive",
+				"Active"
+			]
+		},
+		"creationDate": {
+			"type": "text",
+			"readonly": true,
+			"title": "Creation Date"
+		},
+		"launchDate": {
+			"type": "date",
+			"title": "Launch Date"
+		},
+		"expirationDate": {
+			"type": "date",
+			"title": "Expiration Date"
+		},
+		"socialTags": {
+			"type": "array",
+			"label": "Social Media Tags",
+			"items": {
+				"type": "text",
+				"placeholder": "@tag1, #tag2"
+			}
+		},
 		"description": {
 			"type": "ckeditor",
 			"label": "Description",
@@ -25,11 +57,43 @@
 			"order": 3,
 			"ckeditor": {
 				"toolbar": [
-					["Format", "Font", "FontSize"],
-					["Bold", "Italic", "Underline", "StrikeThrough", "-", "Undo", "Redo", "-", "Cut", "Copy", "Paste", "Find", "Replace"], "/", ["NumberedList", "BulletedList", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"],
-					["Image", "Table", "-", "Link", "Smiley", "TextColor", "BGColor", "Source"]
+					[
+						"Bold",
+						"Italic",
+						"Underline",
+						"StrikeThrough",
+						"-",
+						"Undo",
+						"Redo",
+						"-",
+						"Cut",
+						"Copy",
+						"Paste",
+						"Find",
+						"Replace"
+					],
+					"/",
+					[
+						"NumberedList",
+						"BulletedList",
+						"-",
+						"JustifyLeft",
+						"JustifyCenter",
+						"JustifyRight",
+						"JustifyBlock"
+					],
+					[
+						"Image",
+						"Table",
+						"-",
+						"Link",
+						"Smiley",
+						"TextColor",
+						"BGColor",
+						"Source"
+					]
 				]
-			}			
+			}
 		},
 		"season": {
 			"type": "checkbox",
@@ -70,17 +134,6 @@
 			"label": "Time To Completion",
 			"required": true,
 			"default": ""
-		},
-		"DesktopMobile": {
-			"type": "select",
-			"label": "Desktop/Mobile",
-			"required": true,
-			"sort": false,
-			"hideNone": true,
-			"optionLabels": [
-				"Desktop",
-				"Mobile"
-			]
 		},
 		"featured": {
 			"type": "select",
@@ -148,7 +201,7 @@
 			"required": false,
 			"items": {
 				"type": "text"
-            }
+			}
 		},
 		"additionalKeywords": {
 			"type": "text",
@@ -172,66 +225,104 @@
 			"required": false,
 			"fields": {
 				"image": {
-					"type": "related-content",
+					"type": "file-picker",
 					"label": "Image File",
 					"required": false,
-					"uploadPath": "/images",
-					"maxNumberOfFiles": 1,
-					"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
-				},
-				"altText": {
-					"type": "text",
-					"label": "Image Alt Text",
-					"required": true,
-					"default": ""
+					"picker": {
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"mimetypeRegex": "(image|video)\\/([^;\\s]+)",
+						"uploadType": "fabric:image",
+						"showFileTypes": ["fabric:image"],
+						"pickableFileTypes": ["fabric:image"]
+					}
 				}
 			}
 		},
-		"altImage": {
-			"type": "object",
-			"label": "Alt Image",
-			"required": false,
-			"fields": {
-				"image": {
-					"type": "related-content",
-					"label": "Image File",
-					"required": false,
-					"uploadPath": "/images",
-					"maxNumberOfFiles": 1,
-					"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
-				},
-				"altText": {
-					"type": "text",
-					"label": "Image Alt Text",
-					"required": true,
-					"default": ""
-				}
+		"altImages": {
+			"type": "file-picker",
+			"label": "Image File",
+			"picker": {
+				"initialContainerPath": "/images",
+				"rootContainerPath": "/images",
+				"uploadPath": "/images",
+				"mimetypeRegex": "(image|video)\\/([^;\\s]+)",
+				"uploadType": "fabric:image",
+				"showFileTypes": ["fabric:image"],
+				"pickableFileTypes": ["fabric:image"]
 			}
 		},
 		"overview": {
 			"type": "ckeditor",
 			"label": "Overview",
 			"required": true,
-			"default": ""
+			"default": "",
+			"ckeditor": {
+				"toolbar": [
+					[
+						"Bold",
+						"Italic",
+						"Underline",
+						"StrikeThrough",
+						"-",
+						"Undo",
+						"Redo",
+						"-",
+						"Cut",
+						"Copy",
+						"Paste",
+						"Find",
+						"Replace"
+					],
+					"/",
+					[
+						"NumberedList",
+						"BulletedList",
+						"-",
+						"JustifyLeft",
+						"JustifyCenter",
+						"JustifyRight",
+						"JustifyBlock"
+					],
+					[
+						"Image",
+						"Table",
+						"-",
+						"Link",
+						"Smiley",
+						"TextColor",
+						"BGColor",
+						"Source"
+					]
+				]
+			}
 		},
 		"products": {
 			"type": "array",
-			"label": "Products",
-			"helper": "SKU list",
+			"label": "Products (SKU List)",
 			"required": false,
 			"items": {
 				"type": "text"
 			},
-            "dependencies": {
-                "projectType": [
-                    "project"
-                ]
-            }
+			"dependencies": {
+				"projectType": [
+					"project",
+					"inspiration"
+				]
+			}
 		},
 		"step1ToolsAndMaterials": {
 			"type": "object",
 			"label": "Step 1: Tools & Materials",
 			"required": false,
+			"dependencies": {
+				"projectType": [
+					"sewing101",
+					"project",
+					"fabric101"
+				]
+			},
 			"fields": {
 				"title": {
 					"type": "text",
@@ -243,23 +334,66 @@
 					"type": "ckeditor",
 					"label": "Copy",
 					"required": true,
-					"default": ""
+					"default": "",
+					"ckeditor": {
+						"toolbar": [
+							[
+								"Bold",
+								"Italic",
+								"Underline",
+								"StrikeThrough",
+								"-",
+								"Undo",
+								"Redo",
+								"-",
+								"Cut",
+								"Copy",
+								"Paste",
+								"Find",
+								"Replace"
+							],
+							"/",
+							[
+								"NumberedList",
+								"BulletedList",
+								"-",
+								"JustifyLeft",
+								"JustifyCenter",
+								"JustifyRight",
+								"JustifyBlock"
+							],
+							[
+								"Image",
+								"Table",
+								"-",
+								"Link",
+								"Smiley",
+								"TextColor",
+								"BGColor",
+								"Source"
+							]
+						]
+					}
 				},
 				"images": {
 					"type": "array",
-					"label": "Images",
+					"label": "Image and Video",
 					"required": false,
 					"items": {
 						"type": "object",
 						"label": "images",
 						"fields": {
 							"image": {
-								"type": "related-content",
+								"type": "file-picker",
 								"label": "Image File",
 								"required": false,
-								"uploadPath": "/images",
-								"maxNumberOfFiles": 1,
-								"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
+								"picker": {
+									"initialContainerPath": "/images",
+									"rootContainerPath": "/images",
+									"uploadPath": "/images",
+									"mimetypeRegex": "(image|video)\\/([^;\\s]+)",
+									"uploadType": "fabric:image"
+								}
 							},
 							"altText": {
 								"type": "text",
@@ -285,6 +419,13 @@
 			"type": "object",
 			"label": "Step 2: Measuring & Cutting",
 			"required": false,
+			"dependencies": {
+				"projectType": [
+					"sewing101",
+					"project",
+					"fabric101"
+				]
+			},
 			"fields": {
 				"title": {
 					"type": "text",
@@ -296,23 +437,62 @@
 					"type": "ckeditor",
 					"label": "Copy",
 					"required": true,
-					"default": ""
+					"default": "",
+					"ckeditor": {
+						"toolbar": [
+							[
+								"Bold",
+								"Italic",
+								"Underline",
+								"StrikeThrough",
+								"-",
+								"Undo",
+								"Redo",
+								"-",
+								"Cut",
+								"Copy",
+								"Paste",
+								"Find",
+								"Replace"
+							],
+							"/",
+							[
+								"NumberedList",
+								"BulletedList",
+								"-",
+								"JustifyLeft",
+								"JustifyCenter",
+								"JustifyRight",
+								"JustifyBlock"
+							],
+							[
+								"Image",
+								"Table",
+								"-",
+								"Link",
+								"Smiley",
+								"TextColor",
+								"BGColor",
+								"Source"
+							]
+						]
+					}
 				},
 				"images": {
 					"type": "array",
-					"label": "Images",
+					"label": "Image and Video",
 					"required": false,
 					"items": {
 						"type": "object",
 						"label": "images",
 						"fields": {
 							"image": {
-								"type": "related-content",
+								"type": "file-picker",
 								"label": "Image File",
 								"required": false,
 								"uploadPath": "/images",
 								"maxNumberOfFiles": 1,
-								"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
+								"xfileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
 							},
 							"altText": {
 								"type": "text",
@@ -353,23 +533,62 @@
 						"type": "ckeditor",
 						"label": "Copy",
 						"required": true,
-						"default": ""
+						"default": "",
+						"ckeditor": {
+							"toolbar": [
+								[
+									"Bold",
+									"Italic",
+									"Underline",
+									"StrikeThrough",
+									"-",
+									"Undo",
+									"Redo",
+									"-",
+									"Cut",
+									"Copy",
+									"Paste",
+									"Find",
+									"Replace"
+								],
+								"/",
+								[
+									"NumberedList",
+									"BulletedList",
+									"-",
+									"JustifyLeft",
+									"JustifyCenter",
+									"JustifyRight",
+									"JustifyBlock"
+								],
+								[
+									"Image",
+									"Table",
+									"-",
+									"Link",
+									"Smiley",
+									"TextColor",
+									"BGColor",
+									"Source"
+								]
+							]
+						}
 					},
 					"images": {
 						"type": "array",
-						"label": "Images",
+						"label": "Image and Video",
 						"required": false,
 						"items": {
 							"type": "object",
 							"label": "images",
 							"fields": {
 								"image": {
-									"type": "related-content",
+									"type": "file-picker",
 									"label": "Image File",
 									"required": false,
 									"uploadPath": "/images",
 									"maxNumberOfFiles": 1,
-									"fileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
+									"xfileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
 								},
 								"altText": {
 									"type": "text",
@@ -391,19 +610,64 @@
 					}
 				}
 			}
+		},
+		"additionalFiles": {
+			"type": "array",
+			"label": "Additional Files",
+			"required": false,
+			"items": {
+				"type": "object",
+				"label": "File",
+				"fields": {
+					"description": {
+						"type": "text",
+						"label": "Description",
+						"required": true,
+						"default": ""
+					},
+					"file": {
+						"type": "file-picker",
+						"label": "File",
+						"required": false,
+						"uploadPath": "/files",
+						"icon": true,
+						"maxNumberOfFiles": 1,
+						"xfileTypes": "(\\.|\\/)(pdf|PDF)$"
+					}
+				}
+			}
+		},
+		"imageGallery": {
+			"type": "fabric-node-picker",
+			"label": "Image Gallery",
+			"required": false,
+			"dependencies": {
+				"projectType": [
+					"inspiration"
+				]
+			},
+			"picker": {
+				"query": {
+					"_type": "fabric:image"
+				}
+			},
+			"multiple": true,
+			"icon": true,
+			"maxNumberOfFiles": 25,
+			"xfileTypes": "(\\.|\\/)(pdf|PDF)$"
 		}
 	},
 	"dependencies": {
-		"audience": [
+		"step1ToolsAndMaterials": [
 			"projectType"
 		],
-		"runtime": [
+		"step2MeasuringCutting": [
 			"projectType"
 		],
-		"trailer": [
+		"imageGallery": [
 			"projectType"
 		],
-		"product": [
+		"products": [
 			"projectType"
 		]
 	},

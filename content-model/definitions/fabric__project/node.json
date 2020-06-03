@@ -19,10 +19,37 @@
 			"title": "Project Identifier",
 			"type": "string"
 		},
+		"status": {
+			"type": "string",
+			"title": "Project Status",
+			"default": "inactive",
+			"enum": [
+				"inactive",
+				"active"
+			]
+		},
+		"creationDate": {
+			"type": "string",
+			"title": "Creation Date"
+		},
+		"launchDate": {
+			"type": "string",
+			"title": "Launch Date"
+		},
+		"expirationDate": {
+			"type": "string",
+			"title": "Expiration Date"
+		},
+		"socialTags": {
+			"type": "array",
+			"title": "Social Media Tags",
+			"items": {
+				"type": "string"
+			}
+		},
 		"season": {
 			"type": "array",
 			"title": "Season",
-			"required": false,
 			"multiple": true,
 			"items": {
 				"type": "string",
@@ -37,7 +64,6 @@
 		"difficulty": {
 			"type": "string",
 			"title": "",
-			"required": false,
 			"default": "easy",
 			"enum": [
 				"easy",
@@ -48,29 +74,16 @@
 		"discount": {
 			"type": "string",
 			"title": "Discount%",
-			"required": false,
 			"default": "0"
 		},
 		"timeToCompletion": {
 			"type": "string",
 			"title": "Time To Completion",
-			"required": false,
 			"default": ""
-		},
-		"DesktopMobile": {
-			"type": "string",
-			"title": "",
-			"required": false,
-			"default": "desktop",
-			"enum": [
-				"desktop",
-				"mobile"
-			]
 		},
 		"featured": {
 			"type": "string",
-			"title": "",
-			"required": false,
+			"title": "Featured Project",
 			"default": "no",
 			"enum": [
 				"yes",
@@ -107,7 +120,6 @@
 		"keywords": {
 			"type": "array",
 			"title": "Keywords",
-			"required": false,
 			"items": {
 				"type": "object"
 			},
@@ -133,57 +145,25 @@
 		"mainImage": {
 			"type": "object",
 			"title": "Main Image",
-			"required": false,
-			"properties": {
-				"image": {
-					"type": "object",
-					"title": "Image File",
-					"required": false,
-					"_relator": {
-						"associationType": "a:linked",
-						"nodeType": "n:node"
-					}
-				},
-				"altText": {
-					"type": "string",
-					"title": "Image Alt Text",
-					"required": false,
-					"default": ""
-				}
+			"_relator": {
+				"nodeType": "fabric:image"
 			}
 		},
-		"altImage": {
-			"type": "object",
-			"title": "Alt Image",
-			"required": false,
-			"properties": {
-				"image": {
-					"type": "object",
-					"title": "Image File",
-					"required": false,
-					"_relator": {
-						"associationType": "a:linked",
-						"nodeType": "n:node"
-					}
-				},
-				"altText": {
-					"type": "string",
-					"title": "Image Alt Text",
-					"required": false,
-					"default": ""
-				}
+		"altImages": {
+			"type": "array",
+			"title": "Alternate Images",
+			"_relator": {
+				"nodeType": "fabric:image"
 			}
 		},
 		"overview": {
 			"type": "string",
 			"title": "overview",
-			"required": false,
 			"default": ""
 		},
 		"products": {
 			"type": "array",
 			"title": "products",
-			"required": false,
 			"items": {
 				"type": "string"
 			}
@@ -191,18 +171,15 @@
 		"step1ToolsAndMaterials": {
 			"type": "object",
 			"title": "Step 1: Tools And Materials",
-			"required": false,
 			"properties": {
 				"title": {
 					"type": "string",
 					"title": "Step Title",
-					"required": false,
 					"default": "Step 1: Tools And Materials"
 				},
 				"copy": {
 					"type": "string",
 					"title": "copy",
-					"required": false,
 					"default": ""
 				},
 				"images": {
@@ -210,13 +187,11 @@
 					"title": "images",
 					"items": {
 						"type": "object",
-						"title": "Alt Image",
-						"required": false,
+						"title": "Image",
 						"properties": {
 							"image": {
 								"type": "object",
 								"title": "Image File",
-								"required": false,
 								"_relator": {
 									"associationType": "a:linked",
 									"nodeType": "n:node"
@@ -225,7 +200,6 @@
 							"altText": {
 								"type": "string",
 								"title": "Image Alt Text",
-								"required": false,
 								"default": ""
 							}
 						}
@@ -234,7 +208,6 @@
 				"links": {
 					"type": "array",
 					"title": "Links",
-					"required": false,
 					"items": {
 						"type": "string"
 					}
@@ -244,18 +217,15 @@
 		"step2MeasuringCutting": {
 			"type": "object",
 			"title": "Step 2: Measuring & Cutting",
-			"required": false,
 			"properties": {
 				"title": {
 					"type": "string",
 					"title": "Step Title",
-					"required": false,
 					"default": "Step 2: Measuring & Cutting"
 				},
 				"copy": {
 					"type": "string",
 					"title": "copy",
-					"required": false,
 					"default": ""
 				},
 				"images": {
@@ -263,13 +233,11 @@
 					"title": "images",
 					"items": {
 						"type": "object",
-						"title": "Alt Image",
-						"required": false,
+						"title": "Image",
 						"properties": {
 							"image": {
 								"type": "object",
 								"title": "Image File",
-								"required": false,
 								"_relator": {
 									"associationType": "a:linked",
 									"nodeType": "n:node"
@@ -278,7 +246,6 @@
 							"altText": {
 								"type": "string",
 								"title": "Image Alt Text",
-								"required": false,
 								"default": ""
 							}
 						}
@@ -287,7 +254,6 @@
 				"links": {
 					"type": "array",
 					"title": "Links",
-					"required": false,
 					"items": {
 						"type": "string"
 					}
@@ -304,13 +270,11 @@
 					"title": {
 						"type": "string",
 						"title": "Step Title",
-						"required": false,
 						"default": ""
 					},
 					"copy": {
 						"type": "string",
 						"title": "copy",
-						"required": false,
 						"default": ""
 					},
 					"images": {
@@ -319,12 +283,10 @@
 						"items": {
 							"type": "object",
 							"title": "Alt Image",
-							"required": false,
 							"properties": {
 								"image": {
 									"type": "object",
 									"title": "Image File",
-									"required": false,
 									"_relator": {
 										"associationType": "a:linked",
 										"nodeType": "n:node"
@@ -333,7 +295,6 @@
 								"altText": {
 									"type": "string",
 									"title": "Image Alt Text",
-									"required": false,
 									"default": ""
 								}
 							}
@@ -342,18 +303,57 @@
 					"links": {
 						"type": "array",
 						"title": "Links",
-						"required": false,
 						"items": {
 							"type": "string"
 						}
 					}
 				}
 			}
+		},
+		"additionalFiles": {
+			"type": "array",
+			"title": "Files",
+			"items": {
+				"type": "object",
+				"title": "File",
+				"properties": {
+					"description": {
+						"type": "string",
+						"title": "Description",
+						"default": ""
+					},
+					"file": {
+						"type": "object",
+						"title": "File",
+						"_relator": {
+						}
+					}
+				}
+			}
+		},
+		"imageGallery": {
+			"type": "array",
+			"title": "Image Gallery",
+			"items":{
+				"type": "object"
+			},
+			"_relator": {
+				"nodeType": "fabric:image"
+			}
 		}
 	},
 	"dependencies": {
+		"step1ToolsAndMaterials": [
+			"projectType"
+		],
+		"step2MeasuringCutting": [
+			"projectType"
+		],
+		"imageGallery": [
+			"projectType"
+		],
 		"products": [
-			"productType"
+			"projectType"
 		]
 	},
 	"$schema": "http://json-schema.org/draft-04/schema#"

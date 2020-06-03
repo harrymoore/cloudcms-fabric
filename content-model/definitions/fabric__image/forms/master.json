@@ -1,0 +1,43 @@
+{
+	"_type": "n:form",
+	"title": "master",
+	"fields": {
+		"file": {
+			"type": "attachment-picker",
+			"label": "File",
+			"required": true
+		},
+		"title": {
+			"type": "text",
+			"label": "Title",
+			"required": true
+		},
+		"altText": {
+			"type": "text",
+			"label": "Alt Text"
+		},
+		"description": {
+			"type": "textarea",
+			"label": "Description"
+		},
+		"keywords": {
+			"type": "fabric-node-picker",
+			"picker": {
+				"query": {
+					"_type": "fabric:keyword"
+				}
+			},
+			"label": "Keywords",
+			"multiple": true,
+			"items": {
+				"type": "text"
+			}
+		},
+		"additionalKeywords": {
+			"type": "text",
+			"label": "Title",
+			"placeholder": "keyword1, keyword 2"
+		}
+	},
+	"engineId": "alpaca1"
+}

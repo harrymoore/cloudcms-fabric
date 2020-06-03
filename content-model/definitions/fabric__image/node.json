@@ -1,0 +1,46 @@
+{
+	"_qname": "fabric:image",
+	"_type": "d:type",
+	"title": "Image",
+	"type": "object",
+	"_parent": "n:node",
+	"sort": 2,
+	"properties": {
+		"file": {
+			"type": "object",
+			"title": "File",
+			"required": true,
+			"_attachment": {
+				"id": "default"
+			}
+		},
+		"title": {
+			"name": "title",
+			"type": "string",
+			"required": true
+		},
+		"altText": {
+			"type": "string",
+			"title": "altText"
+		},
+		"description": {
+			"type": "string",
+			"title": "description"
+		},
+		"keywords": {
+			"type": "array",
+			"title": "Keywords",
+			"items": {
+				"type": "object"
+			},
+			"_relator": {
+				"nodeType": "fabric:keyword"
+			}
+		},
+		"additionalKeywords": {
+			"type": "string",
+			"title": "Additional Keywords"
+		}
+	},
+	"$schema": "http://json-schema.org/draft-04/schema#"
+}

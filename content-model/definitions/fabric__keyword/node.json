@@ -5,7 +5,7 @@
 	"_type": "d:type",
 	"type": "object",
 	"_parent": "n:node",
-	"sort": 3,
+	"sort": 5,
 	"properties": {
 		"title": {
 			"type": "string",
@@ -15,8 +15,11 @@
 		},
 		"category": {
 			"title": "Category",
-			"type": "object",
+			"type": "array",
 			"required": true,
+			"items": {
+				"type": "object"
+			},
 			"_relator": {
 				"nodeType": "fabric:category",
 				"mappings": [{
