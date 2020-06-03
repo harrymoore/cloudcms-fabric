@@ -15,45 +15,32 @@
         {
             var self = this;
 
-            if (self.options.picker && self.options.picker.query && self.options.picker.query.hasOwnProperty("projectType"))
-            {
-                var projectType = self.top().getControlByPath('projectType') ? self.top().getControlByPath('projectType').getValue() : "";
-                if (projectType)
-                {
-                    self.options.picker.query.projectType = projectType
-                }
-                else
-                {
-                    delete self.options.picker.query.projectType;
-                }
+            // parentCategory field on fabric:category template
+            if (self.name == "parentCategory" && self.options.picker) {
+                self.options.picker.query = {
+					_type: "fabric:category",
+					parentCategory: {
+						"$exists": false
+					},
+					_doc: {
+						"$ne": self.context.document._doc
+					}
+				};
             }
 
-            if (self.options.picker && self.options.picker.query && self.options.picker.query._doc && self.options.picker.query._doc.hasOwnProperty("$ne"))
-            {
-                var thisId = self.context.document && self.context.document._doc ? self.context.document._doc : null;
-                if (thisId)
-                {
-                    self.options.picker.query._doc['$ne'] = thisId
-                }
-                else
-                {
-                    delete self.options.picker.query._doc;
-                }
+            // category field on fabric:project template
+            if (self.name == "category" && self.options.picker) {
+                self.options.picker.query = {
+					_type: "fabric:category",
+                    projectType: self.top().getControlByPath('projectType').getValue() || "",
+					parentCategory: {
+						"$exists": false
+                    }
+                };
             }
 
-            if (self.options.picker && self.options.picker.query && self.options.picker.query.category && self.options.picker.query.category.hasOwnProperty("projectType"))
-            {
-                var projectType = self.top().getControlByPath('projectType') ? self.top().getControlByPath('projectType').getValue() : "";
-                if (projectType)
-                {
-                    self.options.picker.query['category.projectType'] = projectType
-                }
-
-                delete self.options.picker.query.category   ;
-            }
-
-            if (self.options.picker && self.options.picker.query && self.options.picker.query.parentCategory && self.options.picker.query.parentCategory.hasOwnProperty("id"))
-            {
+            // subCategory field on fabric:project template
+            if (self.name == "subCategory" && self.options.picker) {
                 var id = self.top().getControlByPath('category') ? self.top().getControlByPath('category').getValue() : [];
                 if (id.length > 0)
                 {
@@ -61,12 +48,22 @@
                     id.forEach(element => {
                         ids.push(element.id);
                     });
-                    self.options.picker.query['parentCategory.id'] = {
-                        "$in": ids
-                    }
+                    
+                    self.options.picker.query = {
+                        _type: "fabric:category",
+                        "parentCategory.id": {
+                            "$in": ids
+                        }
+                    };
                 }
+            }
 
-                delete self.options.picker.query.parentCategory;
+            // keywords field on fabric:project template
+            if (self.name == "keywords" && self.options.picker) {
+                self.options.picker.query = {
+					_type: "fabric:keyword",
+                    "category.projectType": self.top().getControlByPath('projectType').getValue() || ""
+                };
             }
             
             self.base(field, el, callback);
