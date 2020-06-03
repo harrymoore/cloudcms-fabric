@@ -11,6 +11,10 @@
 			"type": "string",
 			"required": true
 		},
+		"slug": {
+			"title": "SEO URL Slug",
+			"type": "string"
+		},
 		"description": {
 			"title": "Description",
 			"type": "string"

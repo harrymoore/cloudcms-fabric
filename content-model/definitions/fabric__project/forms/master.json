@@ -9,13 +9,20 @@
 			"default": "",
 			"order": 1
 		},
+		"slug": {
+			"type": "slug",
+			"label": "SEO URL Slug",
+			"dependentField": "title",
+			"emptyOnly": true,
+			"order": 2
+		},
 		"id": {
 			"type": "text",
 			"label": "Project Identifier",
 			"readonly": true,
 			"placeholder": "This will be created automatically",
 			"helper": "Unique Project Page ID",
-			"order": 2
+			"order": 3
 		},
 		"status": {
 			"type": "select",
@@ -180,8 +187,7 @@
 			"picker": {
 				"query": {
 					"_type": "fabric:category",
-					"parentCategory": {
-						"id": ""
+					"parentCategory.id": ""
 					}
 				}
 			}
@@ -234,8 +240,12 @@
 						"uploadPath": "/images",
 						"mimetypeRegex": "(image|video)\\/([^;\\s]+)",
 						"uploadType": "fabric:image",
-						"showFileTypes": ["fabric:image"],
-						"pickableFileTypes": ["fabric:image"]
+						"showFileTypes": [
+							"fabric:image"
+						],
+						"pickableFileTypes": [
+							"fabric:image"
+						]
 					}
 				}
 			}
@@ -249,8 +259,12 @@
 				"uploadPath": "/images",
 				"mimetypeRegex": "(image|video)\\/([^;\\s]+)",
 				"uploadType": "fabric:image",
-				"showFileTypes": ["fabric:image"],
-				"pickableFileTypes": ["fabric:image"]
+				"showFileTypes": [
+					"fabric:image"
+				],
+				"pickableFileTypes": [
+					"fabric:image"
+				]
 			}
 		},
 		"overview": {
