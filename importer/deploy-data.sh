@@ -13,9 +13,11 @@ VERSION=$NOW
 # https://fabric.cloudcms.net content repository
 REPOSITORY_ID="8ba09e97a317becd199a"
 # "Content Model Updates 1" branch
-BRANCH_ID="d19ead4bc1bd4d4b3007"
+BRANCH_ID="85418f221a70809bf113"
 
 npm install --no-audit
+
+./cloudcms-login.sh
 
 echo "*******************************"
 echo "** create archive package file for import"

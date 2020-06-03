@@ -31,5 +31,5 @@ Content Model and other configuration artifacts for Fabric.com
         2. cloudcms init
 
     ### import data:
-        1. Set a repository id and a branch id in deploy-content-model.sh
+        1. Set a repository id and a branch id in deploy-data.sh
         2. run the shell script: ./deploy-data.sh
