@@ -1,0 +1,130 @@
+{
+    "title": "User",
+    "description": "Typical editorial user view",
+    "config": {
+        "blocks": [
+            {
+                "evaluator": "context-project",
+                "config": {
+                    "project-context": {
+                        "items": [
+                            {
+                                "key": "project/content/heading",
+                                "items": [
+                                    {
+                                        "key": "project/datalists",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "project/tags",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "project/linked-content",
+                                        "remove": true
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "project/explore/heading",
+                                "items": [
+                                    {
+                                        "key": "project/model",
+                                        "remove": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "evaluator": "context-document",
+                "config": {
+                    "document-subcontext": {
+                        "items": [
+                            {
+                                "key": "document",
+                                "items": [
+                                    {
+                                        "key": "document/overview",
+                                        "title": "View",
+                                        "order": 1000,
+                                        "remove": false
+                                    },
+                                    {
+                                        "key": "document/properties",
+                                        "title": "Edit",
+                                        "order": 2000,
+                                        "remove": false
+                                    },
+                                    {
+                                        "key": "document/actions",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/associations",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/attachments",
+                                        "remove": false
+                                    },
+                                    {
+                                        "key": "document/comments",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/editor",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/authorities",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/features",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/graph",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/json",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/rules",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/pagerenditions",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/tags",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/workflows",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/versions",
+                                        "remove": true
+                                    },
+                                    {
+                                        "key": "document/preview",
+                                        "remove": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    "enabled": true
+}

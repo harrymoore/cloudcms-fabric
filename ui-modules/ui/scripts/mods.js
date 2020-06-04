@@ -41,8 +41,8 @@ define(function (require, exports, module) {
     document.addEventListener("load", function(ev) {
         var url = "" + location.href;
 
-        if (url && -1 !== url.indexOf('/content/fabric:project') || -1 !== url.indexOf('/documents/') && -1 === s.indexOf('&_replaced')) {
-            // // an image was loaded. if it looks like the preview image of a content instance then handle it
+        if (url && -1 !== url.indexOf('/content/fabric:project') || -1 !== url.indexOf('/documents/') && -1 === url.indexOf('&_replaced')) {
+            // an image was loaded. if it looks like the preview image of a content instance then handle it
             // var srcUrl = "" + ev.target.src;
             // var matches = srcUrl.match(/preview\/([^?]+)\?repository=([^&]+)\&branch=([^&]+)\&node=([^&]+)\&/);
 
@@ -68,11 +68,10 @@ define(function (require, exports, module) {
             //                 // attempt to replace the icon preview url with a url that refers to the node's mainImage property
             //                 var matches = target.src.match(/preview\/([^?]+)\?repository=([^&]+)\&branch=([^&]+)\&node=([^&]+)\&/);
             //                 var s = "" + target.src;
-            //                 s = s.replace("name=icon64", "name=fabricicon128");
+            //                 s = s.replace("name=icon64", "name=fabricicon128&force=true&_replaced=true");
             //                 s = s.replace("size=64", "size=128");
             //                 s = s.replace("mimetype=image/png", "mimetype=image/jpeg");
             //                 s = s.replace(/\&node=([^&]+)\&/, "&node=" + data.rows[0].mainImage.image.id + "&")
-            //                 s += "&force=true&_replaced=true";
             //                 target.src = s;
             //             } finally { }
             //         }
@@ -81,10 +80,10 @@ define(function (require, exports, module) {
         } else {
             var s = "" + ev.target.src;
             if (s && -1 !== s.indexOf('.cloudcms.net/preview/') && -1 !== s.indexOf('size=64') && -1 === s.indexOf('&_replaced')) {
-                s = s.replace("name=icon64", "name=fabricicon128");
+                s = s.replace("name=icon64", "name=fabricicon128&force=true&_replaced=true");
                 s = s.replace("size=64", "size=128");
                 s = s.replace("mimetype=image/png", "mimetype=image/jpeg");
-                s += "&force=true&_replaced=true";
+                // s += "&force=true&_replaced=true";
                 ev.target.src = s;
             }            
         }

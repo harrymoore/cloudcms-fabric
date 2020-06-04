@@ -2,7 +2,7 @@
 # Rules
 
 ## Set node id
-Copy the Cloud CMS node's _doc property to the node's "id" property on create or update.
+Copy the Cloud CMS node's _doc property to the node's "id" property and copy _system.created_on.timestamp to creationDate on create or update.
 
 Rule title: "set id"
 
@@ -15,23 +15,19 @@ Conditions: n/a
 Action: Execute Script action
 Action config:
 {
-    "script": "if (typeof(node.data.id) === 'undefined') { node.data.id = node.data._doc }"	
+    "script": "if (typeof(node.data.id) === 'undefined') { node.data.id = node.data._doc; } if (typeof(node.data.creationDate) === 'undefined') { node.data.creationDate = node.data._system.created_on.timestamp; }"
 }
 
-## Copy keywords
-Copy the project-type specific keyword list to the common property "keywords"
+## Change type to fabric:image in the /images folder
 
-Rule title: "keywords"
+Rule title: "Change type to fabric:image"
 
-Policy: p:afterTouchNode
-Scope: Content Type
-Type: fabric:project
+Policy: n/a
 
 Conditions: n/a
 
-Action: Execute Script action
+Action: Change Node Type
 Action config:
 {
-	"script": "if (typeof(node.data.keywords1) !== 'undefined') { node.data.keywords = node.data.keywords1.map(x => x.title) } else if (typeof(node.data.keywords2) !== 'undefined') { node.data.keywords = node.data.keywords2.map(x => x.title) } else if (typeof(node.data.keywords3) !== 'undefined') { node.data.keywords = node.data.keywords3.map(x => x.title) } else if (typeof(node.data.keywords4) !== 'undefined') { node.data.keywords = node.data.keywords4.map(x => x.title) }"
-
+    "type": "fabric:image"
 }

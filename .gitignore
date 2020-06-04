@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+fabric-import-*.zip
+.last_command
+~*.docx
