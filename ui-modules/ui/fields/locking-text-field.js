@@ -6,7 +6,7 @@
         Alpaca.Fields = {};
     }
 
-    Alpaca.Fields.LockingTextField = Alpaca.Fields.TextField.extend(
+    Alpaca.Fields.LockingTextField = Alpaca.Fields.SlugField.extend(
     {
         setup: function () {
             var self = this;

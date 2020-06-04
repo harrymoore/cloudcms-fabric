@@ -11,9 +11,64 @@
      * @lends Alpaca.Fields.FabricPickerField.prototype
      */
     {
+        // setup: function () {
+        //     var self = this;
+
+        //     try 
+        //     {
+        //         if ((self.name == "category" || self.name == "subCategory") && Alpaca.globalContext.document.__features()["f:publishable"].state === 'live')
+        //         {
+        //             self.options.readonly = true;
+        //             self.top().getControlByPath('category') ? self.top().getControlByPath('category').getValue() : [];
+        //         }    
+        //     }
+        //     catch {}
+
+        //     self.base();
+        // },
+
+        postRender: function(callback)
+        {
+            var self = this;
+
+            self.base(function(){
+
+                try 
+                {
+                    if ((self.name == "category" || self.name == "subCategory") && Alpaca.globalContext.document.__features()["f:publishable"].state === 'live')
+                    {
+                        self.options.readonly = true;
+                    }    
+                }
+                catch {}
+
+                callback();
+            });
+        },
+
+        renderButtons: function(outer, columnButtons, refreshFn)
+        {
+            var self = this;
+
+            try 
+            {
+                if ((self.name == "category" || self.name == "subCategory") && Alpaca.globalContext.document.__features()["f:publishable"].state === 'live')
+                {
+                    return;
+                }    
+            }
+            catch {}
+
+            self.base(outer, columnButtons, refreshFn);
+        },
+
         launchModal: function(field, el, callback)
         {
             var self = this;
+
+            if (self.options.readonly) {
+                return callback();
+            }
 
             // parentCategory field on fabric:category template
             if (self.name == "parentCategory" && self.options.picker) {

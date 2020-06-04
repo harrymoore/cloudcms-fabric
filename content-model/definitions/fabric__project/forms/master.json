@@ -10,9 +10,11 @@
 			"order": 1
 		},
 		"slug": {
-			"type": "slug",
+			"type": "locking-text",
 			"label": "SEO URL Slug",
 			"dependentField": "title",
+			"helper": "This field is locked while this Project record is Published",
+			"helperPosition": "above",
 			"emptyOnly": true,
 			"order": 2
 		},
@@ -22,6 +24,7 @@
 			"readonly": true,
 			"placeholder": "This will be created automatically",
 			"helper": "Unique Project Page ID",
+			"helperPosition": "above",
 			"order": 3
 		},
 		"status": {
@@ -169,6 +172,8 @@
 		"category": {
 			"type": "fabric-node-picker",
 			"label": "Category",
+			"helper": "This field is locked while this Project record is Published",
+			"helperPosition": "above",
 			"required": true,
 			"picker": {
 				"query": {
@@ -183,6 +188,8 @@
 		"subCategory": {
 			"type": "fabric-node-picker",
 			"label": "Sub Category",
+			"helper": "This field is locked while this Project record is Published",
+			"helperPosition": "above",
 			"required": false,
 			"picker": {
 				"query": {
@@ -589,6 +596,7 @@
 			"type": "file-picker",
 			"label": "Image Gallery",
 			"helper": "Collection of images that showcases the trend",
+			"helperPosition": "above",
 			"dependencies": {
 				"projectType": [
 					"inspiration"
