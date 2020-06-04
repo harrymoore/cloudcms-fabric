@@ -12,9 +12,8 @@ VERSION=$NOW
 
 # https://fabric.cloudcms.net content repository
 REPOSITORY_ID="8ba09e97a317becd199a"
-# "Content Model Updates 1" branch
-# BRANCH_ID="85418f221a70809bf113"
-BRANCH_ID="master"
+# "Content Model Updates 2" branch
+BRANCH_ID="85418f221a70809bf113"
 
 npm install --no-audit
 
@@ -22,7 +21,7 @@ npm install --no-audit
 
 echo "*******************************"
 echo "** create archive package file for import"
-node ./app.js ./input-data/categories.json $GROUP $ARTIFACT $VERSION
+node ./app-import.js "./input-data/Wyng_-_fabric-com-blog.ghost.2020-01-07(3).json" $GROUP $ARTIFACT $VERSION
 
 echo "*******************************"
 echo "** upload archive package"
