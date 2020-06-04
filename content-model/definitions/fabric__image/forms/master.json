@@ -16,12 +16,16 @@
 			"type": "text",
 			"label": "Alt Text"
 		},
+		"url": {
+			"type": "text",
+			"label": "URL"
+		},
 		"description": {
 			"type": "textarea",
 			"label": "Description"
 		},
 		"keywords": {
-			"type": "fabric-node-picker",
+			"type": "node-picker",
 			"picker": {
 				"query": {
 					"_type": "fabric:keyword"

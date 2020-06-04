@@ -9,10 +9,11 @@
 			"default": ""
 		},
 		"category": {
-			"type": "fabric-node-picker",
+			"type": "node-picker",
 			"label": "Category",
 			"required": true,
 			"picker": {
+				"upload": false,
 				"query": {
 					"_type": "fabric:category",
 					"parentCategory": {

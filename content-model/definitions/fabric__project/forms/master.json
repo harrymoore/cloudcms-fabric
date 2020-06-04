@@ -188,7 +188,6 @@
 				"query": {
 					"_type": "fabric:category",
 					"parentCategory.id": ""
-					}
 				}
 			}
 		},
@@ -197,9 +196,7 @@
 			"picker": {
 				"query": {
 					"_type": "fabric:keyword",
-					"category": {
-						"projectType": ""
-					}
+					"category.projectType": ""
 				}
 			},
 			"label": "Keywords",
@@ -226,45 +223,26 @@
 			}
 		},
 		"mainImage": {
-			"type": "object",
-			"label": "Main Image",
-			"required": false,
-			"fields": {
-				"image": {
-					"type": "file-picker",
-					"label": "Image File",
-					"required": false,
-					"picker": {
-						"initialContainerPath": "/images",
-						"rootContainerPath": "/images",
-						"uploadPath": "/images",
-						"mimetypeRegex": "(image|video)\\/([^;\\s]+)",
-						"uploadType": "fabric:image",
-						"showFileTypes": [
-							"fabric:image"
-						],
-						"pickableFileTypes": [
-							"fabric:image"
-						]
-					}
-				}
-			}
-		},
-		"altImages": {
-			"type": "file-picker",
+			"type": "node-picker",
 			"label": "Image File",
+			"required": false,
 			"picker": {
 				"initialContainerPath": "/images",
 				"rootContainerPath": "/images",
 				"uploadPath": "/images",
-				"mimetypeRegex": "(image|video)\\/([^;\\s]+)",
 				"uploadType": "fabric:image",
-				"showFileTypes": [
-					"fabric:image"
-				],
-				"pickableFileTypes": [
-					"fabric:image"
-				]
+				"typeQName": "fabric:image"
+			}
+		},
+		"altImages": {
+			"type": "file-picker",
+			"label": "Alternate Images",
+			"picker": {
+				"initialContainerPath": "/images",
+				"rootContainerPath": "/images",
+				"uploadPath": "/images",
+				"uploadType": "fabric:image",
+				"typeQName": "fabric:image"
 			}
 		},
 		"overview": {
@@ -333,8 +311,7 @@
 			"dependencies": {
 				"projectType": [
 					"sewing101",
-					"project",
-					"fabric101"
+					"project"
 				]
 			},
 			"fields": {
@@ -392,30 +369,12 @@
 				"images": {
 					"type": "array",
 					"label": "Image and Video",
-					"required": false,
-					"items": {
-						"type": "object",
-						"label": "images",
-						"fields": {
-							"image": {
-								"type": "file-picker",
-								"label": "Image File",
-								"required": false,
-								"picker": {
-									"initialContainerPath": "/images",
-									"rootContainerPath": "/images",
-									"uploadPath": "/images",
-									"mimetypeRegex": "(image|video)\\/([^;\\s]+)",
-									"uploadType": "fabric:image"
-								}
-							},
-							"altText": {
-								"type": "text",
-								"label": "Image Alt Text",
-								"required": true,
-								"default": ""
-							}
-						}
+					"picker": {
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"uploadType": "fabric:image",
+						"typeQName": "fabric:image"
 					}
 				},
 				"links": {
@@ -436,8 +395,7 @@
 			"dependencies": {
 				"projectType": [
 					"sewing101",
-					"project",
-					"fabric101"
+					"project"
 				]
 			},
 			"fields": {
@@ -495,26 +453,12 @@
 				"images": {
 					"type": "array",
 					"label": "Image and Video",
-					"required": false,
-					"items": {
-						"type": "object",
-						"label": "images",
-						"fields": {
-							"image": {
-								"type": "file-picker",
-								"label": "Image File",
-								"required": false,
-								"uploadPath": "/images",
-								"maxNumberOfFiles": 1,
-								"xfileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
-							},
-							"altText": {
-								"type": "text",
-								"label": "Image Alt Text",
-								"required": true,
-								"default": ""
-							}
-						}
+					"picker": {
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"uploadType": "fabric:image",
+						"typeQName": "fabric:image"
 					}
 				},
 				"links": {
@@ -531,8 +475,12 @@
 		"additionalSteps": {
 			"type": "array",
 			"label": "Additional Steps",
-			"required": false,
-			"minItems": 3,
+			"dependencies": {
+				"projectType": [
+					"sewing101",
+					"project"
+				]
+			},
 			"items": {
 				"type": "object",
 				"label": "Step",
@@ -591,26 +539,12 @@
 					"images": {
 						"type": "array",
 						"label": "Image and Video",
-						"required": false,
-						"items": {
-							"type": "object",
-							"label": "images",
-							"fields": {
-								"image": {
-									"type": "file-picker",
-									"label": "Image File",
-									"required": false,
-									"uploadPath": "/images",
-									"maxNumberOfFiles": 1,
-									"xfileTypes": "(\\.|/)(gif|jpe?g|png|svg)$"
-								},
-								"altText": {
-									"type": "text",
-									"label": "Image Alt Text",
-									"required": true,
-									"default": ""
-								}
-							}
+						"picker": {
+							"initialContainerPath": "/images",
+							"rootContainerPath": "/images",
+							"uploadPath": "/images",
+							"uploadType": "fabric:image",
+							"typeQName": "fabric:image"
 						}
 					},
 					"links": {
@@ -645,30 +579,260 @@
 						"required": false,
 						"uploadPath": "/files",
 						"icon": true,
-						"maxNumberOfFiles": 1,
-						"xfileTypes": "(\\.|\\/)(pdf|PDF)$"
+						"maxNumberOfFiles": 1
 					}
 				}
 			}
 		},
 		"imageGallery": {
-			"type": "fabric-node-picker",
+			"_comment": "inspiration",
+			"type": "file-picker",
 			"label": "Image Gallery",
-			"required": false,
+			"helper": "Collection of images that showcases the trend",
 			"dependencies": {
 				"projectType": [
 					"inspiration"
 				]
 			},
 			"picker": {
-				"query": {
-					"_type": "fabric:image"
-				}
+				"icon": true,
+				"initialContainerPath": "/images",
+				"rootContainerPath": "/images",
+				"uploadPath": "/images",
+				"uploadType": "fabric:image",
+				"typeQName": "fabric:image"
+			}
+		},
+		"howToChoose": {
+			"_comment": "inspiration, fabric101",
+			"type": "object",
+			"label": "How to Choose / Fabric construction",
+			"helper": "Compare and explain the differences in types",
+			"helperPosition": "above",
+			"dependencies": {
+				"projectType": [
+					"inspiration",
+					"fabric101"
+				]
 			},
-			"multiple": true,
-			"icon": true,
-			"maxNumberOfFiles": 25,
-			"xfileTypes": "(\\.|\\/)(pdf|PDF)$"
+			"fields": {
+				"copy": {
+					"type": "ckeditor",
+					"label": "Copy",
+					"ckeditor": {
+						"toolbar": [
+							[
+								"Bold",
+								"Italic",
+								"Underline",
+								"StrikeThrough",
+								"-",
+								"Undo",
+								"Redo",
+								"-",
+								"Cut",
+								"Copy",
+								"Paste",
+								"Find",
+								"Replace"
+							],
+							"/",
+							[
+								"NumberedList",
+								"BulletedList",
+								"-",
+								"JustifyLeft",
+								"JustifyCenter",
+								"JustifyRight",
+								"JustifyBlock"
+							],
+							[
+								"Image",
+								"Table",
+								"-",
+								"Link",
+								"Smiley",
+								"TextColor",
+								"BGColor",
+								"Source"
+							]
+						]
+					}
+				},
+				"links": {
+					"type": "array",
+					"label": "Links",
+					"items": {
+						"type": "text"
+					}
+				},
+				"images": {
+					"type": "file-picker",
+					"label": "Images",
+					"picker": {
+						"icon": true,
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"uploadType": "fabric:image",
+						"typeQName": "fabric:image"
+					}
+				}
+			}
+		},
+		"uses": {
+			"_comment": "inspiration, fabric101",
+			"type": "object",
+			"label": "What should Uses/ What should I make with it",
+			"helper": "recommended uses by weight etc.",
+			"helperPosition": "above",
+			"dependencies": {
+				"projectType": [
+					"inspiration",
+					"fabric101"
+				]
+			},
+			"fields": {
+				"copy": {
+					"type": "ckeditor",
+					"label": "Copy",
+					"ckeditor": {
+						"toolbar": [
+							[
+								"Bold",
+								"Italic",
+								"Underline",
+								"StrikeThrough",
+								"-",
+								"Undo",
+								"Redo",
+								"-",
+								"Cut",
+								"Copy",
+								"Paste",
+								"Find",
+								"Replace"
+							],
+							"/",
+							[
+								"NumberedList",
+								"BulletedList",
+								"-",
+								"JustifyLeft",
+								"JustifyCenter",
+								"JustifyRight",
+								"JustifyBlock"
+							],
+							[
+								"Image",
+								"Table",
+								"-",
+								"Link",
+								"Smiley",
+								"TextColor",
+								"BGColor",
+								"Source"
+							]
+						]
+					}
+				},
+				"links": {
+					"type": "array",
+					"label": "Links",
+					"items": {
+						"type": "text"
+					}
+				},
+				"images": {
+					"type": "file-picker",
+					"label": "Images",
+					"picker": {
+						"icon": true,
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"uploadType": "fabric:image",
+						"typeQName": "fabric:image"
+					}
+				}
+			}
+		},
+		"sewingTips": {
+			"_comment": "inspiration, fabric101",
+			"type": "object",
+			"label": "Sewing Tips/ How to work with it",
+			"helper": "Any fabric specific sewing guidance",
+			"helperPosition": "above",
+			"dependencies": {
+				"projectType": [
+					"inspiration",
+					"fabric101"
+				]
+			},
+			"fields": {
+				"copy": {
+					"type": "ckeditor",
+					"label": "Copy",
+					"ckeditor": {
+						"toolbar": [
+							[
+								"Bold",
+								"Italic",
+								"Underline",
+								"StrikeThrough",
+								"-",
+								"Undo",
+								"Redo",
+								"-",
+								"Cut",
+								"Copy",
+								"Paste",
+								"Find",
+								"Replace"
+							],
+							"/",
+							[
+								"NumberedList",
+								"BulletedList",
+								"-",
+								"JustifyLeft",
+								"JustifyCenter",
+								"JustifyRight",
+								"JustifyBlock"
+							],
+							[
+								"Image",
+								"Table",
+								"-",
+								"Link",
+								"Smiley",
+								"TextColor",
+								"BGColor",
+								"Source"
+							]
+						]
+					}
+				},
+				"links": {
+					"type": "array",
+					"label": "Links",
+					"items": {
+						"type": "text"
+					}
+				},
+				"images": {
+					"type": "file-picker",
+					"label": "Images",
+					"picker": {
+						"icon": true,
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"uploadType": "fabric:image",
+						"typeQName": "fabric:image"
+					}
+				}
+			}
 		}
 	},
 	"dependencies": {

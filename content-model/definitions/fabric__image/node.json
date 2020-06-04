@@ -9,15 +9,13 @@
 		"file": {
 			"type": "object",
 			"title": "File",
-			"required": true,
 			"_attachment": {
 				"id": "default"
 			}
 		},
 		"title": {
 			"name": "title",
-			"type": "string",
-			"required": true
+			"type": "string"
 		},
 		"altText": {
 			"type": "string",
@@ -26,6 +24,10 @@
 		"description": {
 			"type": "string",
 			"title": "description"
+		},
+		"url": {
+			"type": "string",
+			"title": "URL"
 		},
 		"keywords": {
 			"type": "array",

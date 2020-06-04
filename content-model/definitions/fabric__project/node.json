@@ -156,6 +156,9 @@
 		"altImages": {
 			"type": "array",
 			"title": "Alternate Images",
+			"items": {
+				"type": "object"
+			},
 			"_relator": {
 				"nodeType": "fabric:image"
 			}
@@ -190,23 +193,10 @@
 					"type": "array",
 					"title": "images",
 					"items": {
-						"type": "object",
-						"title": "Image",
-						"properties": {
-							"image": {
-								"type": "object",
-								"title": "Image File",
-								"_relator": {
-									"associationType": "a:linked",
-									"nodeType": "n:node"
-								}
-							},
-							"altText": {
-								"type": "string",
-								"title": "Image Alt Text",
-								"default": ""
-							}
-						}
+						"type": "object"
+					},
+					"_relator": {
+						"nodeType": "fabric:image"
 					}
 				},
 				"links": {
@@ -236,23 +226,10 @@
 					"type": "array",
 					"title": "images",
 					"items": {
-						"type": "object",
-						"title": "Image",
-						"properties": {
-							"image": {
-								"type": "object",
-								"title": "Image File",
-								"_relator": {
-									"associationType": "a:linked",
-									"nodeType": "n:node"
-								}
-							},
-							"altText": {
-								"type": "string",
-								"title": "Image Alt Text",
-								"default": ""
-							}
-						}
+						"type": "object"
+					},
+					"_relator": {
+						"nodeType": "fabric:image"
 					}
 				},
 				"links": {
@@ -285,23 +262,10 @@
 						"type": "array",
 						"title": "images",
 						"items": {
-							"type": "object",
-							"title": "Alt Image",
-							"properties": {
-								"image": {
-									"type": "object",
-									"title": "Image File",
-									"_relator": {
-										"associationType": "a:linked",
-										"nodeType": "n:node"
-									}
-								},
-								"altText": {
-									"type": "string",
-									"title": "Image Alt Text",
-									"default": ""
-								}
-							}
+							"type": "object"
+						},
+						"_relator": {
+							"nodeType": "fabric:image"
 						}
 					},
 					"links": {
@@ -329,20 +293,108 @@
 					"file": {
 						"type": "object",
 						"title": "File",
-						"_relator": {
-						}
+						"_relator": {}
 					}
 				}
 			}
 		},
 		"imageGallery": {
+			"_comment": "inspiration",
 			"type": "array",
 			"title": "Image Gallery",
-			"items":{
+			"items": {
 				"type": "object"
 			},
 			"_relator": {
 				"nodeType": "fabric:image"
+			}
+		},
+		"howToChoose": {
+			"_comment": "inspiration, fabric101",
+			"type": "object",
+			"title": "How to Choose / Fabric construction",
+			"properties": {
+				"copy": {
+					"type": "string",
+					"title": "Copy"
+				},
+				"links": {
+					"type": "array",
+					"title": "Links",
+					"items": {
+						"type": "string"
+					}
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"_relator": {
+						"nodeType": "fabric:image"
+					}
+				}
+			}
+		},
+		"uses": {
+			"_comment": "inspiration, fabric101",
+			"type": "object",
+			"title": "What should I make with it",
+			"properties": {
+				"copy": {
+					"type": "string",
+					"title": "Copy"
+				},
+				"links": {
+					"type": "array",
+					"title": "Links",
+					"items": {
+						"type": "string"
+					}
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"_relator": {
+						"nodeType": "fabric:image"
+					}
+				}
+			}
+		},
+		"sewingTips": {
+			"_comment": "inspiration, fabric101",
+			"type": "object",
+			"title": "Sewing Tips",
+			"properties": {
+				"copy": {
+					"type": "string",
+					"title": "Copy"
+				},
+				"links": {
+					"type": "array",
+					"title": "Links",
+					"items": {
+						"type": "string"
+					}
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"_relator": {
+						"nodeType": "fabric:image"
+					}
+				}
+			}
+		},
+		"shop": {
+			"type": "array",
+			"title": "Shop",
+			"items": {
+				"type": "string"
 			}
 		}
 	},
@@ -353,10 +405,22 @@
 		"step2MeasuringCutting": [
 			"projectType"
 		],
+		"additionalSteps": [
+			"projectType"
+		],
 		"imageGallery": [
 			"projectType"
 		],
-		"products": [
+		"howToChoose": [
+			"projectType"
+		],
+		"uses": [
+			"projectType"
+		],
+		"sewingTips": [
+			"projectType"
+		],
+		"shop": [
 			"projectType"
 		]
 	},
