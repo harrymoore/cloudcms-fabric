@@ -28,8 +28,23 @@ Content Model and other configuration artifacts for Fabric.com
 
     ### (one time setup) Install and initialize the npm "cloudcms-cli" module:
         1. npm install -g cloudcms-cli
-        2. cloudcms init
+        2. copy cloudcms-login-template.sh to cloudcms-login.sh
+        3. edit cloudcms-login.sh with the correct url and credentials for write access to the project's content repository
 
     ### import data:
         1. Set a repository id and a branch id in deploy-data.sh
         2. run the shell script: ./deploy-data.sh
+
+## import "Ghost" blog content
+    An exported JSON file containing blog content from Ghost can be imported to create an initial set of blog content:
+
+    cd ./importer
+
+    ### (one time setup) Install and initialize the npm "cloudcms-cli" module:
+        1. npm install -g cloudcms-cli
+        2. copy cloudcms-login-template.sh to cloudcms-login.sh
+        3. edit cloudcms-login.sh with the correct url and credentials for write access to the project's content repository
+
+    ### import data:
+        1. Set a repository id and a branch id in deploy-imported-data.sh
+        2. run the shell script: ./deploy-imported-data.sh
