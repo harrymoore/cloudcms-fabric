@@ -4,13 +4,11 @@
 	"fields": {
 		"file": {
 			"type": "attachment-picker",
-			"label": "File",
-			"required": true
+			"label": "File"
 		},
 		"title": {
 			"type": "text",
-			"label": "Title",
-			"required": true
+			"label": "Title"
 		},
 		"altText": {
 			"type": "text",
