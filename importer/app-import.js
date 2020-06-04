@@ -38,7 +38,7 @@ PACKAGER.create({
 function projectFromPost(json) {
     var project = new PROJECT(json);
     
-    console.log(JSON.stringify(project,null,4));
+    // console.log(JSON.stringify(project,null,4));
     return project;
 }
 
@@ -50,55 +50,25 @@ function Car(make, model, year) {
 
 function PROJECT(json) {
     this._type = "fabric:project";
+    this.projectType = "project";
     this.title = json.title;
-    this.season = json.season || "";
+    this.overview = json.html || "";
+    this.description = json.meta_description || "";
+    this.slug = json.slug;
+    this._key = "project_" + json.uuid;
+    this._alias = "project_" + json.uuid;
+    this._existing = {
+        _type: "fabric:project",
+        title: this.title
+    };
+    this.featured = json.featured ? "yes" : "no";
+    this.season = json.season || "spring";
     this.difficulty = json.difficulty || "easy";
     this.discount = json.discount || "0";
-    this.description = json.html || "";
-
-    // "DesktopMobile": "desktop",
-    // "featured": "no",
-    // "projectType": "sewing101",
-    // "category": [
-    //     {
-    //         "id": "2547abbd4afcc9d6fcec",
-    //         "ref": "node://e26d0b6d5e120016c18a/8ba09e97a317becd199a/d19ead4bc1bd4d4b3007/2547abbd4afcc9d6fcec",
-    //         "title": "Apparel",
-    //         "qname": "o:b0a94272d9b76d057c25",
-    //         "typeQName": "fabric:category"
-    //     }
-    // ],
-    // "mainImage": {},
-    // "altImage": {},
-    // "step1ToolsAndMaterials": {
-    //     "title": "Step 1: Tools And Materials",
-    //     "images": [],
-    //     "links": []
-    // },
-    // "step2MeasuringCutting": {
-    //     "title": "Step 2: Measuring & Cutting",
-    //     "images": [],
-    //     "links": []
-    // },
-    // "additionalSteps": [],
-    // "additionalFiles": [
-    //     {
-    //         "file": {
-    //             "id": "60ed4e11bb711cc5e9dd",
-    //             "ref": "node://e26d0b6d5e120016c18a/8ba09e97a317becd199a/d19ead4bc1bd4d4b3007/60ed4e11bb711cc5e9dd",
-    //             "title": "file1 copy 2.pdf",
-    //             "qname": "o:60ed4e11bb711cc5e9dd",
-    //             "typeQName": "n:node"
-    //         }
-    //     },
-    //     {
-    //         "file": {
-    //             "id": "7caaa82767b797b9d536",
-    //             "ref": "node://e26d0b6d5e120016c18a/8ba09e97a317becd199a/d19ead4bc1bd4d4b3007/7caaa82767b797b9d536",
-    //             "title": "A Sample PDF.pdf",
-    //             "qname": "o:7caaa82767b797b9d536",
-    //             "typeQName": "n:node"
-    //         }
-    //     }
-    // ]
+    this.category = {
+        title: "Apparel"
+    };
+    this.mainImage = {
+        title: ""
+    };
 };

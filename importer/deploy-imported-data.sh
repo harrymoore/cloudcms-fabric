@@ -7,13 +7,12 @@
 NOW=$(date +"%m-%d-%Y-%H-%M-%S")
 
 GROUP=fabric
-ARTIFACT=import
+ARTIFACT=import_content
 VERSION=$NOW
 
 # https://fabric.cloudcms.net content repository
 REPOSITORY_ID="8ba09e97a317becd199a"
-# "Content Model Updates 2" branch
-BRANCH_ID="85418f221a70809bf113"
+BRANCH_ID="master"
 
 npm install --no-audit
 
