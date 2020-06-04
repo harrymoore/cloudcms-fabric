@@ -833,6 +833,83 @@
 					}
 				}
 			}
+		},
+		"shop": {
+			"_comment": "inspiration, fabric101",
+			"type": "object",
+			"label": "Shop",
+			"helper": "Navigation to referenced fabric categories/ new arrivals",
+			"helperPosition": "above",
+			"dependencies": {
+				"projectType": [
+					"inspiration",
+					"fabric101"
+				]
+			},
+			"fields": {
+				"copy": {
+					"type": "ckeditor",
+					"label": "Copy",
+					"ckeditor": {
+						"toolbar": [
+							[
+								"Bold",
+								"Italic",
+								"Underline",
+								"StrikeThrough",
+								"-",
+								"Undo",
+								"Redo",
+								"-",
+								"Cut",
+								"Copy",
+								"Paste",
+								"Find",
+								"Replace"
+							],
+							"/",
+							[
+								"NumberedList",
+								"BulletedList",
+								"-",
+								"JustifyLeft",
+								"JustifyCenter",
+								"JustifyRight",
+								"JustifyBlock"
+							],
+							[
+								"Image",
+								"Table",
+								"-",
+								"Link",
+								"Smiley",
+								"TextColor",
+								"BGColor",
+								"Source"
+							]
+						]
+					}
+				},
+				"links": {
+					"type": "array",
+					"label": "Links",
+					"items": {
+						"type": "text"
+					}
+				},
+				"images": {
+					"type": "file-picker",
+					"label": "Images",
+					"picker": {
+						"icon": true,
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"uploadType": "fabric:image",
+						"typeQName": "fabric:image"
+					}
+				}
+			}
 		}
 	},
 	"dependencies": {

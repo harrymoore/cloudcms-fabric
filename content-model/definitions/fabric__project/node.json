@@ -391,10 +391,30 @@
 			}
 		},
 		"shop": {
-			"type": "array",
+			"_comment": "inspiration, fabric101",
+			"type": "object",
 			"title": "Shop",
-			"items": {
-				"type": "string"
+			"properties": {
+				"copy": {
+					"type": "string",
+					"title": "Copy"
+				},
+				"links": {
+					"type": "array",
+					"title": "Links",
+					"items": {
+						"type": "string"
+					}
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					},
+					"_relator": {
+						"nodeType": "fabric:image"
+					}
+				}
 			}
 		}
 	},
