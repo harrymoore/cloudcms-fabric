@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/harrymoore/cloudcms-fabric#readme",
   "dependencies": {
+    "async": "^3.2.0",
+    "axios": "^0.19.2",
     "cloudcms-packager": "^1.0.4",
     "dotenv": "^8.2.0"
   }

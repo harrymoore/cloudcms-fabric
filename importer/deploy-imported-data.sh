@@ -7,7 +7,7 @@
 NOW=$(date +"%m-%d-%Y-%H-%M-%S")
 
 GROUP=fabric
-ARTIFACT=import_content
+ARTIFACT=import-content
 VERSION=$NOW
 
 # https://fabric.cloudcms.net content repository
@@ -20,6 +20,7 @@ npm install --no-audit
 
 echo "*******************************"
 echo "** create archive package file for import"
+# node ./app-download-images.js "./input-data/Wyng_-_fabric-com-blog.ghost.2020-01-07(3).json"
 node ./app-import.js "./input-data/Wyng_-_fabric-com-blog.ghost.2020-01-07(3).json" $GROUP $ARTIFACT $VERSION
 
 echo "*******************************"

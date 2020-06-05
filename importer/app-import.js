@@ -2,10 +2,8 @@
 require('dotenv').config();
 const PACKAGER = require("cloudcms-packager");
 const fs = require('fs');
-// const request = require('request');
 const https = require('https');
 const path = require('path');
-
 const inputJSON = process.argv[2];
 const group = process.argv[3];
 const artifact = process.argv[4];
@@ -31,13 +29,13 @@ PACKAGER.create({
     inputData = inputData.db[0].data.posts;
     inputData.shift(); // the first post looks like a message from Ghost blog software so skip it
 
-    inputData.forEach(json => {
+    inputData.forEach(async (json) => {
         let projectNode = new PROJECT(json);
 
         // download and attach main image
         if (projectNode.mainImage) {
-            let filePath = downloadImage(json.image);
-            let title = path.basename(filePath);
+            let title = path.basename(projectNode.mainImage);
+            let filePath = path.join(TMP_IMAGES, title);
             var imageNode = {
                 title: title,
                 _filePath: "/images",
@@ -55,7 +53,7 @@ PACKAGER.create({
                 __related_node__: imageNode._alias
             }
         } else {
-            packager.addNode(projectNode)            
+            packager.addNode(projectNode)
         }
     });
 
@@ -91,14 +89,3 @@ function PROJECT(json) {
     this.mainImage = json.image || "";
 };
 
-function downloadImage(relativeUrl) {
-    let imageUrl = new URL(relativeUrl, "https://www.fabric.com/");
-    let fileName = path.basename(relativeUrl);
-    let filePath = path.normalize(path.join(TMP_IMAGES, fileName));
-    var fileStream = fs.createWriteStream(filePath);
-    // https.get(imageUrl.toString()).pipe(fs.createWriteStream(fileStream));
-    https.get(imageUrl, function(response) {
-        response.pipe(fileStream);
-    });
-    return filePath;
-}
