@@ -20,6 +20,7 @@ npm install --no-audit
 
 echo "*******************************"
 echo "** create archive package file for import"
+# uncomment the following line to download images
 # node ./app-download-images.js "./input-data/Wyng_-_fabric-com-blog.ghost.2020-01-07(3).json"
 node ./app-import.js "./input-data/Wyng_-_fabric-com-blog.ghost.2020-01-07(3).json" $GROUP $ARTIFACT $VERSION
 
@@ -29,5 +30,6 @@ cloudcms archive upload --group $GROUP --artifact $ARTIFACT --version $VERSION
 
 echo "*******************************"
 echo "** import archive package to branch"
+sleep 10
 cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repository $REPOSITORY_ID --branch $BRANCH_ID
 

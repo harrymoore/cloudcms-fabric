@@ -29,7 +29,27 @@ PACKAGER.create({
     inputData = inputData.db[0].data.posts;
     inputData.shift(); // the first post looks like a message from Ghost blog software so skip it
 
-    inputData.forEach(async (json) => {
+    // add the 'images' folder node
+    const IMAGES_ALIAS = "images";
+    packager.addNode({
+        _type: "n:node",
+        title: "images",
+        _alias: IMAGES_ALIAS,
+        _features: {
+            "f:container": {}
+        },
+        _existing: {
+            _type: "n:node",
+            title: "images",
+            "_features.f:container": {
+                "$exists": true
+            }
+        }
+    });
+
+    inputData = inputData.slice(0,5);
+    
+    inputData.forEach((json) => {
         let projectNode = new PROJECT(json);
 
         // download and attach main image
@@ -38,7 +58,7 @@ PACKAGER.create({
             let filePath = path.join(TMP_IMAGES, title);
             var imageNode = {
                 title: title,
-                _filePath: "/images",
+                // _filePath: "/images/" + title,
                 _alias: "image_" + title,
                 _type: "fabric:image",
                 _existing: {
@@ -48,13 +68,17 @@ PACKAGER.create({
             };
             packager.addNode(imageNode);
             packager.addAttachment(imageNode._alias, "default", filePath);
+            packager.addAssociation(IMAGES_ALIAS, imageNode._alias, {
+                "_type": "a:child",
+                "directionality": "DIRECTED"
+            });
 
             projectNode.mainImage = {
                 __related_node__: imageNode._alias
             }
-        } else {
-            packager.addNode(projectNode)
         }
+
+        packager.addNode(projectNode)
     });
 
     // package up the archive
@@ -86,6 +110,8 @@ function PROJECT(json) {
     this.category = [{
         title: "Apparel"
     }];
-    this.mainImage = json.image || "";
+    if (json.image) {
+        this.mainImage = json.image;
+    }
 };
 
