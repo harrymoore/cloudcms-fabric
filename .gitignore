@@ -105,6 +105,5 @@ dist
 fabric-import-*.zip
 .last_command
 ~*.docx
-importer/images
 fabric-import_content-*.zip
 group1-import-version1.zip
