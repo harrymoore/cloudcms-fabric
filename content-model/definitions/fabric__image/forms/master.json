@@ -2,13 +2,15 @@
 	"_type": "n:form",
 	"title": "master",
 	"fields": {
-		"file": {
-			"type": "attachment-picker",
-			"label": "File"
-		},
 		"title": {
 			"type": "text",
-			"label": "Title"
+			"label": "Title",
+			"order": 1
+		},
+		"file": {
+			"type": "attachment-picker",
+			"label": "File",
+			"order": 2
 		},
 		"altText": {
 			"type": "text",
