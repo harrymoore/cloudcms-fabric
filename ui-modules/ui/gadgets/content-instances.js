@@ -18,9 +18,7 @@ define(function (require, exports, module) {
                 description: 1,
                 _system: 1,
                 _type: 1,
-                "mainImage.id": 1,
-                "_features.f:locale.locale": 1,
-                "_features.f:translation.locale": 1
+                "mainImage.id": 1
             };
 
             if (searchTerm) {
@@ -51,11 +49,10 @@ define(function (require, exports, module) {
 
             if (row.mainImage && row.mainImage.id) {
                 imageNodeId = row.mainImage.id;
+                return _iconUri = OneTeam.iconUri(this.observable("repository").get()._doc, this.observable("branch").get()._doc, imageNodeId, false, null, { size: 120 }, "image/png");
             } else {
                 return OneTeam.iconUriForNode(row);
             }
-
-            return _iconUri = OneTeam.iconUri(this.observable("repository").get()._doc, this.observable("branch").get()._doc, imageNodeId, false, null, { size: 120 }, "image/png");
         },
 
         prepareModel: function (el, model, callback) {
