@@ -45,14 +45,16 @@ define(function (require, exports, module) {
         },
 
         iconUri: function (row, model, context) {
-            var imageNodeId;
+            var _iconUri = OneTeam.iconUriForNode(row);
 
             if (row.mainImage && row.mainImage.id) {
-                imageNodeId = row.mainImage.id;
-                return _iconUri = OneTeam.iconUri(this.observable("repository").get()._doc, this.observable("branch").get()._doc, imageNodeId, false, null, { size: 120 }, "image/png");
-            } else {
-                return OneTeam.iconUriForNode(row);
+                _iconUri = _iconUri.replace(/&node=[^&]+&/, "&node=" + row.mainImage.id + "&");
             }
+
+            _iconUri = _iconUri.replace("size=64", "size=128");
+            _iconUri = _iconUri.replace("icon64", "icon128");
+
+            return _iconUri;
         },
 
         prepareModel: function (el, model, callback) {
