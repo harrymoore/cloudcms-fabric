@@ -24,7 +24,10 @@ Rule title: "Change type to fabric:image"
 
 Policy: n/a
 
-Conditions: n/a
+Conditions: "Node Has attachment"
+{
+    "attachmentId": "default"
+}
 
 Action: Change Node Type
 Action config:
