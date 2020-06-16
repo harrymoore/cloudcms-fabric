@@ -47,8 +47,23 @@
 			"type": "date",
 			"title": "Launch Date"
 		},
+		"expires": {
+			"type": "select",
+			"label": "Expires",
+			"sort": false,
+			"hideNone": true,
+			"optionLabels": [
+				"Expires",
+				"Never Expires"
+			]
+		},
 		"expirationDate": {
 			"type": "date",
+			"dependencies": {
+				"expires": [
+					"true"
+				]
+			},
 			"title": "Expiration Date"
 		},
 		"socialTags": {
@@ -82,7 +97,6 @@
 						"Find",
 						"Replace"
 					],
-					"/",
 					[
 						"NumberedList",
 						"BulletedList",
@@ -93,16 +107,40 @@
 						"JustifyBlock"
 					],
 					[
+						"cloudcms-image",
+						"cloudcms-link"
+					],
+					[
 						"Image",
-						"Table",
-						"-",
 						"Link",
+						"-",
+						"Table",
 						"Smiley",
 						"TextColor",
 						"BGColor",
 						"Source"
 					]
-				]
+				],
+				"cloudcms-image": {
+					"imagePickerType": "file-picker",
+					"imageUploadPath": "/Images",
+					"imagePickerConfig": {
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"uploadType": "fabric:image",
+						"typeQName": "fabric:image"
+					},
+					"hideUploadButton": false
+				},
+				"cloudcms-link": {
+					"linkPickerType": "node-picker",
+					"linkPickerConfig": {
+						"typeQName": "fabric:project",
+						"hideUploadButton": true
+					},
+					"hideUploadButton": true
+				}
 			}
 		},
 		"season": {
@@ -166,7 +204,8 @@
 				"Sewing 101",
 				"Project",
 				"Fabric 101",
-				"Inspiration"
+				"Inspiration",
+				"Legacy"
 			]
 		},
 		"category": {
@@ -231,8 +270,8 @@
 		},
 		"mainImage": {
 			"type": "node-picker",
-			"label": "Image File",
-			"required": false,
+			"label": "Main Image",
+			"required": true,
 			"picker": {
 				"initialContainerPath": "/images",
 				"rootContainerPath": "/images",
@@ -274,7 +313,6 @@
 						"Find",
 						"Replace"
 					],
-					"/",
 					[
 						"NumberedList",
 						"BulletedList",
@@ -285,24 +323,60 @@
 						"JustifyBlock"
 					],
 					[
+						"cloudcms-image",
+						"cloudcms-link"
+					],
+					[
 						"Image",
-						"Table",
-						"-",
 						"Link",
+						"-",
+						"Table",
 						"Smiley",
 						"TextColor",
 						"BGColor",
 						"Source"
 					]
-				]
+				],
+				"cloudcms-image": {
+					"imagePickerType": "file-picker",
+					"imageUploadPath": "/Images",
+					"imagePickerConfig": {
+						"initialContainerPath": "/images",
+						"rootContainerPath": "/images",
+						"uploadPath": "/images",
+						"uploadType": "fabric:image",
+						"typeQName": "fabric:image"
+					},
+					"hideUploadButton": false
+				},
+				"cloudcms-link": {
+					"linkPickerType": "node-picker",
+					"linkPickerConfig": {
+						"typeQName": "fabric:project",
+						"hideUploadButton": true
+					},
+					"hideUploadButton": true
+				}
 			}
 		},
 		"products": {
 			"type": "array",
-			"label": "Products (SKU List)",
+			"label": "Products",
 			"required": false,
 			"items": {
-				"type": "text"
+				"type": "object",
+				"title": "Product",
+				"fields": {
+					"sku": {
+						"title": "SKU",
+						"type": "text",
+						"required": true
+					},
+					"quantity": {
+						"title": "Quantity",
+						"type": "text"
+					}
+				}
 			},
 			"dependencies": {
 				"projectType": [
@@ -350,7 +424,6 @@
 								"Find",
 								"Replace"
 							],
-							"/",
 							[
 								"NumberedList",
 								"BulletedList",
@@ -361,18 +434,42 @@
 								"JustifyBlock"
 							],
 							[
+								"cloudcms-image",
+								"cloudcms-link"
+							],
+							[
 								"Image",
-								"Table",
-								"-",
 								"Link",
+								"-",
+								"Table",
 								"Smiley",
 								"TextColor",
 								"BGColor",
 								"Source"
 							]
-						]
+						],
+						"cloudcms-image": {
+							"imagePickerType": "file-picker",
+							"imageUploadPath": "/Images",
+							"imagePickerConfig": {
+								"initialContainerPath": "/images",
+								"rootContainerPath": "/images",
+								"uploadPath": "/images",
+								"uploadType": "fabric:image",
+								"typeQName": "fabric:image"
+							},
+							"hideUploadButton": false
+						},
+						"cloudcms-link": {
+							"linkPickerType": "node-picker",
+							"linkPickerConfig": {
+								"typeQName": "fabric:project",
+								"hideUploadButton": true
+							},
+							"hideUploadButton": true
+						}
 					}
-				},
+						},
 				"images": {
 					"type": "array",
 					"label": "Image and Video",
@@ -434,7 +531,6 @@
 								"Find",
 								"Replace"
 							],
-							"/",
 							[
 								"NumberedList",
 								"BulletedList",
@@ -445,18 +541,42 @@
 								"JustifyBlock"
 							],
 							[
+								"cloudcms-image",
+								"cloudcms-link"
+							],
+							[
 								"Image",
-								"Table",
-								"-",
 								"Link",
+								"-",
+								"Table",
 								"Smiley",
 								"TextColor",
 								"BGColor",
 								"Source"
 							]
-						]
+						],
+						"cloudcms-image": {
+							"imagePickerType": "file-picker",
+							"imageUploadPath": "/Images",
+							"imagePickerConfig": {
+								"initialContainerPath": "/images",
+								"rootContainerPath": "/images",
+								"uploadPath": "/images",
+								"uploadType": "fabric:image",
+								"typeQName": "fabric:image"
+							},
+							"hideUploadButton": false
+						},
+						"cloudcms-link": {
+							"linkPickerType": "node-picker",
+							"linkPickerConfig": {
+								"typeQName": "fabric:project",
+								"hideUploadButton": true
+							},
+							"hideUploadButton": true
+						}
 					}
-				},
+						},
 				"images": {
 					"type": "array",
 					"label": "Image and Video",
@@ -520,7 +640,6 @@
 									"Find",
 									"Replace"
 								],
-								"/",
 								[
 									"NumberedList",
 									"BulletedList",
@@ -531,18 +650,42 @@
 									"JustifyBlock"
 								],
 								[
+									"cloudcms-image",
+									"cloudcms-link"
+								],
+								[
 									"Image",
-									"Table",
-									"-",
 									"Link",
+									"-",
+									"Table",
 									"Smiley",
 									"TextColor",
 									"BGColor",
 									"Source"
 								]
-							]
+							],
+							"cloudcms-image": {
+								"imagePickerType": "file-picker",
+								"imageUploadPath": "/Images",
+								"imagePickerConfig": {
+									"initialContainerPath": "/images",
+									"rootContainerPath": "/images",
+									"uploadPath": "/images",
+									"uploadType": "fabric:image",
+									"typeQName": "fabric:image"
+								},
+								"hideUploadButton": false
+							},
+							"cloudcms-link": {
+								"linkPickerType": "node-picker",
+								"linkPickerConfig": {
+									"typeQName": "fabric:project",
+									"hideUploadButton": true
+								},
+								"hideUploadButton": true
+							}
 						}
-					},
+								},
 					"images": {
 						"type": "array",
 						"label": "Image and Video",
@@ -644,7 +787,6 @@
 								"Find",
 								"Replace"
 							],
-							"/",
 							[
 								"NumberedList",
 								"BulletedList",
@@ -655,18 +797,42 @@
 								"JustifyBlock"
 							],
 							[
+								"cloudcms-image",
+								"cloudcms-link"
+							],
+							[
 								"Image",
-								"Table",
-								"-",
 								"Link",
+								"-",
+								"Table",
 								"Smiley",
 								"TextColor",
 								"BGColor",
 								"Source"
 							]
-						]
+						],
+						"cloudcms-image": {
+							"imagePickerType": "file-picker",
+							"imageUploadPath": "/Images",
+							"imagePickerConfig": {
+								"initialContainerPath": "/images",
+								"rootContainerPath": "/images",
+								"uploadPath": "/images",
+								"uploadType": "fabric:image",
+								"typeQName": "fabric:image"
+							},
+							"hideUploadButton": false
+						},
+						"cloudcms-link": {
+							"linkPickerType": "node-picker",
+							"linkPickerConfig": {
+								"typeQName": "fabric:project",
+								"hideUploadButton": true
+							},
+							"hideUploadButton": true
+						}
 					}
-				},
+						},
 				"links": {
 					"type": "array",
 					"label": "Links",
@@ -721,7 +887,6 @@
 								"Find",
 								"Replace"
 							],
-							"/",
 							[
 								"NumberedList",
 								"BulletedList",
@@ -732,18 +897,42 @@
 								"JustifyBlock"
 							],
 							[
+								"cloudcms-image",
+								"cloudcms-link"
+							],
+							[
 								"Image",
-								"Table",
-								"-",
 								"Link",
+								"-",
+								"Table",
 								"Smiley",
 								"TextColor",
 								"BGColor",
 								"Source"
 							]
-						]
+						],
+						"cloudcms-image": {
+							"imagePickerType": "file-picker",
+							"imageUploadPath": "/Images",
+							"imagePickerConfig": {
+								"initialContainerPath": "/images",
+								"rootContainerPath": "/images",
+								"uploadPath": "/images",
+								"uploadType": "fabric:image",
+								"typeQName": "fabric:image"
+							},
+							"hideUploadButton": false
+						},
+						"cloudcms-link": {
+							"linkPickerType": "node-picker",
+							"linkPickerConfig": {
+								"typeQName": "fabric:project",
+								"hideUploadButton": true
+							},
+							"hideUploadButton": true
+						}
 					}
-				},
+						},
 				"links": {
 					"type": "array",
 					"label": "Links",
@@ -798,7 +987,6 @@
 								"Find",
 								"Replace"
 							],
-							"/",
 							[
 								"NumberedList",
 								"BulletedList",
@@ -809,18 +997,42 @@
 								"JustifyBlock"
 							],
 							[
+								"cloudcms-image",
+								"cloudcms-link"
+							],
+							[
 								"Image",
-								"Table",
-								"-",
 								"Link",
+								"-",
+								"Table",
 								"Smiley",
 								"TextColor",
 								"BGColor",
 								"Source"
 							]
-						]
+						],
+						"cloudcms-image": {
+							"imagePickerType": "file-picker",
+							"imageUploadPath": "/Images",
+							"imagePickerConfig": {
+								"initialContainerPath": "/images",
+								"rootContainerPath": "/images",
+								"uploadPath": "/images",
+								"uploadType": "fabric:image",
+								"typeQName": "fabric:image"
+							},
+							"hideUploadButton": false
+						},
+						"cloudcms-link": {
+							"linkPickerType": "node-picker",
+							"linkPickerConfig": {
+								"typeQName": "fabric:project",
+								"hideUploadButton": true
+							},
+							"hideUploadButton": true
+						}
 					}
-				},
+						},
 				"links": {
 					"type": "array",
 					"label": "Links",
@@ -875,7 +1087,6 @@
 								"Find",
 								"Replace"
 							],
-							"/",
 							[
 								"NumberedList",
 								"BulletedList",
@@ -886,18 +1097,42 @@
 								"JustifyBlock"
 							],
 							[
+								"cloudcms-image",
+								"cloudcms-link"
+							],
+							[
 								"Image",
-								"Table",
-								"-",
 								"Link",
+								"-",
+								"Table",
 								"Smiley",
 								"TextColor",
 								"BGColor",
 								"Source"
 							]
-						]
+						],
+						"cloudcms-image": {
+							"imagePickerType": "file-picker",
+							"imageUploadPath": "/Images",
+							"imagePickerConfig": {
+								"initialContainerPath": "/images",
+								"rootContainerPath": "/images",
+								"uploadPath": "/images",
+								"uploadType": "fabric:image",
+								"typeQName": "fabric:image"
+							},
+							"hideUploadButton": false
+						},
+						"cloudcms-link": {
+							"linkPickerType": "node-picker",
+							"linkPickerConfig": {
+								"typeQName": "fabric:project",
+								"hideUploadButton": true
+							},
+							"hideUploadButton": true
+						}
 					}
-				},
+						},
 				"links": {
 					"type": "array",
 					"label": "Links",

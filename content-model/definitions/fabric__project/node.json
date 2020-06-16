@@ -40,6 +40,15 @@
 			"type": "string",
 			"title": "Launch Date"
 		},
+		"expires": {
+			"type": "string",
+			"title": "Project Expires",
+			"default": "false",
+			"enum": [
+				"true",
+				"false"
+			]
+		},
 		"expirationDate": {
 			"type": "string",
 			"title": "Expiration Date"
@@ -103,7 +112,8 @@
 				"sewing101",
 				"project",
 				"fabric101",
-				"inspiration"
+				"inspiration",
+				"legacy"
 			]
 		},
 		"category": {
@@ -149,6 +159,7 @@
 		"mainImage": {
 			"type": "object",
 			"title": "Main Image",
+			"required": true,
 			"_relator": {
 				"nodeType": "fabric:image"
 			}
@@ -170,9 +181,21 @@
 		},
 		"products": {
 			"type": "array",
-			"title": "products",
+			"title": "Products",
 			"items": {
-				"type": "string"
+				"type": "object",
+				"title": "Product",
+				"properties": {
+					"sku": {
+						"title": "SKU",
+						"type": "string",
+						"required": true
+					},
+					"quantity": {
+						"title": "Quantity",
+						"type": "string"
+					}
+				}
 			}
 		},
 		"step1ToolsAndMaterials": {
@@ -442,6 +465,9 @@
 		],
 		"shop": [
 			"projectType"
+		],
+		"expirationDate": [
+			"expires"
 		]
 	},
 	"$schema": "http://json-schema.org/draft-04/schema#"

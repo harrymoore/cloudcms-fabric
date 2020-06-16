@@ -15,11 +15,13 @@
 		},
 		"title": {
 			"name": "title",
-			"type": "string"
+			"type": "string",
+			"required": true
 		},
 		"altText": {
 			"type": "string",
-			"title": "altText"
+			"title": "altText",
+			"required": true
 		},
 		"description": {
 			"type": "string",
