@@ -4,6 +4,7 @@ const PACKAGER = require("cloudcms-packager");
 const fs = require('fs');
 const https = require('https');
 const path = require('path');
+const { url } = require('inspector');
 const inputJSON = process.argv[2];
 const group = process.argv[3];
 const artifact = process.argv[4];
@@ -54,7 +55,6 @@ PACKAGER.create({
         }
     });
 
-
     const ROOT_NODE = {
         _qname: "r:root",
         _type: "n:root",
@@ -72,10 +72,11 @@ PACKAGER.create({
     });
 
     // process just a few nodes for testing
-    inputData = inputData.slice(0, 2);
+    // inputData = inputData.slice(0, 2);
 
     inputData.forEach((json) => {
         let projectJSON = new PROJECT(json);
+        let mainImageNode = null;
 
         // attach main image
         if (projectJSON.mainImage) {
@@ -83,7 +84,6 @@ PACKAGER.create({
             let filePath = path.join(TMP_IMAGES, title);
             var imageJSON = {
                 title: title,
-                // _filePath: "/images/" + title,
                 _alias: "image_" + title,
                 _type: "fabric:image",
                 _features: {
@@ -98,36 +98,32 @@ PACKAGER.create({
                     title: title
                 }
             };
-            imageNode = packager.addNode(imageJSON);
-            packager.addAttachment(imageNode.json._alias, "default", filePath);
-            packager.addAssociation(imagesFolderNode.json._alias, imageNode.json._alias, {
+            mainImageNode = packager.addNode(imageJSON);
+            packager.addAttachment(mainImageNode.json._alias, "default", filePath);
+            packager.addAssociation(imagesFolderNode.json._alias, mainImageNode.json._alias, {
                 "_type": "a:child",
                 "directionality": "DIRECTED"
             });
-            console.log("adding node for image: \n" + JSON.stringify(imageNode, null, 2));
+            // console.log("adding node for image: \n" + JSON.stringify(mainImageNode, null, 2));
             projectJSON.mainImage = {
-                __related_node__: imageNode.json._alias
+                __related_node__: mainImageNode.json._alias
             }
         }
 
         let projectNode = packager.addNode(projectJSON)
 
-        // now find any additional <img> tags in the html field and pull out the src URLs to include in the download
-        if (projectNode.json.overview) {
-            let imageList = {};
-            const imageRegex = /<img\s+[^(src)]*src="([^\"]+)\"/g;
-
-            while (match = imageRegex.exec(projectNode.json.overview)) {
-                // if (projectJSON.json.mainImage && projectJSON.json.mainImage == )
-                imageList[match[1]] = 1;
-            }
-
-            Object.keys(imageList).forEach(imageUrl => {
+        if (projectNode.json._imageList) {
+            projectNode.json._imageList.forEach(image => {
+                let imageUrl = image.src;
                 let title = path.basename(imageUrl);
                 let filePath = path.join(TMP_IMAGES, title);
+                let alt = image.alt || title;
+                let url = imageUrl;
 
                 let imageJSON = {
                     title: title,
+                    altText: alt,
+                    url: url,
                     _alias: "image_" + title,
                     _type: "fabric:image",
                     _features: {
@@ -144,7 +140,9 @@ PACKAGER.create({
                 };
 
                 if (projectNode.json.mainImage && projectNode.json.mainImage.__related_node__ == imageJSON._alias) {
-                    // mainImage is already created so skip here
+                    // mainImage is already created so skip here. Just need to set it's altText
+                    mainImageNode.json.altText = alt;
+                    mainImageNode.json.url = url;
                 } else {
                     let imageNode = packager.addNode(imageJSON);
                     packager.addAttachment(imageNode.json._alias, "default", filePath);
@@ -196,4 +194,34 @@ function PROJECT(json) {
     if (json.image) {
         this.mainImage = json.image;
     }
+
+    this._imageList = extractImages(json.markdown);
 };
+
+function extractImages(markdown) {
+    let imageRegex = /(?:!\[(.*?)\]\((.*?)\))/g;
+    let imageList = [];
+    while (match = imageRegex.exec(markdown)) {
+        // if (projectJSON.json.mainImage && projectJSON.json.mainImage == )
+        imageList.push({
+            alt: match[1],
+            src: match[2]
+        });
+    }
+
+    return imageList;
+}
+
+function extractDocs(markdown) {
+    let docRegex = /(?:!\[(.*?)\]\((.*?)\))/g;
+    let docList = [];
+    while (match = imageRegex.exec(markdown)) {
+        console.log(`alt: ${match[1]} src: ${match[1]}`);
+        imageList.push({
+            alt: match[1],
+            src: match[2]
+        });
+    }
+
+    return imageList;
+}
