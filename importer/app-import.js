@@ -30,13 +30,20 @@ PACKAGER.create({
     inputData.shift(); // the first post looks like a message from Ghost blog software so skip it
 
     // add the 'images' folder node
-    const IMAGES_ALIAS = "images";
-    packager.addNode({
+    const IMAGES_ALIAS = "node__images";
+    const imagesFolderNode = packager.addNode({
         _type: "n:node",
         title: "images",
         _alias: IMAGES_ALIAS,
         _features: {
-            "f:container": {}
+            "f:container": {
+                active: true
+            },
+            "f:titled": {},
+            "f:filename": {
+                "filename": "images"
+            },
+            "f:indexable": {}
         },
         _existing: {
             _type: "n:node",
@@ -47,38 +54,113 @@ PACKAGER.create({
         }
     });
 
-    inputData = inputData.slice(0,5);
-    
-    inputData.forEach((json) => {
-        let projectNode = new PROJECT(json);
 
-        // download and attach main image
-        if (projectNode.mainImage) {
-            let title = path.basename(projectNode.mainImage);
+    const ROOT_NODE = {
+        _qname: "r:root",
+        _type: "n:root",
+        _alias: "root_root",
+        _existing: {
+            _type: "n:node",
+            _qname: "r:root"
+        }
+    };
+    const rootNode = packager.addNode(ROOT_NODE);
+
+    packager.addAssociation(rootNode.json._alias, imagesFolderNode.json._alias, {
+        "_type": "a:child",
+        "directionality": "DIRECTED"
+    });
+
+    // process just a few nodes for testing
+    inputData = inputData.slice(0, 2);
+
+    inputData.forEach((json) => {
+        let projectJSON = new PROJECT(json);
+
+        // attach main image
+        if (projectJSON.mainImage) {
+            let title = path.basename(projectJSON.mainImage);
             let filePath = path.join(TMP_IMAGES, title);
-            var imageNode = {
+            var imageJSON = {
                 title: title,
                 // _filePath: "/images/" + title,
                 _alias: "image_" + title,
                 _type: "fabric:image",
+                _features: {
+                    "f:titled": {},
+                    "f:filename": {
+                        "filename": title
+                    },
+                    "f:indexable": {}
+                },
                 _existing: {
                     _type: "fabric:image",
                     title: title
                 }
             };
-            packager.addNode(imageNode);
-            packager.addAttachment(imageNode._alias, "default", filePath);
-            packager.addAssociation(IMAGES_ALIAS, imageNode._alias, {
+            imageNode = packager.addNode(imageJSON);
+            packager.addAttachment(imageNode.json._alias, "default", filePath);
+            packager.addAssociation(imagesFolderNode.json._alias, imageNode.json._alias, {
                 "_type": "a:child",
                 "directionality": "DIRECTED"
             });
-
-            projectNode.mainImage = {
-                __related_node__: imageNode._alias
+            console.log("adding node for image: \n" + JSON.stringify(imageNode, null, 2));
+            projectJSON.mainImage = {
+                __related_node__: imageNode.json._alias
             }
         }
 
-        packager.addNode(projectNode)
+        let projectNode = packager.addNode(projectJSON)
+
+        // now find any additional <img> tags in the html field and pull out the src URLs to include in the download
+        if (projectNode.json.overview) {
+            let imageList = {};
+            const imageRegex = /<img\s+[^(src)]*src="([^\"]+)\"/g;
+
+            while (match = imageRegex.exec(projectNode.json.overview)) {
+                // if (projectJSON.json.mainImage && projectJSON.json.mainImage == )
+                imageList[match[1]] = 1;
+            }
+
+            Object.keys(imageList).forEach(imageUrl => {
+                let title = path.basename(imageUrl);
+                let filePath = path.join(TMP_IMAGES, title);
+
+                let imageJSON = {
+                    title: title,
+                    _alias: "image_" + title,
+                    _type: "fabric:image",
+                    _features: {
+                        "f:titled": {},
+                        "f:filename": {
+                            "filename": title
+                        },
+                        "f:indexable": {}
+                    },
+                    _existing: {
+                        _type: "fabric:image",
+                        title: title
+                    }
+                };
+
+                if (projectNode.json.mainImage && projectNode.json.mainImage.__related_node__ == imageJSON._alias) {
+                    // mainImage is already created so skip here
+                } else {
+                    let imageNode = packager.addNode(imageJSON);
+                    packager.addAttachment(imageNode.json._alias, "default", filePath);
+                    // add the image node as a child of the "/images" folder node
+                    packager.addAssociation(imagesFolderNode.json._alias, imageNode.json._alias, {
+                        "_type": "a:child",
+                        "directionality": "DIRECTED"
+                    });
+                    // associate image to this Project node
+                    packager.addAssociation(imagesFolderNode.json._alias, imageNode.json._alias, {
+                        "_type": "a:linked",
+                        "directionality": "UNDIRECTED"
+                    });
+                }
+            });
+        }
     });
 
     // package up the archive
@@ -92,7 +174,7 @@ PACKAGER.create({
 
 function PROJECT(json) {
     this._type = "fabric:project";
-    this.projectType = "project";
+    this.projectType = "legacy";
     this.title = json.title;
     this.overview = json.html || "";
     this.description = json.meta_description || "";
@@ -110,8 +192,8 @@ function PROJECT(json) {
     this.category = [{
         title: "Apparel"
     }];
+    this.creationDate = json.created_at || "";
     if (json.image) {
         this.mainImage = json.image;
     }
 };
-
