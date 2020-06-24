@@ -107,3 +107,7 @@ fabric-import-*.zip
 ~*.docx
 fabric-import_content-*.zip
 group1-import-version1.zip
+cloudcms-server-demo
+importer/platforms
+manifest.json
+gitana-*.json

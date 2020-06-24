@@ -1,5 +1,6 @@
 // node app.js output-file-path input-json-path group artifact version
 require('dotenv').config();
+const urlCoDec = require("url-encode-decode");
 const fs = require('fs');
 const Axios = require('axios');
 const path = require('path');
@@ -18,19 +19,18 @@ inputData.shift(); // the first post looks like a message from Ghost blog softwa
 // inputData = inputData.slice(0, 2);
 
 let imageList = {};
-const imageRegex = /<img\s+[^(src)]*src="([^\"]+)\"/g;
 
 inputData.forEach(json => {
     // include the main image if in the json
     if (json.image) {
-        imageList[json.image] = 1;
+        imageList[urlCoDec.decode(json.image)] = 1;
     }
 
-    // now find any additional <img> tags in the html field and pull out the src URLs to include in the download
-    if (json.html) {
-        while ( match = imageRegex.exec( json.html ) ) {
-            imageList[match[1]] = 1;
-        }
+    // now find any additional images in the markdown field to include in the download
+    if (json.markdown) {
+        extractImages(json.markdown).forEach(imageSrc => {
+            imageList[urlCoDec.decode(imageSrc)] = 1;
+        });
     }
 });
 
@@ -38,9 +38,13 @@ const CONCURRENT_DOWNLOADS = 10;
 eachOfLimit(Object.keys(imageList), CONCURRENT_DOWNLOADS, async (imageUrl) => {
     // download main image
     if (imageUrl) {
-        let filePath = await downloadImage(imageUrl);
-        let title = path.basename(filePath);
-        console.log(`Downloaded image ${title} to ${filePath}`);
+        try {
+            let filePath = await downloadImage(imageUrl);
+            let title = path.basename(filePath);
+            // console.log(`Downloaded image ${title} to ${filePath}`);
+        } catch (error) {
+            console.error(`Failed to downloaded image ${imageUrl} with error ${error}`);
+        }
     }
 }, (err) => {
     if (err) {
@@ -48,6 +52,17 @@ eachOfLimit(Object.keys(imageList), CONCURRENT_DOWNLOADS, async (imageUrl) => {
     }
     console.log("All done - images downloaded to " + TMP_IMAGES);
 });
+
+function extractImages(markdown) {
+    let imageRegex = /(?:!\[(.*?)\]\((.*?)\))/g;
+    let imageList = [];
+
+    while (match = imageRegex.exec(markdown)) {
+        imageList.push(urlCoDec.decode(match[2]));
+    }
+
+    return imageList;
+}
 
 async function downloadImage(imageUrl) {
     let url = (new URL(imageUrl, "https://www.fabric.com/")).toString();
@@ -60,7 +75,7 @@ async function downloadImage(imageUrl) {
     const writer = fs.createWriteStream(filePath);
 
     const response = await Axios({
-        url,
+        url: urlCoDec.decode(url),
         method: 'GET',
         responseType: 'stream'
     })

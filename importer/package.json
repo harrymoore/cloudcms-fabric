@@ -20,6 +20,7 @@
     "async": "^3.2.0",
     "axios": "^0.19.2",
     "cloudcms-packager": "^1.0.4",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "url-encode-decode": "^1.0.0"
   }
 }

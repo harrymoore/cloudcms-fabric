@@ -1,6 +1,7 @@
 // node app.js output-file-path input-json-path group artifact version
 require('dotenv').config();
 const PACKAGER = require("cloudcms-packager");
+const urlCoDec = require("url-encode-decode");
 const fs = require('fs');
 const https = require('https');
 const path = require('path');
@@ -31,11 +32,11 @@ PACKAGER.create({
     inputData.shift(); // the first post looks like a message from Ghost blog software so skip it
 
     // add the 'images' folder node
-    const IMAGES_ALIAS = "node__images";
+    // const IMAGES_ALIAS = "node__images";
     const imagesFolderNode = packager.addNode({
         _type: "n:node",
         title: "images",
-        _alias: IMAGES_ALIAS,
+        // _alias: IMAGES_ALIAS,
         _features: {
             "f:container": {
                 active: true
@@ -58,7 +59,7 @@ PACKAGER.create({
     const ROOT_NODE = {
         _qname: "r:root",
         _type: "n:root",
-        _alias: "root_root",
+        // _alias: "root_root",
         _existing: {
             _type: "n:node",
             _qname: "r:root"
@@ -66,25 +67,27 @@ PACKAGER.create({
     };
     const rootNode = packager.addNode(ROOT_NODE);
 
-    packager.addAssociation(rootNode.json._alias, imagesFolderNode.json._alias, {
+    packager.addAssociation(rootNode, imagesFolderNode, {
         "_type": "a:child",
         "directionality": "DIRECTED"
     });
 
-    // process just a few nodes for testing
-    // inputData = inputData.slice(0, 2);
+// process just a few nodes for testing
+// inputData = inputData.slice(19, 22);
 
     inputData.forEach((json) => {
         let projectJSON = new PROJECT(json);
         let mainImageNode = null;
 
         // attach main image
-        if (projectJSON.mainImage) {
-            let title = path.basename(projectJSON.mainImage);
+        if (projectJSON.mainImage && projectJSON.mainImage.src) {
+            let title = path.basename(projectJSON.mainImage.src);
             let filePath = path.join(TMP_IMAGES, title);
             var imageJSON = {
                 title: title,
-                _alias: "image_" + title,
+                altText: projectJSON.mainImage.alt || title,
+                url: projectJSON.mainImage.src,
+                // _alias: "image_" + title,
                 _type: "fabric:image",
                 _features: {
                     "f:titled": {},
@@ -99,14 +102,18 @@ PACKAGER.create({
                 }
             };
             mainImageNode = packager.addNode(imageJSON);
-            packager.addAttachment(mainImageNode.json._alias, "default", filePath);
-            packager.addAssociation(imagesFolderNode.json._alias, mainImageNode.json._alias, {
+            if (fs.existsSync(filePath)) {
+                packager.addAttachment(mainImageNode, "default", filePath);
+            } else {
+                console.log("WARNING: image file not found for attachment " + filePath);
+            }
+            packager.addAssociation(imagesFolderNode, mainImageNode, {
                 "_type": "a:child",
                 "directionality": "DIRECTED"
             });
             // console.log("adding node for image: \n" + JSON.stringify(mainImageNode, null, 2));
             projectJSON.mainImage = {
-                __related_node__: mainImageNode.json._alias
+                __related_node__: mainImageNode.id
             }
         }
 
@@ -124,7 +131,7 @@ PACKAGER.create({
                     title: title,
                     altText: alt,
                     url: url,
-                    _alias: "image_" + title,
+                    // _alias: "image_" + url,
                     _type: "fabric:image",
                     _features: {
                         "f:titled": {},
@@ -139,25 +146,25 @@ PACKAGER.create({
                     }
                 };
 
-                if (projectNode.json.mainImage && projectNode.json.mainImage.__related_node__ == imageJSON._alias) {
-                    // mainImage is already created so skip here. Just need to set it's altText
-                    mainImageNode.json.altText = alt;
-                    mainImageNode.json.url = url;
+                let imageNode = packager.addNode(imageJSON);
+                if (fs.existsSync(filePath)) {
+                    packager.addAttachment(imageNode, "default", filePath);
                 } else {
-                    let imageNode = packager.addNode(imageJSON);
-                    packager.addAttachment(imageNode.json._alias, "default", filePath);
-                    // add the image node as a child of the "/images" folder node
-                    packager.addAssociation(imagesFolderNode.json._alias, imageNode.json._alias, {
-                        "_type": "a:child",
-                        "directionality": "DIRECTED"
-                    });
-                    // associate image to this Project node
-                    packager.addAssociation(imagesFolderNode.json._alias, imageNode.json._alias, {
-                        "_type": "a:linked",
-                        "directionality": "UNDIRECTED"
-                    });
+                    console.log("WARNING: image file not found for attachment " + imageUrl);
                 }
+                    // add the image node as a child of the "/images" folder node
+                packager.addAssociation(imagesFolderNode, imageNode, {
+                    "_type": "a:child",
+                    "directionality": "DIRECTED"
+                });
+                // associate image to this Project node
+                packager.addAssociation(projectNode, imageNode, {
+                    "_type": "a:linked",
+                    "directionality": "UNDIRECTED"
+                });
             });
+
+            delete projectNode.json._imageList;
         }
     });
 
@@ -178,7 +185,7 @@ function PROJECT(json) {
     this.description = json.meta_description || "";
     this.slug = json.slug;
     this._key = "project_" + json.uuid;
-    this._alias = "project_" + json.uuid;
+    // this._alias = "project_" + json.uuid;
     this._existing = {
         _type: "fabric:project",
         title: this.title
@@ -192,7 +199,12 @@ function PROJECT(json) {
     }];
     this.creationDate = json.created_at || "";
     if (json.image) {
-        this.mainImage = json.image;
+        this.mainImage = {
+            src: urlCoDec.decode(json.image),
+            alt: json.meta_title || ""
+        };
+    } else {
+        this.mainImage = {}
     }
 
     this._imageList = extractImages(json.markdown);
@@ -201,25 +213,11 @@ function PROJECT(json) {
 function extractImages(markdown) {
     let imageRegex = /(?:!\[(.*?)\]\((.*?)\))/g;
     let imageList = [];
+
     while (match = imageRegex.exec(markdown)) {
-        // if (projectJSON.json.mainImage && projectJSON.json.mainImage == )
         imageList.push({
             alt: match[1],
-            src: match[2]
-        });
-    }
-
-    return imageList;
-}
-
-function extractDocs(markdown) {
-    let docRegex = /(?:!\[(.*?)\]\((.*?)\))/g;
-    let docList = [];
-    while (match = imageRegex.exec(markdown)) {
-        console.log(`alt: ${match[1]} src: ${match[1]}`);
-        imageList.push({
-            alt: match[1],
-            src: match[2]
+            src: urlCoDec.decode(match[2])
         });
     }
 

@@ -12,6 +12,9 @@ VERSION=$NOW
 
 # https://fabric.cloudcms.net content repository
 REPOSITORY_ID="8ba09e97a317becd199a"
+
+# https://harry.cloudcms.net content repository
+# REPOSITORY_ID="12360cd88adb6e461d56"
 BRANCH_ID="master"
 
 npm install --no-audit
@@ -30,6 +33,7 @@ cloudcms archive upload --group $GROUP --artifact $ARTIFACT --version $VERSION
 
 echo "*******************************"
 echo "** import archive package to branch"
-sleep 10
+sleep 120
+echo cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repository $REPOSITORY_ID --branch $BRANCH_ID
 cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repository $REPOSITORY_ID --branch $BRANCH_ID
 
