@@ -180,6 +180,7 @@ PACKAGER.create({
 function PROJECT(json) {
     this._type = "fabric:project";
     this.projectType = "legacy";
+    this.projectSubType = "legacyBlogPost";
     this.title = json.title;
     this.overview = json.html || "";
     this.description = json.meta_description || "";
