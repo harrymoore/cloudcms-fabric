@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Import Category/Sub-Category and Keyword default items
+# Import Category/Sub-Category and Keyword default items AND Project and Image content
 #
 
 NOW=$(date +"%m-%d-%Y-%H-%M-%S")
@@ -33,7 +33,7 @@ cloudcms archive upload --group $GROUP --artifact $ARTIFACT --version $VERSION
 
 echo "*******************************"
 echo "** import archive package to branch"
-sleep 120
+sleep 10
 echo cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repository $REPOSITORY_ID --branch $BRANCH_ID
 cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repository $REPOSITORY_ID --branch $BRANCH_ID
 

@@ -111,3 +111,4 @@ cloudcms-server-demo
 importer/platforms
 manifest.json
 gitana-*.json
+importer/fabric-import-content-*
