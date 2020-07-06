@@ -112,8 +112,16 @@
 				"sewing101",
 				"project",
 				"fabric101",
-				"inspiration",
-				"legacy"
+				"inspiration"
+			]
+		},
+		"projectSubType": {
+			"type": "string",
+			"title": "Project Sub Type",
+			"default": "",
+			"enum": [
+				"",
+				"legacyBlogPost"
 			]
 		},
 		"category": {

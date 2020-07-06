@@ -123,7 +123,7 @@
 				],
 				"cloudcms-image": {
 					"imagePickerType": "file-picker",
-					"imageUploadPath": "/Images",
+					"imageUploadPath": "/images",
 					"imagePickerConfig": {
 						"initialContainerPath": "/images",
 						"rootContainerPath": "/images",
@@ -206,6 +206,15 @@
 				"Fabric 101",
 				"Inspiration",
 				"Legacy"
+			]
+		},
+		"projectSubType": {
+			"type": "select",
+			"label": "Project Sub Type",
+			"sort": false,
+			"optionLabels": [
+				"",
+				"Legacy Blog Post"
 			]
 		},
 		"category": {
@@ -469,7 +478,7 @@
 							"hideUploadButton": true
 						}
 					}
-						},
+				},
 				"images": {
 					"type": "array",
 					"label": "Image and Video",
@@ -576,7 +585,7 @@
 							"hideUploadButton": true
 						}
 					}
-						},
+				},
 				"images": {
 					"type": "array",
 					"label": "Image and Video",
@@ -685,7 +694,7 @@
 								"hideUploadButton": true
 							}
 						}
-								},
+					},
 					"images": {
 						"type": "array",
 						"label": "Image and Video",
@@ -832,7 +841,7 @@
 							"hideUploadButton": true
 						}
 					}
-						},
+				},
 				"links": {
 					"type": "array",
 					"label": "Links",
@@ -932,7 +941,7 @@
 							"hideUploadButton": true
 						}
 					}
-						},
+				},
 				"links": {
 					"type": "array",
 					"label": "Links",
@@ -1032,7 +1041,7 @@
 							"hideUploadButton": true
 						}
 					}
-						},
+				},
 				"links": {
 					"type": "array",
 					"label": "Links",
@@ -1132,7 +1141,7 @@
 							"hideUploadButton": true
 						}
 					}
-						},
+				},
 				"links": {
 					"type": "array",
 					"label": "Links",
