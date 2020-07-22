@@ -213,7 +213,6 @@
 			"label": "Project Sub Type",
 			"sort": false,
 			"optionLabels": [
-				"",
 				"Legacy Blog Post"
 			]
 		},
@@ -280,7 +279,7 @@
 		"mainImage": {
 			"type": "node-picker",
 			"label": "Main Image",
-			"required": true,
+			"___required": true,
 			"picker": {
 				"initialContainerPath": "/images",
 				"rootContainerPath": "/images",
@@ -398,12 +397,6 @@
 			"type": "object",
 			"label": "Step 1: Tools & Materials",
 			"required": false,
-			"dependencies": {
-				"projectType": [
-					"sewing101",
-					"project"
-				]
-			},
 			"fields": {
 				"title": {
 					"type": "text",
@@ -480,7 +473,7 @@
 					}
 				},
 				"images": {
-					"type": "array",
+					"type": "file-picker",
 					"label": "Image and Video",
 					"picker": {
 						"initialContainerPath": "/images",
@@ -587,7 +580,7 @@
 					}
 				},
 				"images": {
-					"type": "array",
+					"type": "file-picker",
 					"label": "Image and Video",
 					"picker": {
 						"initialContainerPath": "/images",
@@ -696,7 +689,7 @@
 						}
 					},
 					"images": {
-						"type": "array",
+						"type": "file-picker",
 						"label": "Image and Video",
 						"picker": {
 							"initialContainerPath": "/images",
@@ -744,16 +737,24 @@
 			}
 		},
 		"imageGallery": {
-			"_comment": "inspiration",
 			"type": "file-picker",
 			"label": "Image Gallery",
 			"helper": "Collection of images that showcases the trend",
 			"helperPosition": "above",
-			"dependencies": {
-				"projectType": [
-					"inspiration"
-				]
-			},
+			"picker": {
+				"icon": true,
+				"initialContainerPath": "/images",
+				"rootContainerPath": "/images",
+				"uploadPath": "/images",
+				"uploadType": "fabric:image",
+				"typeQName": "fabric:image"
+			}
+		},
+		"patternImages": {
+			"type": "file-picker",
+			"label": "Pattern Image",
+			"helper": "Pattern images",
+			"helperPosition": "above",
 			"picker": {
 				"icon": true,
 				"initialContainerPath": "/images",
@@ -1165,13 +1166,7 @@
 		}
 	},
 	"dependencies": {
-		"step1ToolsAndMaterials": [
-			"projectType"
-		],
 		"step2MeasuringCutting": [
-			"projectType"
-		],
-		"imageGallery": [
 			"projectType"
 		],
 		"products": [

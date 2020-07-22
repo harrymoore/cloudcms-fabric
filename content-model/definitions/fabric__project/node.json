@@ -112,7 +112,8 @@
 				"sewing101",
 				"project",
 				"fabric101",
-				"inspiration"
+				"inspiration",
+				"legacy"
 			]
 		},
 		"projectSubType": {
@@ -120,7 +121,6 @@
 			"title": "Project Sub Type",
 			"default": "",
 			"enum": [
-				"",
 				"legacyBlogPost"
 			]
 		},
@@ -167,9 +167,21 @@
 		"mainImage": {
 			"type": "object",
 			"title": "Main Image",
-			"required": true,
+			"___required": true,
 			"_relator": {
-				"nodeType": "fabric:image"
+				"nodeType": "fabric:image",
+				"mappings": [
+					{
+						"from": "target",
+						"fromProperty": "/altText",
+						"toProperty": "./altText"
+					},
+					{
+						"from": "target",
+						"fromProperty": "/description",
+						"toProperty": "./description"
+					}
+				]
 			}
 		},
 		"altImages": {
@@ -179,7 +191,19 @@
 				"type": "object"
 			},
 			"_relator": {
-				"nodeType": "fabric:image"
+				"nodeType": "fabric:image",
+				"mappings": [
+					{
+						"from": "target",
+						"fromProperty": "/altText",
+						"toProperty": "./altText"
+					},
+					{
+						"from": "target",
+						"fromProperty": "/description",
+						"toProperty": "./description"
+					}
+				]
 			}
 		},
 		"overview": {
@@ -227,7 +251,19 @@
 						"type": "object"
 					},
 					"_relator": {
-						"nodeType": "fabric:image"
+						"nodeType": "fabric:image",
+						"mappings": [
+							{
+								"from": "target",
+								"fromProperty": "/altText",
+								"toProperty": "./altText"
+							},
+							{
+								"from": "target",
+								"fromProperty": "/description",
+								"toProperty": "./description"
+							}
+						]
 					}
 				},
 				"links": {
@@ -260,7 +296,19 @@
 						"type": "object"
 					},
 					"_relator": {
-						"nodeType": "fabric:image"
+						"nodeType": "fabric:image",
+						"mappings": [
+							{
+								"from": "target",
+								"fromProperty": "/altText",
+								"toProperty": "./altText"
+							},
+							{
+								"from": "target",
+								"fromProperty": "/description",
+								"toProperty": "./description"
+							}
+						]
 					}
 				},
 				"links": {
@@ -296,7 +344,19 @@
 							"type": "object"
 						},
 						"_relator": {
-							"nodeType": "fabric:image"
+							"nodeType": "fabric:image",
+							"mappings": [
+								{
+									"from": "target",
+									"fromProperty": "/altText",
+									"toProperty": "./altText"
+								},
+								{
+									"from": "target",
+									"fromProperty": "/description",
+									"toProperty": "./description"
+								}
+							]
 						}
 					},
 					"links": {
@@ -330,14 +390,47 @@
 			}
 		},
 		"imageGallery": {
-			"_comment": "inspiration",
 			"type": "array",
 			"title": "Image Gallery",
 			"items": {
 				"type": "object"
 			},
 			"_relator": {
-				"nodeType": "fabric:image"
+				"nodeType": "fabric:image",
+				"mappings": [
+					{
+						"from": "target",
+						"fromProperty": "/altText",
+						"toProperty": "./altText"
+					},
+					{
+						"from": "target",
+						"fromProperty": "/description",
+						"toProperty": "./description"
+					}
+				]
+			}
+		},
+		"patternImages": {
+			"type": "array",
+			"title": "patternImage",
+			"items": {
+				"type": "object"
+			},
+			"_relator": {
+				"nodeType": "fabric:image",
+				"mappings": [
+					{
+						"from": "target",
+						"fromProperty": "/altText",
+						"toProperty": "./altText"
+					},
+					{
+						"from": "target",
+						"fromProperty": "/description",
+						"toProperty": "./description"
+					}
+				]
 			}
 		},
 		"howToChoose": {
@@ -362,7 +455,19 @@
 						"type": "object"
 					},
 					"_relator": {
-						"nodeType": "fabric:image"
+						"nodeType": "fabric:image",
+						"mappings": [
+							{
+								"from": "target",
+								"fromProperty": "/altText",
+								"toProperty": "./altText"
+							},
+							{
+								"from": "target",
+								"fromProperty": "/description",
+								"toProperty": "./description"
+							}
+						]
 					}
 				}
 			}
@@ -389,7 +494,19 @@
 						"type": "object"
 					},
 					"_relator": {
-						"nodeType": "fabric:image"
+						"nodeType": "fabric:image",
+						"mappings": [
+							{
+								"from": "target",
+								"fromProperty": "/altText",
+								"toProperty": "./altText"
+							},
+							{
+								"from": "target",
+								"fromProperty": "/description",
+								"toProperty": "./description"
+							}
+						]
 					}
 				}
 			}
@@ -416,7 +533,19 @@
 						"type": "object"
 					},
 					"_relator": {
-						"nodeType": "fabric:image"
+						"nodeType": "fabric:image",
+						"mappings": [
+							{
+								"from": "target",
+								"fromProperty": "/altText",
+								"toProperty": "./altText"
+							},
+							{
+								"from": "target",
+								"fromProperty": "/description",
+								"toProperty": "./description"
+							}
+						]
 					}
 				}
 			}
@@ -443,23 +572,29 @@
 						"type": "object"
 					},
 					"_relator": {
-						"nodeType": "fabric:image"
+						"nodeType": "fabric:image",
+						"mappings": [
+							{
+								"from": "target",
+								"fromProperty": "/altText",
+								"toProperty": "./altText"
+							},
+							{
+								"from": "target",
+								"fromProperty": "/description",
+								"toProperty": "./description"
+							}
+						]
 					}
 				}
 			}
 		}
 	},
 	"dependencies": {
-		"step1ToolsAndMaterials": [
-			"projectType"
-		],
 		"step2MeasuringCutting": [
 			"projectType"
 		],
 		"additionalSteps": [
-			"projectType"
-		],
-		"imageGallery": [
 			"projectType"
 		],
 		"howToChoose": [
