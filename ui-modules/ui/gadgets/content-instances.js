@@ -9,8 +9,14 @@ define(function (require, exports, module) {
     return Ratchet.GadgetRegistry.register("custom-content-instances", ContentInstancesGadget.extend({
 
         doGitanaQuery: function (context, model, searchTerm, query, pagination, callback) {
+            var self = this;
+
             if (!query) {
                 query = {};
+            }
+
+            if (self.selectedProjectType) {
+                query.projectType = self.selectedProjectType;
             }
 
             query._fields = {
@@ -26,19 +32,10 @@ define(function (require, exports, module) {
             }
 
             this.base(context, model, searchTerm, query, pagination, function (resultMap) {
-
                 var array = resultMap.asArray();
 
                 model.size = resultMap.size();
                 model.totalRows = resultMap.totalRows();
-
-                // copy into map so that we can reference by ID
-                // this may help with drag/drop                
-                model.rowsById = {};
-                for (var i = 0; i < array.length; i++) {
-                    var row = array[i];
-                    model.rowsById[row._doc] = row;
-                }
 
                 callback(resultMap);
             });
@@ -55,6 +52,38 @@ define(function (require, exports, module) {
             _iconUri = _iconUri.replace("icon64", "icon128");
 
             return _iconUri;
+        },
+
+        afterSwap: function(el, model, originalContext, callback)
+        {
+            var self = this;
+
+            self.base(el, model, originalContext, function() {
+
+                var selectedContentTypeDescriptor = self.observable("selected-content-type").get();
+                if (selectedContentTypeDescriptor && selectedContentTypeDescriptor.definition && selectedContentTypeDescriptor.definition.properties.projectType) {
+                    // customization. add select list to choose project type filter
+                    var selectListDiv = '<div id="project-type-div" class="button-container dropdown"></div>';
+                    var selectList = '<select class="btn btn-default" id="selectedProjectType" name="projecttypes"><option selected value="">All</option>';
+                    
+                    selectedContentTypeDescriptor.definition.properties.projectType.enum.forEach(type => {
+                        selectList += `<option value="${type}">${type}</option>`;
+                    });
+
+                    selectList += "</select>";
+                    var div = $(selectListDiv).insertAfter(".list-button-create-content");
+                    var projectTypeList = $(selectList).insertAfter("#project-type-div");
+
+                    // on change of selected Project Type:
+                    $(projectTypeList).change(function(e) {
+                        e.stopPropagation();
+                        self.selectedProjectType = $(e.target).find(":selected").val() || "";
+                        self.handleSetFilter(el, model, $(el).find("input[type=search]").val());
+                    });
+                }
+
+                callback();
+            });
         },
 
         prepareModel: function (el, model, callback) {
