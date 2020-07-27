@@ -63,7 +63,6 @@ define(function (require, exports, module) {
                 var selectedContentTypeDescriptor = self.observable("selected-content-type").get();
                 if (selectedContentTypeDescriptor && selectedContentTypeDescriptor.definition && selectedContentTypeDescriptor.definition.properties.projectType) {
                     // customization. add select list to choose project type filter
-                    var selectListDiv = '<div id="project-type-div" class="button-container dropdown"></div>';
                     var selectList = '<select class="btn btn-default" id="selectedProjectType" name="projecttypes"><option selected value="">All</option>';
                     
                     selectedContentTypeDescriptor.definition.properties.projectType.enum.forEach(type => {
@@ -71,8 +70,9 @@ define(function (require, exports, module) {
                     });
 
                     selectList += "</select>";
-                    var div = $(selectListDiv).insertAfter(".list-button-create-content");
-                    var projectTypeList = $(selectList).insertAfter("#project-type-div");
+
+                    var selectListDiv = `<div id="project-type-div" class="button-container dropdown">${selectList}</div>`;
+                    var projectTypeList = $(selectListDiv).insertBefore('#center > div.buttonbar > div.pull-right > div:nth-child(1) > button');
 
                     // on change of selected Project Type:
                     $(projectTypeList).change(function(e) {
