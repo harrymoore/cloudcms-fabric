@@ -752,8 +752,8 @@
 		},
 		"patternImages": {
 			"type": "file-picker",
-			"label": "Pattern Image",
-			"helper": "Pattern images",
+			"label": "Pattern Images",
+			"helper": "Images demonstrating the desired pattern",
 			"helperPosition": "above",
 			"picker": {
 				"icon": true,
