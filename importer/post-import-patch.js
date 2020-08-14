@@ -38,7 +38,7 @@ class Patch extends BaseScript {
             }
         };
 
-        let nodes = await self.session.queryNodes(self.repository, self.branch, query, {metadata: true, full: true, limit: 25});
+        let nodes = await self.session.queryNodes(self.repository, self.branch, query, {metadata: true, full: true, limit: -1});
 
         // nodes.rows.forEach(async (doc) => {
         //     // no id

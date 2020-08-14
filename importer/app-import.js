@@ -177,9 +177,56 @@ PACKAGER.create({
     });
 });
 
+function getProjectType(json) {
+    if (!json.slug || typeof json.slug !== 'string') {
+        return "project";
+    }
+    if (!json.title || typeof json.title !== 'string') {
+        return "project";
+    }
+    if (!json.markdown || typeof json.markdown !== 'string') {
+        return "project";
+    }
+    
+    let str = `${json.slug} ${json.title} ${json.markdown}`;
+
+    if (str.match(/designer/i)) {
+        return "inspiration";
+    }
+
+    if (str.match(/sewing\s+101/i) || str.match(/sewing\s+tips/i)) {
+        return "sewing101";
+    }
+
+    if (str.match(/fabric\s+101/i) || str.match(/fabrics/i)) {
+        return "fabric101";
+    }
+
+    if (str.match(/quilt/i) && str.match(/block/i)) {
+        return "project";
+    }
+    
+    if (str.match(/diy/i) || str.match(/quilt/i) || str.match(/pattern/i) || str.match(/tutorial/i)) {
+        return "project";
+    }
+
+    if (str.match(/holiday/i)) {
+        return "project";
+    }
+
+    if (str.match(/designer/i)) {
+        return "inspiration";
+    }
+
+    return "project";
+}
+
 function PROJECT(json) {
     this._type = "fabric:project";
-    this.projectType = "legacy";
+    // this.id = "_alias";
+    this.projectType = getProjectType(json);
+    console.log(`${json.id},${this.projectType}`)
+
     this.projectSubType = "legacyBlogPost";
     this.title = json.title;
     this.overview = json.html || "";
