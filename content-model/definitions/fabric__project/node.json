@@ -244,33 +244,41 @@
 					"title": "copy",
 					"default": ""
 				},
-				"images": {
+				"cta": {
 					"type": "array",
-					"title": "images",
+					"title": "CTA",
 					"items": {
-						"type": "object"
-					},
-					"_relator": {
-						"nodeType": "fabric:image",
-						"mappings": [
-							{
-								"from": "target",
-								"fromProperty": "/altText",
-								"toProperty": "./altText"
+						"type": "object",
+						"title": "cta",
+						"properties": {
+							"text": {
+								"title": "CTA Text",
+								"type": "string"
 							},
-							{
-								"from": "target",
-								"fromProperty": "/description",
-								"toProperty": "./description"
+							"url": {
+								"type": "string",
+								"title": "url"
+							},
+							"image": {
+								"type": "object",
+								"title": "Image",
+								"_relator": {
+									"nodeType": "fabric:image",
+									"mappings": [
+										{
+											"from": "target",
+											"fromProperty": "/altText",
+											"toProperty": "./altText"
+										},
+										{
+											"from": "target",
+											"fromProperty": "/description",
+											"toProperty": "./description"
+										}
+									]
+								}
 							}
-						]
-					}
-				},
-				"links": {
-					"type": "array",
-					"title": "Links",
-					"items": {
-						"type": "string"
+						}
 					}
 				}
 			}

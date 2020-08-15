@@ -472,24 +472,33 @@
 						}
 					}
 				},
-				"images": {
-					"type": "file-picker",
-					"label": "Image and Video",
-					"picker": {
-						"initialContainerPath": "/images",
-						"rootContainerPath": "/images",
-						"uploadPath": "/images",
-						"uploadType": "fabric:image",
-						"typeQName": "fabric:image"
-					}
-				},
-				"links": {
+				"cta": {
 					"type": "array",
-					"label": "Links",
-					"required": false,
+					"label": "CTAs",
 					"items": {
-						"type": "text",
-						"label": "Links"
+						"type": "object",
+						"label": "CTA",
+						"fields": {
+							"text": {
+								"type": "textarea",
+								"label": "Text"
+							},
+							"url": {
+								"type": "text",
+								"title": "URL"
+							},
+							"image": {
+								"type": "file-picker",
+								"label": "Image or Video",
+								"picker": {
+									"initialContainerPath": "/images",
+									"rootContainerPath": "/images",
+									"uploadPath": "/images",
+									"uploadType": "fabric:image",
+									"typeQName": "fabric:image"
+								}
+							}
+						}
 					}
 				}
 			}
