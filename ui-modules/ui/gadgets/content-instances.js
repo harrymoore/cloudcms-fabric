@@ -21,6 +21,12 @@ define(function (require, exports, module) {
 
             query._fields = {
                 title: 1,
+                contributor: 1,
+                keywords: 1,
+                category: 1,
+                creationDate: 1,
+                launchDate: 1,
+                expirationDate: 1,
                 description: 1,
                 _system: 1,
                 _type: 1,
