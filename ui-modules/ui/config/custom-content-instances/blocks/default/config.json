@@ -15,6 +15,7 @@
             "center": {
                 "type": "custom-content-instances",
                 "config": {
+                    "replace": true,
                     "chrome": false,
                     "buttons": [],
                     "columns": [
@@ -37,6 +38,36 @@
                                     "key": "title",
                                     "title": "Title",
                                     "field": "title"
+                                },
+                                {
+                                    "key": "contributor",
+                                    "title": "Contributor",
+                                    "field": "contributor"
+                                },
+                                {
+                                    "key": "keywords",
+                                    "title": "Keywords",
+                                    "field": "keywords"
+                                },
+                                {
+                                    "key": "category",
+                                    "title": "Category",
+                                    "field": "category.title"
+                                },
+                                {
+                                    "key": "creationDate",
+                                    "title": "Creation Date",
+                                    "field": "creationDate"
+                                },
+                                {
+                                    "key": "launchDate",
+                                    "title": "Launch Date",
+                                    "field": "launchDate"
+                                },
+                                {
+                                    "key": "expirationDate",
+                                    "title": "Expiration Date",
+                                    "field": "expirationDate"
                                 },
                                 {
                                     "key": "description",
