@@ -28,15 +28,24 @@ echo "** create archive package file for import"
 # node ./app-download-images.js "./input-data/Wyng_-_fabric-com-blog.ghost.2020-01-07(3).json"
 node ./app-import.js "./input-data/Wyng_-_fabric-com-blog.ghost.2020-01-07(3).json" $GROUP $ARTIFACT $VERSION
 
+echo Created package file. Press Enter to continue
+read input
+
 echo "*******************************"
 echo "** upload archive package"
 cloudcms archive upload --group $GROUP --artifact $ARTIFACT --version $VERSION
 
+echo Uploaded package file. Press Enter to continue
+read input
+
 echo "*******************************"
 echo "** import archive package to branch"
-sleep 60
+sleep 120
 echo cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repository $REPOSITORY_ID --branch $BRANCH_ID
-# cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repository $REPOSITORY_ID --branch $BRANCH_ID
+cloudcms branch import --group $GROUP --artifact $ARTIFACT --version $VERSION --repository $REPOSITORY_ID --branch $BRANCH_ID
+
+echo Imported package file. Press Enter to continue
+read input
 
 echo "*******************************"
 echo "** patch imported nodes to make sure they have a project id set (using the node's id)"

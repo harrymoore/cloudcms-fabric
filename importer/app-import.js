@@ -16,6 +16,8 @@ if (!fs.existsSync(TMP_IMAGES)) {
     fs.mkdirSync(TMP_IMAGES);
 }
 
+let imageFileNames = {};
+
 PACKAGER.create({
     outputPath: "./",
     archiveGroup: group,
@@ -81,36 +83,45 @@ PACKAGER.create({
 
         // attach main image
         if (projectJSON.mainImage && projectJSON.mainImage.src) {
-            let title = path.basename(projectJSON.mainImage.src);
-            let filePath = path.join(TMP_IMAGES, title);
+            let ext = path.extname(projectJSON.mainImage.src);
+            let fileName = path.basename(projectJSON.mainImage.src, ext) + '_' + json.id + ext;
+            let filePath = path.join(TMP_IMAGES, fileName);
             var imageJSON = {
-                title: title,
-                altText: projectJSON.mainImage.alt || title,
+                title: fileName,
+                altText: projectJSON.mainImage.alt || fileName,
                 url: projectJSON.mainImage.src,
-                // _alias: "image_" + title,
+                // _alias: "image_" + fileName,
                 _type: "fabric:image",
                 _features: {
                     "f:titled": {},
                     "f:filename": {
-                        "filename": title
+                        "filename": fileName
                     },
                     "f:indexable": {}
                 },
                 _existing: {
                     _type: "fabric:image",
-                    title: title
+                    title: fileName
                 }
             };
-            mainImageNode = packager.addNode(imageJSON);
-            if (fs.existsSync(filePath)) {
-                packager.addAttachment(mainImageNode, "default", filePath);
+
+            let mainImageNode = null;
+            if (imageFileNames[imageJSON.title]) {
+                mainImageNode = imageFileNames[imageJSON.title];
             } else {
-                console.log("WARNING: image file not found for attachment " + filePath);
+                mainImageNode = packager.addNode(imageJSON);
+                imageFileNames[imageJSON.title] = mainImageNode;
+                if (fs.existsSync(filePath)) {
+                    packager.addAttachment(mainImageNode, "default", filePath);
+                } else {
+                    console.log("WARNING: image file not found for attachment " + filePath);
+                }
+                packager.addAssociation(imagesFolderNode, mainImageNode, {
+                    "_type": "a:child",
+                    "directionality": "DIRECTED"
+                });
             }
-            packager.addAssociation(imagesFolderNode, mainImageNode, {
-                "_type": "a:child",
-                "directionality": "DIRECTED"
-            });
+
             // console.log("adding node for image: \n" + JSON.stringify(mainImageNode, null, 2));
             projectJSON.mainImage = {
                 __related_node__: mainImageNode.id
@@ -122,41 +133,49 @@ PACKAGER.create({
         if (projectNode.json._imageList) {
             projectNode.json._imageList.forEach(image => {
                 let imageUrl = image.src;
-                let title = path.basename(imageUrl);
-                let filePath = path.join(TMP_IMAGES, title);
-                let alt = image.alt || title;
-                let url = imageUrl;
+                let ext = path.extname(imageUrl);
+                let fileName = path.basename(imageUrl, ext) + '_' + json.id + ext;
+                let filePath = path.join(TMP_IMAGES, fileName);
+                let alt = image.alt || fileName;
 
                 let imageJSON = {
-                    title: title,
+                    title: fileName,
                     altText: alt,
-                    url: url,
-                    // _alias: "image_" + url,
+                    url: imageUrl,
+                    // _alias: "image_" + imageUrl,
                     _type: "fabric:image",
                     _features: {
                         "f:titled": {},
                         "f:filename": {
-                            "filename": title
+                            "filename": fileName
                         },
                         "f:indexable": {}
-                    },
-                    _existing: {
-                        _type: "fabric:image",
-                        title: title
+                    // },
+                    // _existing: {
+                    //     _type: "fabric:image",
+                    //     title: fileName
                     }
                 };
 
-                let imageNode = packager.addNode(imageJSON);
-                if (fs.existsSync(filePath)) {
-                    packager.addAttachment(imageNode, "default", filePath);
+                let imageNode = null;
+                if (imageFileNames[imageJSON.title]) {
+                    imageNode = imageFileNames[imageJSON.title];
                 } else {
-                    console.log("WARNING: image file not found for attachment " + imageUrl);
-                }
+                    imageNode = packager.addNode(imageJSON);
+                    imageFileNames[imageJSON.title] = imageNode;
+                    if (fs.existsSync(filePath)) {
+                        packager.addAttachment(imageNode, "default", filePath);
+                    } else {
+                        console.log("WARNING: image file not found for attachment " + imageUrl);
+                    }
+
                     // add the image node as a child of the "/images" folder node
-                packager.addAssociation(imagesFolderNode, imageNode, {
-                    "_type": "a:child",
-                    "directionality": "DIRECTED"
-                });
+                    packager.addAssociation(imagesFolderNode, imageNode, {
+                        "_type": "a:child",
+                        "directionality": "DIRECTED"
+                    });
+                }
+                
                 // associate image to this Project node
                 packager.addAssociation(projectNode, imageNode, {
                     "_type": "a:linked",

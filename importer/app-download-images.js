@@ -23,15 +23,15 @@ let imageList = {};
 inputData.forEach(json => {
     // include the main image if in the json
     if (json.image) {
-        imageList[urlCoDec.decode(json.image)] = 1;
+        imageList[urlCoDec.decode(json.image)] = json.id;
     }
 
     // now find any additional images in the markdown field to include in the download
     if (json.markdown) {
         extractImages(json.markdown).forEach(imageSrc => {
-            imageList[urlCoDec.decode(imageSrc)] = 1;
+            imageList[urlCoDec.decode(imageSrc)] = json.id;
         });
-    }
+    }   
 });
 
 const CONCURRENT_DOWNLOADS = 10;
@@ -39,8 +39,8 @@ eachOfLimit(Object.keys(imageList), CONCURRENT_DOWNLOADS, async (imageUrl) => {
     // download main image
     if (imageUrl) {
         try {
-            let filePath = await downloadImage(imageUrl);
-            let title = path.basename(filePath);
+            let filePath = await downloadImage(imageUrl, imageList[imageUrl]);
+            // let title = path.basename(filePath);
             // console.log(`Downloaded image ${title} to ${filePath}`);
         } catch (error) {
             console.error(`Failed to downloaded image ${imageUrl} with error ${error}`);
@@ -64,13 +64,14 @@ function extractImages(markdown) {
     return imageList;
 }
 
-async function downloadImage(imageUrl) {
+async function downloadImage(imageUrl, blogId) {
     let url = (new URL(imageUrl, "https://www.fabric.com/")).toString();
     if (imageUrl.startsWith("https://")) {
         url = imageUrl;
     }
 
-    let fileName = path.basename(url);
+    let ext = path.extname(imageUrl);
+    let fileName = path.basename(url, ext) + '_' + blogId + ext;
     let filePath = path.normalize(path.join(TMP_IMAGES, fileName));
     const writer = fs.createWriteStream(filePath);
 
