@@ -1,0 +1,34 @@
+<h2 class='list-row-info title'>
+    <a href='{{linkUri data}}'>{{title data}}</a>
+</h2>
+
+<div class='list-row-info-summary-block primary'>
+    <div class='list-row-info-summary-body'>
+
+        <p class='list-row-info'>projectType:&nbsp;
+            <b>{{data.projectType}}</b>
+        </p >
+
+        <p class='list-row-info'>Creation Date:&nbsp;
+            <b>{{data.creationDate}}</b>
+        </p >
+        <p class='list-row-info'>Launch Date:&nbsp;
+            <b>{{data.launchDate}}</b>
+        </p >
+        <p class='list-row-info'>Expiration Date:&nbsp;
+            <b>{{data.expirationDate}}</b>
+        </p >
+
+        <p class='list-row-info'>Category:&nbsp;
+            {{#each data.category}}{{#if @index}}, {{/if}}<b>{{this.title}}</b>{{/each}}
+        </p >
+
+        <p class='list-row-info'>Keywords:&nbsp;
+            {{#each data.keywords}}{{#if @index}}, {{/if}}<b>{{this.title}}</b>{{/each}}
+        </p >
+
+        <p class='list-row-info'>Contributor:&nbsp; 
+            {{#each data.contributor}}{{#if @index}} and {{/if}}<b>{{this.title}}</b>{{/each}}
+        </p>
+    </div>
+</div>
