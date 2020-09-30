@@ -28,6 +28,12 @@ PACKAGER.create({
         return console.error(err);
     }
 
+    // load categories so we can associate projects correctly
+    var categoryData = require('./input-data/categories.json');
+    categoryData.forEach(json => {
+        packager.addNode(json)        
+    });
+
     // packager.addFromDisk(inputJSON);
     var inputData = require(inputJSON);
     inputData = inputData.db[0].data.posts;
@@ -262,7 +268,7 @@ function PROJECT(json) {
     this.difficulty = json.difficulty || "easy";
     this.discount = json.discount || "0";
     this.category = [{
-        title: "Apparel"
+        __related_node__: "category_Apparel"
     }];
     this.creationDate = json.created_at || "";
     if (json.image) {
