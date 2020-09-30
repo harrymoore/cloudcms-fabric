@@ -65,11 +65,6 @@
                                     "field": "launchDate"
                                 },
                                 {
-                                    "key": "expirationDate",
-                                    "title": "Expiration Date",
-                                    "field": "expirationDate"
-                                },
-                                {
                                     "key": "description",
                                     "title": "Description",
                                     "field": "description"
