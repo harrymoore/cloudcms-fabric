@@ -28,8 +28,8 @@ define(function (require, exports, module) {
                 creationDate: 1,
                 launchDate: 1,
                 expirationDate: 1,
-                description: 1,
-                _system: 1,
+                // description: 1,
+                // _system: 1,
                 _type: 1,
                 "mainImage.id": 1
             };
@@ -52,7 +52,7 @@ define(function (require, exports, module) {
             var _iconUri = OneTeam.iconUriForNode(row);
 
             if (row.mainImage && row.mainImage.id) {
-                _iconUri = _iconUri.replace(/&node=[^&]+&/, "&node=" + row.mainImage.id + "&");
+                _iconUri = _iconUri.replace(/&node=[^(&)]+&/, "&node=" + row.mainImage.id + "&");
             }
 
             _iconUri = _iconUri.replace("size=64", "size=128");
