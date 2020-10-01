@@ -68,7 +68,11 @@ define(function (require, exports, module) {
             self.base(el, model, originalContext, function() {
 
                 var selectedContentTypeDescriptor = self.observable("selected-content-type").get();
-                if (selectedContentTypeDescriptor && selectedContentTypeDescriptor.definition && selectedContentTypeDescriptor.definition.properties.projectType) {
+                if (selectedContentTypeDescriptor 
+                    && selectedContentTypeDescriptor.definition 
+                    && selectedContentTypeDescriptor.definition.properties.projectType 
+                    && selectedContentTypeDescriptor.definition.__qname() === "fabric:project") {
+                        
                     // customization. add select list to choose project type filter
                     var selectList = '<select class="btn btn-default" id="selectedProjectType" name="projecttypes"><option selected value="">All</option>';
                     
