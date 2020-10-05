@@ -11,31 +11,37 @@ define(function (require, exports, module) {
         doGitanaQuery: function (context, model, searchTerm, query, pagination, callback) {
             var self = this;
 
-            if (!query) {
-                query = {};
-            }
+            var selectedContentTypeDescriptor = self.observable("selected-content-type").get();
+            if (selectedContentTypeDescriptor 
+                && selectedContentTypeDescriptor.definition.__qname() === "fabric:project") {
 
-            if (self.selectedProjectType) {
-                query.projectType = self.selectedProjectType;
-            }
+                if (!query) {
+                    query = {};
+                }
 
-            query._fields = {
-                title: 1,
-                projectType: 1,
-                contributor: 1,
-                keywords: 1,
-                category: 1,
-                creationDate: 1,
-                launchDate: 1,
-                expirationDate: 1,
-                // description: 1,
-                // _system: 1,
-                _type: 1,
-                "mainImage.id": 1
-            };
+                if (self.selectedProjectType) {
+                    query.projectType = self.selectedProjectType;
+                }
 
-            if (searchTerm) {
-                Object.assign(query, OneTeam.searchQuery(searchTerm, ["title", "description"]));
+                query._fields = {
+                    title: 1,
+                    projectType: 1,
+                    contributor: 1,
+                    keywords: 1,
+                    category: 1,
+                    creationDate: 1,
+                    launchDate: 1,
+                    expirationDate: 1,
+                    // description: 1,
+                    // _system: 1,
+                    _type: 1,
+                    "mainImage.id": 1
+                };
+
+                if (searchTerm) {
+                    Object.assign(query, OneTeam.searchQuery(searchTerm, ["title", "description"]));
+                }
+
             }
 
             this.base(context, model, searchTerm, query, pagination, function (resultMap) {
@@ -72,7 +78,7 @@ define(function (require, exports, module) {
                     && selectedContentTypeDescriptor.definition 
                     && selectedContentTypeDescriptor.definition.properties.projectType 
                     && selectedContentTypeDescriptor.definition.__qname() === "fabric:project") {
-                        
+
                     // customization. add select list to choose project type filter
                     var selectList = '<select class="btn btn-default" id="selectedProjectType" name="projecttypes"><option selected value="">All</option>';
                     
