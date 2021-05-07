@@ -26,7 +26,7 @@
     "command-line-args": "^5.1.1",
     "command-line-usage": "^6.1.0",
     "dotenv": "^8.2.0",
-    "underscore": "^1.11.0",
+    "underscore": "^1.12.1",
     "url-encode-decode": "^1.0.0"
   }
 }
