@@ -22,7 +22,7 @@
     "basic-logger": "^0.4.4",
     "chalk": "^4.1.0",
     "cloudcms": "^0.1.3",
-    "cloudcms-packager": "^1.0.4",
+    "cloudcms-packager": "^1.1.1",
     "command-line-args": "^5.1.1",
     "command-line-usage": "^6.1.0",
     "dotenv": "^8.2.0",
